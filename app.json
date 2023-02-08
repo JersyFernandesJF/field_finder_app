@@ -3,8 +3,10 @@
     "name": "main-mobile-app",
     "slug": "main-mobile-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "backgroundColor": "#fff"
+    }
   }
 }

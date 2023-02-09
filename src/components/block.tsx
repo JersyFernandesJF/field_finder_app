@@ -5,6 +5,14 @@ type BlockProps = ViewProps & {
   flex?: ViewStyle["flex"];
   safe?: boolean;
   center?: boolean;
+  justifyContent?: ViewStyle["justifyContent"];
+  row?: boolean;
+  px?: ViewStyle["paddingHorizontal"];
+  paddingHorizontal?: ViewStyle["paddingHorizontal"];
+  my?: ViewStyle["marginVertical"];
+  marginVertical?: ViewStyle["marginVertical"];
+  mt?: ViewStyle["marginTop"];
+  marginTop?: ViewStyle["marginTop"];
 };
 
 export const Block: React.FC<BlockProps> = ({
@@ -12,12 +20,29 @@ export const Block: React.FC<BlockProps> = ({
   flex,
   safe,
   center,
+  justifyContent,
+  row,
+  px,
+  paddingHorizontal,
+  my,
+  marginVertical,
+  mt,
+  marginTop,
   children,
   ...props
 }) => {
   const blockStyle = StyleSheet.flatten([
     flex !== undefined && { flex },
     center !== undefined && { justifyContent: "center", alignItems: "center" },
+    justifyContent !== undefined && { justifyContent },
+    row !== undefined && { flexDirection: "row" },
+    (px || paddingHorizontal) !== undefined && {
+      paddingHorizontal: paddingHorizontal || px,
+    },
+    (my || marginVertical) !== undefined && {
+      marginVertical: marginVertical || my,
+    },
+    (mt || marginTop) !== undefined && { marginTop: marginTop || mt },
     style,
   ]) as ViewStyle;
 

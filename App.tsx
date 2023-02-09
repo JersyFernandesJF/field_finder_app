@@ -6,7 +6,11 @@ import React, { useCallback } from "react";
 
 import * as SplashScreen from "expo-splash-screen";
 
-import { Inter_400Regular, Inter_600SemiBold } from "@expo-google-fonts/inter";
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+} from "@expo-google-fonts/inter";
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "~/hooks/theme";
 import { Router } from "~/router";
@@ -16,6 +20,7 @@ SplashScreen.preventAutoHideAsync();
 export default function App() {
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
+    Inter_500Medium,
     Inter_600SemiBold,
   });
 

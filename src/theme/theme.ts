@@ -4,11 +4,19 @@ export const COLORS = {
   blue: {
     10: "#111830",
   },
+  dark: {
+    1: "rgba(0, 0, 0, 0.6)",
+    2: "rgba(17, 24, 48, 0.2)",
+  },
+  green: {
+    1: "#005C5C",
+  },
 };
 
 export const FONTS = {
   inter: {
     400: "Inter_400Regular",
+    500: "Inter_500Medium",
     600: "Inter_600SemiBold",
   },
 };

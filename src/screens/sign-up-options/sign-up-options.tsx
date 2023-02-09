@@ -35,12 +35,19 @@ export const SignUpOptionsScreen = () => {
       <Block>
         <Button defaultStyle>Sign up with Email</Button>
         <Block center mt={20}>
-          <Text>Already have an Account? Log In</Text>
+          <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
+            Already have an Account? Log In
+          </Text>
         </Block>
       </Block>
 
       <Block center>
-        <Text textAlign="center">
+        <Text
+          textAlign="center"
+          color={colors.blue[10]}
+          font={fonts.inter[400]}
+          size={13}
+        >
           By using the app, I agree to The Sports Terms of {`\n`}
           Service and Privacy Policy
         </Text>

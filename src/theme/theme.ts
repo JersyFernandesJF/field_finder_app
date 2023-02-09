@@ -1,12 +1,15 @@
 export const COLORS = {
   white: "#fff",
   black: "#000",
+  blue: {
+    10: "#111830",
+  },
 };
 
 export const FONTS = {
   inter: {
     400: "Inter_400Regular",
-    500: "Inter_600SemiBold",
+    600: "Inter_600SemiBold",
   },
 };
 

@@ -6,7 +6,7 @@ module.exports = function (api) {
       [
         'module-resolver',
         {
-          root: '.',
+          root: ['.'],
           extensions: [
             '.js',
             '.jsx',

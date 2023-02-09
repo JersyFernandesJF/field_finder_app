@@ -23,7 +23,7 @@ export const Router = () => {
             fontSize: 22,
           },
           contentStyle: {
-            backgroundColor: colors.black,
+            backgroundColor: colors.white,
           },
         }}
       >

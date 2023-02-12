@@ -1,12 +1,15 @@
 import { Pressable, PressableProps, StyleSheet } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { Text } from "./text";
+import { Block } from "./block";
 
 export type ButtonProps = PressableProps & {
   children?: string;
   buttonColor?: string;
   socialButton?: boolean;
   defaultStyle?: boolean;
+  left?: JSX.Element;
+  right?: JSX.Element;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -15,6 +18,8 @@ export const Button: React.FC<ButtonProps> = ({
   socialButton,
   defaultStyle,
   style,
+  left,
+  right,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
@@ -43,9 +48,15 @@ export const Button: React.FC<ButtonProps> = ({
   if (socialButton) {
     return (
       <Pressable style={buttonStyles} {...props}>
-        <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-          {children}
-        </Text>
+        <Block row flex={1} center justifyContent="center">
+          {left && left}
+          <Block paddingHorizontal={20}>
+            <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
+            {children}
+          </Text>
+          </Block>
+          {right && right}
+        </Block>
       </Pressable>
     );
   }
@@ -53,16 +64,30 @@ export const Button: React.FC<ButtonProps> = ({
   if (defaultStyle) {
     return (
       <Pressable style={buttonStyles} {...props}>
-        <Text color={colors.white} font={fonts.inter[500]} size={15}>
-          {children}
-        </Text>
+        <Block row>
+          {left && left}
+          <Block paddingHorizontal={20}>
+            <Text color={colors.white} font={fonts.inter[500]} size={15}>
+            {children}
+          </Text>
+          </Block>
+          {right && right}
+        </Block>
       </Pressable>
     );
   }
 
   return (
     <Pressable style={buttonStyles} {...props}>
-      <Text color={buttonColor}>{children}</Text>
+      <Block row>
+        {left && left}
+        <Block paddingHorizontal={20}>
+            <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
+            {children}
+          </Text>
+          </Block>
+        {right && right}
+      </Block>
     </Pressable>
   );
 };

@@ -1,11 +1,14 @@
 import { Block } from "./block";
 import { Text } from "./text";
 import { useTheme } from "~/hooks/theme";
+
 type LineProps = {
   children: string;
 };
+
 export const Line: React.FC<LineProps> = ({ children }) => {
   const { colors } = useTheme();
+  
   return (
     <Block row center>
       <Block

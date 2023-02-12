@@ -6,8 +6,6 @@ import {
 } from "react-native";
 import { useTheme } from "~/hooks/theme";
 
-
-
 type TextProps = RNTextProps & {
   textAlign?: TextStyle["textAlign"];
   color?: TextStyle["color"];
@@ -29,6 +27,7 @@ export const Text: React.FC<TextProps> = ({
   ...props
 }) => {
   const { colors, fonts } = useTheme();
+  
   const textStyles = StyleSheet.flatten([
     textAlign !== undefined && { textAlign },
     color !== undefined && { color },

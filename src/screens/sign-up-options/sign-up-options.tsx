@@ -1,4 +1,4 @@
-import { Block, Button } from "~/components";
+import { Block, Button, Line} from "~/components";
 import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
 
@@ -26,17 +26,13 @@ export const SignUpOptionsScreen = () => {
         <Button socialButton>Continue with Facebook</Button>
       </Block>
 
-      <Block center>
-        <Text color={colors.blue[10]} font={fonts.inter[500]} size={17}>
-          or
-        </Text>
-      </Block>
+       <Line>or</Line>
 
       <Block>
         <Button defaultStyle>Sign up with Email</Button>
         <Block center mt={20}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-            Already have an Account? Log In
+            Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]}>Log In</Text>
           </Text>
         </Block>
       </Block>
@@ -48,8 +44,8 @@ export const SignUpOptionsScreen = () => {
           font={fonts.inter[400]}
           size={13}
         >
-          By using the app, I agree to The Sports Terms of {`\n`}
-          Service and Privacy Policy
+          By using the app, I agree to The Sports  <Text  highlighted>Terms of {`\n`} Service </Text>
+            and <Text highlighted>Privacy Policy</Text>
         </Text>
       </Block>
     </Block>

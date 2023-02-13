@@ -1,7 +1,7 @@
 import { Block, Button, Line} from "~/components";
 import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
-import { FacebookIcon, GoogleIcon, AppleIcon } from "~/assets/icons"
+import { FacebookIcon, GoogleIcon, AppleIcon, EmailIcon } from "~/assets/icons"
 
 export const SignUpOptionsScreen = () => {
   const { colors, fonts } = useTheme();
@@ -20,7 +20,7 @@ export const SignUpOptionsScreen = () => {
       </Block>
 
       <Block>
-        <Button socialButton  left={ <Block><GoogleIcon/></Block>} >Continue with Google</Button>
+        <Button socialButton  left={<Block><GoogleIcon/></Block>} >Continue with Google</Button>
         <Block my={15}>
           <Button socialButton left={<Block><AppleIcon/></Block>} >Continue with Apple</Button>
         </Block>
@@ -30,7 +30,7 @@ export const SignUpOptionsScreen = () => {
        <Line>or</Line>
 
       <Block>
-        <Button left={<Block><GoogleIcon/></Block>} defaultStyle>Sign up with Email</Button>
+        <Button left={<Block><EmailIcon/></Block>} defaultStyle>Sign up with Email</Button>
         <Block center mt={20}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
             Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]}>Log In</Text>

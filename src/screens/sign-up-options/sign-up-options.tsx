@@ -1,8 +1,10 @@
-import { Block, Button } from "~/components";
+import { Block, Button, Line} from "~/components";
 import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
+import { FacebookIcon, GoogleIcon, AppleIcon, EmailIcon } from "~/assets/icons"
 
-export const SignUpOptionsScreen = () => {
+
+export const SignUpOptionsScreen = ({ navigation }) => {
   const { colors, fonts } = useTheme();
 
   return (
@@ -19,24 +21,20 @@ export const SignUpOptionsScreen = () => {
       </Block>
 
       <Block>
-        <Button socialButton>Continue with Google</Button>
+        <Button socialButton  left={<Block><GoogleIcon/></Block>} >Continue with Google</Button>
         <Block my={15}>
-          <Button socialButton>Continue with Apple</Button>
+          <Button socialButton left={<Block><AppleIcon/></Block>} >Continue with Apple</Button>
         </Block>
-        <Button socialButton>Continue with Facebook</Button>
+        <Button socialButton left={<Block><FacebookIcon/></Block>} >Continue with Facebook</Button>
       </Block>
 
-      <Block center>
-        <Text color={colors.blue[10]} font={fonts.inter[500]} size={17}>
-          or
-        </Text>
-      </Block>
+       <Line>or</Line>
 
       <Block>
-        <Button defaultStyle>Sign up with Email</Button>
+        <Button left={<Block><EmailIcon/></Block>} defaultStyle>Sign up with Email</Button>
         <Block center mt={20}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-            Already have an Account? Log In
+            Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]} onPress={() => navigation.navigate('LoginOption')}>Log In</Text>
           </Text>
         </Block>
       </Block>
@@ -48,8 +46,8 @@ export const SignUpOptionsScreen = () => {
           font={fonts.inter[400]}
           size={13}
         >
-          By using the app, I agree to The Sports Terms of {`\n`}
-          Service and Privacy Policy
+          By using the app, I agree to The Sports  <Text  highlighted>Terms of {`\n`} Service </Text>
+            and <Text highlighted>Privacy Policy</Text>
         </Text>
       </Block>
     </Block>

@@ -3,7 +3,8 @@ import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
 import { FacebookIcon, GoogleIcon, AppleIcon, EmailIcon } from "~/assets/icons"
 
-export const SignUpOptionsScreen = () => {
+
+export const SignUpOptionsScreen = ({ navigation }) => {
   const { colors, fonts } = useTheme();
 
   return (
@@ -33,7 +34,7 @@ export const SignUpOptionsScreen = () => {
         <Button left={<Block><EmailIcon/></Block>} defaultStyle>Sign up with Email</Button>
         <Block center mt={20}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-            Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]}>Log In</Text>
+            Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]} onPress={() => navigation.navigate('LoginOption')}>Log In</Text>
           </Text>
         </Block>
       </Block>

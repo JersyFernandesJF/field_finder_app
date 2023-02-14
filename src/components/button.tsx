@@ -10,16 +10,20 @@ export type ButtonProps = PressableProps & {
   defaultStyle?: boolean;
   left?: JSX.Element;
   right?: JSX.Element;
+  center?: JSX.Element;
+  labelButton?: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
   children,
   buttonColor,
   socialButton,
+  labelButton,
   defaultStyle,
   style,
   left,
   right,
+  center,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
@@ -76,7 +80,13 @@ export const Button: React.FC<ButtonProps> = ({
       </Pressable>
     );
   }
-
+  if(labelButton) {
+    return(
+      <Pressable {...props}>
+        {center && center}
+      </Pressable>
+    )
+  }
   return (
     <Pressable style={buttonStyles} {...props}>
       <Block row>

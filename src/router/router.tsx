@@ -1,11 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "~/hooks/theme";
-import { SignUpOptionsScreen, LoginScreen } from "~/screens";
+import { SignUpOptionsScreen, LoginScreen, ForgotPasswordScreen } from "~/screens";
 
 type MainStackParamsList = { 
   LoginOption: undefined;
   SignUpOptions: undefined;
- 
+  ForgotOptions: undefined;
  
 };
 
@@ -44,6 +44,13 @@ export const Router = () => {
           component={SignUpOptionsScreen}
           options={{
             title: "Create Account",
+          }}
+        />
+        <MainStack.Screen
+          name="ForgotOptions"
+          component={ForgotPasswordScreen}
+          options={{
+            title: "",
           }}
         />
         

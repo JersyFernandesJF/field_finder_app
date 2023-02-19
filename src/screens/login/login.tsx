@@ -36,12 +36,12 @@ export const LoginScreen = ({ navigation }:any) => {
       </Block>
 
       <Block>
-        <Button defaultStyle>Login</Button>
+       <Button defaultStyle>Login</Button>
       </Block>
 
       <Block center my={30}>
         <Block center mt={20} my={12}>
-          <Button labelButton center={<Text color={colors.blue[1]}>Forgot password?</Text>}></Button>
+          <Button  onPress={() => navigation.navigate("ForgotOptions")} labelButton center={<Text color={colors.blue[1]}>Forgot password?</Text>}></Button>
         </Block>
         <Block row center>
           <Text

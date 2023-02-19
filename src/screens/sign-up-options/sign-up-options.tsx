@@ -60,7 +60,7 @@ export const SignUpOptionsScreen = ({ navigation }: any) => {
         <Button
           left={
             <Block>
-              <EmailIcon />
+              <EmailIcon color="#1877F2" />
             </Block>
           }
           defaultStyle

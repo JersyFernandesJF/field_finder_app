@@ -1,6 +1,71 @@
 import * as React from "react"
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 
+const Check = (props?:any) => (
+  <Svg
+    width={16}
+    height={16}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M8 1.333C4.327 1.333 1.333 4.327 1.333 8c0 3.673 2.994 6.667 6.667 6.667 3.673 0 6.667-2.994 6.667-6.667 0-3.673-2.994-6.667-6.667-6.667Zm3.187 5.134-3.78 3.78a.5.5 0 0 1-.707 0L4.813 8.36a.503.503 0 0 1 0-.707.503.503 0 0 1 .707 0l1.533 1.534L10.48 5.76a.503.503 0 0 1 .707 0 .503.503 0 0 1 0 .707Z"
+      fill="#005C5C"
+    />
+  </Svg>
+)
+const EyeIcon = (props?: any) => (
+  <Svg
+    width={16}
+    height={16}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      d="M10.387 8A2.384 2.384 0 0 1 8 10.387 2.384 2.384 0 0 1 5.613 8 2.384 2.384 0 0 1 8 5.613 2.384 2.384 0 0 1 10.387 8Z"
+      stroke="#111830"
+      strokeOpacity={0.3}
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M8 13.513c2.353 0 4.547-1.386 6.073-3.786.6-.94.6-2.52 0-3.46C12.547 3.867 10.353 2.48 8 2.48S3.453 3.867 1.927 6.267c-.6.94-.6 2.52 0 3.46 1.526 2.4 3.72 3.786 6.073 3.786Z"
+      stroke="#111830"
+      strokeOpacity={0.3}
+      strokeWidth={1.7}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+)
+
+const EmailIConTextIput = (props?:any) => (
+  <Svg
+    width={20}
+    height={20}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M16.667 4.167H3.333A.833.833 0 0 0 2.5 5v10c0 .46.373.833.833.833h13.334c.46 0 .833-.373.833-.833V5a.833.833 0 0 0-.833-.833ZM3.333 2.5A2.5 2.5 0 0 0 .833 5v10a2.5 2.5 0 0 0 2.5 2.5h13.334a2.5 2.5 0 0 0 2.5-2.5V5a2.5 2.5 0 0 0-2.5-2.5H3.333Z"
+      fill="#111830"
+      fillOpacity={0.3}
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M4.36 6.133a.833.833 0 0 1 1.173-.107l3.934 3.278a.833.833 0 0 0 1.066 0l3.934-3.278a.833.833 0 0 1 1.066 1.28l-3.932 3.278a2.5 2.5 0 0 1-3.201 0L4.467 7.307a.833.833 0 0 1-.107-1.174Z"
+      fill="#111830"
+      fillOpacity={0.3}
+    />
+  </Svg>
+)
 
 const EmailIcon = (props?: any) =>(
   <Svg
@@ -104,4 +169,4 @@ const AppleIcon = (props?: any) =>(
   </Svg>
 )
 
-export {FacebookIcon, GoogleIcon, AppleIcon, EmailIcon}
+export {FacebookIcon, GoogleIcon, AppleIcon, EmailIcon, EmailIConTextIput, EyeIcon, Check}

@@ -1,13 +1,14 @@
-import { Block, Button, Text, Input} from "~/components";
+import { Block, Button, Text, Input, CheckBox} from "~/components";
 import { useTheme } from "~/hooks/theme";
-import { EmailIcon } from "~/assets/icons";
+import { EmailIConTextIput, EyeIcon } from "~/assets/icons";
 
 export const LoginScreen = ({ navigation }:any) => {
   const { colors, fonts } = useTheme();
 
   return (
     <Block safe flex={1} justifyContent="space-between" px={30}>
-      <Block>
+      <Block justifyContent="flex-start" alignItems="flex-start">
+        <Block my={30} justifyContent="flex-start" alignItems="flex-start">
         <Text
           textAlign="center"
           color={colors.dark[1]}
@@ -16,7 +17,9 @@ export const LoginScreen = ({ navigation }:any) => {
         >
           Email
         </Text>
-        <Input placeholder="example@gmail.com"></Input>
+        <Input placeholder="example@gmail.com" left={<EmailIConTextIput style={{ marginRight:10 }} />}></Input>
+       </Block> 
+       <Block justifyContent="flex-start" alignItems="flex-start">
         <Text
           textAlign="center"
           color={colors.dark[1]}
@@ -25,7 +28,11 @@ export const LoginScreen = ({ navigation }:any) => {
         >
           Password
         </Text>
-        <Input placeholder="example@gmail.com"></Input>
+        <Input placeholder="password" right={<EyeIcon style={{ marginLeft:'70%' }} />}></Input>
+        </Block>
+         <Block my={10}>
+            <CheckBox/>
+         </Block>
       </Block>
 
       <Block>
@@ -34,7 +41,7 @@ export const LoginScreen = ({ navigation }:any) => {
 
       <Block center my={30}>
         <Block center mt={20} my={12}>
-          <Button labelButton>Forgot password?</Button>
+          <Button labelButton center={<Text color={colors.blue[1]}>Forgot password?</Text>}></Button>
         </Block>
         <Block row center>
           <Text

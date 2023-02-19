@@ -36,7 +36,7 @@ export const Router = () => {
         name="LoginOption"
         component={ LoginScreen }
        options={{
-        title: "Welcome Back !"
+        title: "Welcome Back!"
        }}
         />
         <MainStack.Screen

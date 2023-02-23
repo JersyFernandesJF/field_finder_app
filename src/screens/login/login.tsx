@@ -1,4 +1,4 @@
-import { Block, Button, Text, Input, CheckBox, Form} from "~/components";
+import { Block, Button, Text, CheckBox, InputForm} from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { EmailIConTextIput, EyeIcon } from "~/assets/icons";
 import { useState } from "react";
@@ -10,9 +10,9 @@ export const LoginScreen = ({ navigation }:any) => {
   return (
     <Block safe flex={1} justifyContent="space-between" px={30}>
       <Block justifyContent="flex-start" alignItems="flex-start">
-           <Form left={<EmailIConTextIput style={{ marginRight:10 }} />} placeholder="Email">Email</Form>
+           <InputForm left={<EmailIConTextIput style={{ marginRight:10 }} />} placeholder="Email" label="Email" />
        <Block justifyContent="flex-start" alignItems="flex-start">
-           <Form password={showPassword} right={<EyeIcon onPress={()=> setShowPassword(!showPassword)} style={{ marginRigtht:10}}/>} placeholder="Password">Password</Form>
+           <InputForm password={showPassword} right={<EyeIcon onPress={()=> setShowPassword(!showPassword)} style={{ marginRigtht:10}}/>} placeholder="Password" label="Password"/>
         </Block>
          <Block my={10}>
             <CheckBox/>

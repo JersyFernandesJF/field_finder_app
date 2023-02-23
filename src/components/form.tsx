@@ -10,13 +10,15 @@ type FormProps = {
     right?: JSX.Element;
     password?: boolean;
     placeholder?: string;
+    label?: string;
 
 }
-export const Form: React.FC<FormProps> =({
+export const InputForm: React.FC<FormProps> =({
     children,
     left, 
     right,
     password,
+    label,
     placeholder,
 })=>{
     const { colors, fonts } = useTheme();  
@@ -30,7 +32,7 @@ export const Form: React.FC<FormProps> =({
             font={fonts.inter[400]}
             size={15}
           >
-            {children}
+            {label}
         </Text>
         <Input password={password} placeholder={placeholder} right={right} left={left}></Input>
          </Block> 

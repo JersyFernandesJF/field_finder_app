@@ -1,6 +1,7 @@
 import * as React from "react"
 import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
 
+
 const Check = (props?:any) => (
   <Svg
     width={16}

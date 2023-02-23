@@ -64,6 +64,7 @@ export const SignUpOptionsScreen = ({ navigation }: any) => {
             </Block>
           }
           defaultStyle
+          onPress={()=> navigation.navigate("CreateOption")}
         >
           Sign up with Email
         </Button>

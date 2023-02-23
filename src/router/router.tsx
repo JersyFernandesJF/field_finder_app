@@ -1,13 +1,14 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useTheme } from "~/hooks/theme";
-import { SignUpOptionsScreen, LoginScreen, ForgotPasswordScreen, MainScreen } from "~/screens";
+import { SignUpOptionsScreen, LoginScreen, ForgotPasswordScreen, MainScreen, CreateAccountScreen } from "~/screens";
 
 type MainStackParamsList = { 
   LoginOption: undefined;
   SignUpOption: undefined;
   ForgotOption: undefined;
   MainOption: undefined;
+  CreateOption: undefined;
  
 };
 
@@ -62,6 +63,14 @@ export const Router = () => {
             title:""
           }}
         />
+        <MainStack.Screen
+          name="CreateOption"
+          component={CreateAccountScreen}
+          options={{
+            title:"Create an Account"
+          }}
+        />
+        
       </MainStack.Group>
     </MainStack.Navigator>
   );

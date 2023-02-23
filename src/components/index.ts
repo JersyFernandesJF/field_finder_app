@@ -4,3 +4,4 @@ export * from "./text";
 export * from "./line"
 export * from "./input"
 export * from "./checkbox"
+export * from "./form"

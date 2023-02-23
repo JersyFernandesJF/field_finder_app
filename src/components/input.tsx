@@ -6,12 +6,14 @@ import { Block } from "./block"
 export type IInput = TextInputProps & {
        type?:string, 
        left?: JSX.Element, 
-       right?: JSX.Element
+       right?: JSX.Element, 
+       password?: boolean
 }
 
 export const Input: React.FC<IInput> =({
     left, 
     right,
+    password,
     ...props
 }) => {
     const { colors, fonts } = useTheme();
@@ -22,10 +24,13 @@ export const Input: React.FC<IInput> =({
         borderRadius: 12,
         width: 315
     })
+    const Input = StyleSheet.flatten({
+       width:'95%'
+    })
      return (
         <Block  row justifyContent='flex-start' alignItems='center' style={TextInputStyles} paddingHorizontal={16}>
              {left && left} 
-             <TextInput {...props}/>
+             <TextInput secureTextEntry={password} style={Input} {...props}/>
              {right && right}
         </Block>
      )

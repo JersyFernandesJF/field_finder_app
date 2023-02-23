@@ -3,14 +3,14 @@ import { Text } from "./text";
 import { Input } from "./input";
 import { useTheme } from "~/hooks/theme";
 
-type FormProps = {
+type InputFormProps = {
   left?: JSX.Element;
   right?: JSX.Element;
   password?: boolean;
   placeholder?: string;
   label?: string;
 };
-export const InputForm: React.FC<FormProps> = ({
+export const InputForm: React.FC<InputFormProps> = ({
   left,
   right,
   password,

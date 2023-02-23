@@ -56,8 +56,8 @@ export const Button: React.FC<ButtonProps> = ({
           {left && left}
           <Block paddingHorizontal={20}>
             <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-            {children}
-          </Text>
+              {children}
+            </Text>
           </Block>
           {right && right}
         </Block>
@@ -72,30 +72,26 @@ export const Button: React.FC<ButtonProps> = ({
           {left && left}
           <Block paddingHorizontal={20}>
             <Text color={colors.white} font={fonts.inter[500]} size={15}>
-            {children}
-          </Text>
+              {children}
+            </Text>
           </Block>
           {right && right}
         </Block>
       </Pressable>
     );
   }
-  if(labelButton) {
-    return(
-      <Pressable {...props}>
-        {center && center}
-      </Pressable>
-    )
+  if (labelButton) {
+    return <Pressable {...props}>{center && center}</Pressable>;
   }
   return (
     <Pressable style={buttonStyles} {...props}>
       <Block row>
         {left && left}
         <Block paddingHorizontal={20}>
-            <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
+          <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
             {children}
           </Text>
-          </Block>
+        </Block>
         {right && right}
       </Block>
     </Pressable>

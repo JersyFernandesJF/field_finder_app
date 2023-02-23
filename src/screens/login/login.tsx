@@ -1,45 +1,72 @@
-import { Block, Button, Text, CheckBox, InputForm} from "~/components";
+import { Block, Button, Text, CheckBox, InputForm } from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { EmailIConTextIput, EyeIcon } from "~/assets/icons";
 import { useState } from "react";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { MainStackParamsList } from "~/router";
 
-export const LoginScreen = ({ navigation }:any) => {
+type Props = NativeStackScreenProps<MainStackParamsList, 'LoginOption'>;
+
+export const LoginScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
-  const [showPassword, setShowPassword] = useState(true)
+  const [showPassword, setShowPassword] = useState(true);
 
   return (
     <Block safe flex={1} justifyContent="space-between" px={30}>
       <Block justifyContent="flex-start" alignItems="flex-start">
-           <InputForm left={<EmailIConTextIput style={{ marginRight:10 }} />} placeholder="Email" label="Email" />
-       <Block justifyContent="flex-start" alignItems="flex-start">
-           <InputForm password={showPassword} right={<EyeIcon onPress={()=> setShowPassword(!showPassword)} style={{ marginRigtht:10}}/>} placeholder="Password" label="Password"/>
+        <InputForm
+          left={<EmailIConTextIput style={{ marginRight: 10 }} />}
+          placeholder="Email"
+          label="Email"
+        />
+        <Block justifyContent="flex-start" alignItems="flex-start">
+          <InputForm
+            password={showPassword}
+            right={
+              <EyeIcon
+                onPress={() => setShowPassword(!showPassword)}
+                style={{ marginRigtht: 10 }}
+              />
+            }
+            placeholder="Password"
+            label="Password"
+          />
         </Block>
-         <Block my={10}>
-            <CheckBox/>
-         </Block>
+        <Block my={10}>
+          <CheckBox />
+        </Block>
       </Block>
 
       <Block>
-       <Button defaultStyle onPress={() => navigation.navigate("MainOption")}>Login</Button>
+        <Button defaultStyle onPress={() => navigation.navigate("MainOption")}>
+          Login
+        </Button>
       </Block>
 
       <Block center my={30}>
         <Block center mt={20} my={12}>
-          <Button  onPress={() => navigation.navigate("ForgotOption")} labelButton center={<Text color={colors.blue[1]}>Forgot password?</Text>}></Button>
+          <Button
+            onPress={() => navigation.navigate("ForgotOption")}
+            labelButton
+            center={<Text color={colors.blue[1]}>Forgot password?</Text>}
+          ></Button>
         </Block>
         <Block row center>
           <Text
-          textAlign="center"
-          color={colors.blue[10]}
-          font={fonts.inter[400]}
-          size={15}
-          onPress={() => navigation.navigate("SignUpOption")}
-        >
-          Don't have an account yet? 
-        </Text>
-        <Button labelButton  onPress={() => navigation.navigate('SignUpOption')} center={<Text color={colors.blue[1]}> Create Account</Text>}></Button>
+            textAlign="center"
+            color={colors.blue[10]}
+            font={fonts.inter[400]}
+            size={15}
+            onPress={() => navigation.navigate("SignUpOption")}
+          >
+            Don't have an account yet?
+          </Text>
+          <Button
+            labelButton
+            onPress={() => navigation.navigate("SignUpOption")}
+            center={<Text color={colors.blue[1]}> Create Account</Text>}
+          ></Button>
         </Block>
-        
       </Block>
     </Block>
   );

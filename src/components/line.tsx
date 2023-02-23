@@ -8,7 +8,7 @@ type LineProps = {
 
 export const Line: React.FC<LineProps> = ({ children }) => {
   const { colors } = useTheme();
-  
+
   return (
     <Block row center>
       <Block

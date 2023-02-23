@@ -2,8 +2,11 @@ import { Block, Button, Line } from "~/components";
 import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
 import { FacebookIcon, GoogleIcon, AppleIcon, EmailIcon } from "~/assets/icons";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { MainStackParamsList } from "~/router";
 
-export const SignUpOptionsScreen = ({ navigation }: any) => {
+type Props = NativeStackScreenProps<MainStackParamsList, 'SignUpOption'>;
+export const SignUpOptionsScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
 
   return (
@@ -64,7 +67,7 @@ export const SignUpOptionsScreen = ({ navigation }: any) => {
             </Block>
           }
           defaultStyle
-          onPress={()=> navigation.navigate("CreateOption")}
+          onPress={() => navigation.navigate("CreateOption")}
         >
           Sign up with Email
         </Button>

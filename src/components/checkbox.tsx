@@ -5,19 +5,16 @@ import { Block } from "./block";
 import { Check } from "~/assets/icons";
 
 export type checkBoxProps = {
-    children?:string;
-}
+  children?: string;
+};
 
-export const CheckBox: React.FC<checkBoxProps> = ({
-    children, 
-    ...props
-}) => {
-    const { colors, fonts} = useTheme()
+export const CheckBox: React.FC<checkBoxProps> = ({ children, ...props }) => {
+  const { colors, fonts } = useTheme();
 
-    return(
-        <Block row>
-           <Check/>
-           <Text style={{ marginLeft: 10}}>Remember me</Text>
-        </Block>
-    )
-}
+  return (
+    <Block row>
+      <Check />
+      <Text style={{ marginLeft: 10 }}>Remember me</Text>
+    </Block>
+  );
+};

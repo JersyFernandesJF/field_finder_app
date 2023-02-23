@@ -1,15 +1,20 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "~/hooks/theme";
-import { SignUpOptionsScreen, LoginScreen, ForgotPasswordScreen, MainScreen, CreateAccountScreen } from "~/screens";
+import {
+  SignUpOptionsScreen,
+  LoginScreen,
+  ForgotPasswordScreen,
+  MainScreen,
+  CreateAccountScreen,
+} from "~/screens";
 
-type MainStackParamsList = { 
+export type MainStackParamsList = {
   LoginOption: undefined;
   SignUpOption: undefined;
   ForgotOption: undefined;
   MainOption: undefined;
   CreateOption: undefined;
- 
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -18,13 +23,12 @@ export const Router = () => {
   const { colors, fonts } = useTheme();
 
   return (
-    <MainStack.Navigator
-    >
+    <MainStack.Navigator>
       <MainStack.Group
         screenOptions={{
           headerBackButtonMenuEnabled: false,
           headerShadowVisible: false,
-          headerBackVisible:false,
+          headerBackVisible: false,
           headerTitleStyle: {
             color: colors.blue[10],
             fontFamily: fonts.inter[600],
@@ -36,11 +40,11 @@ export const Router = () => {
         }}
       >
         <MainStack.Screen
-        name="LoginOption"
-        component={ LoginScreen }
-       options={{
-        title: "Welcome Back!"
-       }}
+          name="LoginOption"
+          component={LoginScreen}
+          options={{
+            title: "Welcome Back!",
+          }}
         />
         <MainStack.Screen
           name="SignUpOption"
@@ -60,17 +64,16 @@ export const Router = () => {
           name="MainOption"
           component={MainScreen}
           options={{
-            title:""
+            title: "",
           }}
         />
         <MainStack.Screen
           name="CreateOption"
           component={CreateAccountScreen}
           options={{
-            title:"Create an Account"
+            title: "Create an Account",
           }}
         />
-        
       </MainStack.Group>
     </MainStack.Navigator>
   );

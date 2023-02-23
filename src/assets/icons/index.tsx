@@ -1,8 +1,7 @@
-import * as React from "react"
-import Svg, { G, Path, Defs, ClipPath } from "react-native-svg"
+import * as React from "react";
+import Svg, { G, Path, Defs, ClipPath } from "react-native-svg";
 
-
-const Check = (props?:any) => (
+const Check = (props?: any) => (
   <Svg
     width={16}
     height={16}
@@ -15,7 +14,7 @@ const Check = (props?:any) => (
       fill="#005C5C"
     />
   </Svg>
-)
+);
 const EyeIcon = (props?: any) => (
   <Svg
     width={16}
@@ -41,9 +40,9 @@ const EyeIcon = (props?: any) => (
       strokeLinejoin="round"
     />
   </Svg>
-)
+);
 
-const EmailIConTextIput = (props?:any) => (
+const EmailIConTextIput = (props?: any) => (
   <Svg
     width={20}
     height={20}
@@ -66,9 +65,9 @@ const EmailIConTextIput = (props?:any) => (
       fillOpacity={0.3}
     />
   </Svg>
-)
+);
 
-const EmailIcon = (props?: any) =>(
+const EmailIcon = (props?: any) => (
   <Svg
     width={20}
     height={20}
@@ -89,11 +88,10 @@ const EmailIcon = (props?: any) =>(
       fill="#fff"
     />
   </Svg>
-
-)
+);
 
 const FacebookIcon = (props?: any) => (
-    <Svg
+  <Svg
     width={20}
     height={20}
     fill="none"
@@ -116,9 +114,9 @@ const FacebookIcon = (props?: any) => (
       </ClipPath>
     </Defs>
   </Svg>
-)
-const GoogleIcon = (props?: any) =>(
-    <Svg
+);
+const GoogleIcon = (props?: any) => (
+  <Svg
     width={20}
     height={20}
     fill="none"
@@ -154,9 +152,9 @@ const GoogleIcon = (props?: any) =>(
       </ClipPath>
     </Defs>
   </Svg>
-)
-const AppleIcon = (props?: any) =>(
-    <Svg
+);
+const AppleIcon = (props?: any) => (
+  <Svg
     width={20}
     height={20}
     fill="none"
@@ -168,6 +166,14 @@ const AppleIcon = (props?: any) =>(
       fill="#111830"
     />
   </Svg>
-)
+);
 
-export {FacebookIcon, GoogleIcon, AppleIcon, EmailIcon, EmailIConTextIput, EyeIcon, Check}
+export {
+  FacebookIcon,
+  GoogleIcon,
+  AppleIcon,
+  EmailIcon,
+  EmailIConTextIput,
+  EyeIcon,
+  Check,
+};

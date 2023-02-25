@@ -1,9 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "~/hooks/theme";
-import { SignUpOptionsScreen } from "~/screens";
+import { HomeScreen, SignUpOptionsScreen } from "~/screens";
 
 type MainStackParamsList = {
   SignUpOptions: undefined;
+  Home: undefined;
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -13,6 +14,13 @@ export const Router = () => {
 
   return (
     <MainStack.Navigator>
+      <MainStack.Group
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <MainStack.Screen name="Home" component={HomeScreen} />
+      </MainStack.Group>
       <MainStack.Group
         screenOptions={{
           headerBackButtonMenuEnabled: false,

@@ -26,13 +26,6 @@ export const Router = () => {
     <MainStack.Navigator>
       <MainStack.Group
         screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <MainStack.Screen name="Home" component={HomeScreen} />
-      </MainStack.Group>
-      <MainStack.Group
-        screenOptions={{
           headerBackButtonMenuEnabled: false,
           headerShadowVisible: false,
           headerBackVisible: false,
@@ -74,6 +67,14 @@ export const Router = () => {
             title: "",
           }}
         />
+      </MainStack.Group>
+
+      <MainStack.Group
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <MainStack.Screen name="Home" component={HomeScreen} />
       </MainStack.Group>
     </MainStack.Navigator>
   );

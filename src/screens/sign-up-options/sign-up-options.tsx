@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   AppleSVGIcon,
-  EmailSVGIcon,
+  EmailWhiteSVGIcon,
   FacebookSVGIcon,
   GoogleSVGIcon,
 } from "~/assets/icons";
@@ -29,47 +29,37 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
       </Block>
 
       <Block>
-        <Button
-          socialButton
-          left={
-            <Block>
-              <GoogleSVGIcon />
-            </Block>
-          }
-        >
-          Continue with Google
-        </Button>
-        <Block my={15}>
+        {[
+          { icon: GoogleSVGIcon, label: "Continue with Google" },
+          { icon: AppleSVGIcon, label: "Continue with Apple", separate: true },
+          { icon: FacebookSVGIcon, label: "Continue with Facebook" },
+        ].map(({ label, icon: Icon, separate }, idx) => (
           <Button
-            socialButton
+            key={"icon" + idx}
+            row
+            bordered
+            my={separate ? 15 : undefined}
             left={
-              <Block>
-                <AppleSVGIcon />
+              <Block marginLeft={32}>
+                <Icon />
               </Block>
             }
           >
-            Continue with Apple
-          </Button>
-        </Block>
-        <Button
-          socialButton
-          left={
-            <Block>
-              <FacebookSVGIcon />
+            <Block flex={1} center>
+              <Text>{label}</Text>
             </Block>
-          }
-        >
-          Continue with Facebook
-        </Button>
+          </Button>
+        ))}
       </Block>
 
       <Line>or</Line>
 
       <Block>
         <Button
+          row
           left={
-            <Block>
-              <EmailSVGIcon color="#1877F2" />
+            <Block marginRight={12}>
+              <EmailWhiteSVGIcon />
             </Block>
           }
           defaultStyle
@@ -81,20 +71,12 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
             Already have an Account?
           </Text>
-          <Button
-            labelButton
-            onPress={() => navigation.navigate("SignIn")}
-            center={
-              <Text
-                color={colors.blue[1]}
-                fontSize={15}
-                font={fonts.inter[600]}
-              >
-                {" "}
-                Log In
-              </Text>
-            }
-          ></Button>
+          <Button onPress={() => navigation.navigate("SignIn")}>
+            <Text color={colors.blue[1]} fontSize={15} font={fonts.inter[600]}>
+              {" "}
+              Log In
+            </Text>
+          </Button>
         </Block>
       </Block>
 

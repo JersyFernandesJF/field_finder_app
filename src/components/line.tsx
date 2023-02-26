@@ -1,13 +1,13 @@
+import { useTheme } from "~/hooks/theme";
 import { Block } from "./block";
 import { Text } from "./text";
-import { useTheme } from "~/hooks/theme";
 
 type LineProps = {
   children: string;
 };
 
 export const Line: React.FC<LineProps> = ({ children }) => {
-  const { colors } = useTheme();
+  const { colors, fonts } = useTheme();
 
   return (
     <Block row center>
@@ -18,8 +18,8 @@ export const Line: React.FC<LineProps> = ({ children }) => {
           borderColor: colors.dark[2],
           borderBottomWidth: 1,
         }}
-      ></Block>
-      <Text fontSize={17}>{children}</Text>
+      />
+      <Text font={fonts.inter[500]}>{children}</Text>
       <Block
         flex={1}
         style={{
@@ -27,7 +27,7 @@ export const Line: React.FC<LineProps> = ({ children }) => {
           borderColor: colors.dark[2],
           borderBottomWidth: 1,
         }}
-      ></Block>
+      />
     </Block>
   );
 };

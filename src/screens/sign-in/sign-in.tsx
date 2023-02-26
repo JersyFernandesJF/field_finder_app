@@ -26,7 +26,7 @@ export const SignInScreen = ({ navigation }: Props) => {
             right={
               <EyeSVGIcon
                 onPress={() => setShowPassword(!showPassword)}
-                style={{ marginRight: 10 }}
+                // style={{ marginRight: 10 }}
               />
             }
             placeholder="Password"

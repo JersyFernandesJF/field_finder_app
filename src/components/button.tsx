@@ -1,35 +1,34 @@
-import { Pressable, PressableProps, StyleSheet } from "react-native";
+import { Pressable, PressableProps, StyleSheet, ViewStyle } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { Text } from "./text";
-import { Block } from "./block";
 
 export type ButtonProps = PressableProps & {
-  children?: string;
-  buttonColor?: string;
-  socialButton?: boolean;
+  children?: string | React.ReactNode;
+  bordered?: boolean;
   defaultStyle?: boolean;
   left?: JSX.Element;
   right?: JSX.Element;
-  center?: JSX.Element;
-  labelButton?: boolean;
+  row?: boolean;
+  my?: ViewStyle["marginVertical"];
+  marginVertical?: ViewStyle["marginVertical"];
 };
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  buttonColor,
-  socialButton,
-  labelButton,
+  bordered,
   defaultStyle,
   style,
   left,
   right,
-  center,
+  row,
+  my,
+  marginVertical,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
 
   const buttonStyles = StyleSheet.flatten([
-    socialButton !== undefined && {
+    bordered !== undefined && {
       borderWidth: StyleSheet.hairlineWidth,
       borderRadius: 12,
       borderColor: colors.dark[2],
@@ -45,55 +44,30 @@ export const Button: React.FC<ButtonProps> = ({
       justifyContent: "center",
       alignItems: "center",
     },
-
+    row !== undefined && {
+      flexDirection: "row",
+    },
+    (my || marginVertical) !== undefined && {
+      marginVertical: marginVertical ?? my,
+    },
     style,
   ]) as PressableProps;
 
-  if (socialButton) {
-    return (
-      <Pressable style={buttonStyles} {...props}>
-        <Block row flex={1} center justifyContent="center">
-          {left && left}
-          <Block paddingHorizontal={20}>
-            <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-              {children}
-            </Text>
-          </Block>
-          {right && right}
-        </Block>
-      </Pressable>
-    );
-  }
+  const textStyles = defaultStyle && {
+    color: colors.white,
+    fontFamily: fonts.inter[500],
+    fontSize: 14,
+  };
 
-  if (defaultStyle) {
-    return (
-      <Pressable style={buttonStyles} {...props}>
-        <Block row>
-          {left && left}
-          <Block paddingHorizontal={20}>
-            <Text color={colors.white} font={fonts.inter[500]} size={15}>
-              {children}
-            </Text>
-          </Block>
-          {right && right}
-        </Block>
-      </Pressable>
-    );
-  }
-  if (labelButton) {
-    return <Pressable {...props}>{center && center}</Pressable>;
-  }
   return (
     <Pressable style={buttonStyles} {...props}>
-      <Block row>
-        {left && left}
-        <Block paddingHorizontal={20}>
-          <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-            {children}
-          </Text>
-        </Block>
-        {right && right}
-      </Block>
+      {left && left}
+      {typeof children === "string" ? (
+        <Text style={textStyles}>{children}</Text>
+      ) : (
+        children
+      )}
+      {right && right}
     </Pressable>
   );
 };

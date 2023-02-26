@@ -64,7 +64,7 @@ export const Router = () => {
           name="ForgotPassword"
           component={ForgotPasswordScreen}
           options={{
-            title: "",
+            title: "Please enter your email",
           }}
         />
       </MainStack.Group>

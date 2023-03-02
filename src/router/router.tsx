@@ -1,12 +1,20 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useTheme } from "~/hooks/theme";
-import { SignUpOptionsScreen, LoginScreen } from "~/screens";
 
-type MainStackParamsList = { 
-  LoginOption: undefined;
+import { useTheme } from "~/hooks/theme";
+import {
+  ForgotPasswordScreen,
+  HomeScreen,
+  SignInScreen,
+  SignUpOptionsScreen,
+  SignUpScreen,
+} from "~/screens";
+
+export type MainStackParamsList = {
   SignUpOptions: undefined;
- 
- 
+  Home: undefined;
+  SignUp: undefined;
+  SignIn: undefined;
+  ForgotPassword: undefined;
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -15,13 +23,12 @@ export const Router = () => {
   const { colors, fonts } = useTheme();
 
   return (
-    <MainStack.Navigator
-    >
+    <MainStack.Navigator>
       <MainStack.Group
         screenOptions={{
           headerBackButtonMenuEnabled: false,
           headerShadowVisible: false,
-          headerBackVisible:false,
+          headerBackVisible: false,
           headerTitleStyle: {
             color: colors.blue[10],
             fontFamily: fonts.inter[600],
@@ -33,20 +40,41 @@ export const Router = () => {
         }}
       >
         <MainStack.Screen
-        name="LoginOption"
-        component={ LoginScreen }
-       options={{
-        title: "Welcome Back !"
-       }}
-        />
-        <MainStack.Screen
           name="SignUpOptions"
           component={SignUpOptionsScreen}
+          options={{
+            title: "Welcome Back!",
+          }}
+        />
+        <MainStack.Screen
+          name="SignIn"
+          component={SignInScreen}
+          options={{
+            title: "Welcome Back!",
+          }}
+        />
+        <MainStack.Screen
+          name="SignUp"
+          component={SignUpScreen}
           options={{
             title: "Create Account",
           }}
         />
-        
+        <MainStack.Screen
+          name="ForgotPassword"
+          component={ForgotPasswordScreen}
+          options={{
+            title: "Please enter your email",
+          }}
+        />
+      </MainStack.Group>
+
+      <MainStack.Group
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <MainStack.Screen name="Home" component={HomeScreen} />
       </MainStack.Group>
     </MainStack.Navigator>
   );

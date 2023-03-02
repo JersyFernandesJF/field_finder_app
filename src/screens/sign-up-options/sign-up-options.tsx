@@ -1,10 +1,18 @@
-import { Block, Button, Line} from "~/components";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import {
+  AppleSVGIcon,
+  EmailWhiteSVGIcon,
+  FacebookSVGIcon,
+  GoogleSVGIcon,
+} from "~/assets/icons";
+import { Block, Button, Line } from "~/components";
 import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
-import { FacebookIcon, GoogleIcon, AppleIcon, EmailIcon } from "~/assets/icons"
+import { MainStackParamsList } from "~/router";
 
+type Props = NativeStackScreenProps<MainStackParamsList, "SignUpOptions">;
 
-export const SignUpOptionsScreen = ({ navigation }) => {
+export const SignUpOptionsScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
 
   return (
@@ -21,21 +29,54 @@ export const SignUpOptionsScreen = ({ navigation }) => {
       </Block>
 
       <Block>
-        <Button socialButton  left={<Block><GoogleIcon/></Block>} >Continue with Google</Button>
-        <Block my={15}>
-          <Button socialButton left={<Block><AppleIcon/></Block>} >Continue with Apple</Button>
-        </Block>
-        <Button socialButton left={<Block><FacebookIcon/></Block>} >Continue with Facebook</Button>
+        {[
+          { icon: GoogleSVGIcon, label: "Continue with Google" },
+          { icon: AppleSVGIcon, label: "Continue with Apple", separate: true },
+          { icon: FacebookSVGIcon, label: "Continue with Facebook" },
+        ].map(({ label, icon: Icon, separate }, idx) => (
+          <Button
+            key={"icon" + idx}
+            row
+            bordered
+            my={separate ? 15 : undefined}
+            left={
+              <Block marginLeft={32}>
+                <Icon />
+              </Block>
+            }
+          >
+            <Block flex={1} center>
+              <Text>{label}</Text>
+            </Block>
+          </Button>
+        ))}
       </Block>
 
-       <Line>or</Line>
+      <Line>or</Line>
 
       <Block>
-        <Button left={<Block><EmailIcon/></Block>} defaultStyle>Sign up with Email</Button>
-        <Block center mt={20}>
+        <Button
+          row
+          left={
+            <Block marginRight={12}>
+              <EmailWhiteSVGIcon />
+            </Block>
+          }
+          defaultStyle
+          onPress={() => navigation.navigate("SignUp")}
+        >
+          Sign up with Email
+        </Button>
+        <Block center row mt={20}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
-            Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]} onPress={() => navigation.navigate('LoginOption')}>Log In</Text>
+            Already have an Account?
           </Text>
+          <Button onPress={() => navigation.navigate("SignIn")}>
+            <Text color={colors.blue[1]} fontSize={15} font={fonts.inter[600]}>
+              {" "}
+              Log In
+            </Text>
+          </Button>
         </Block>
       </Block>
 
@@ -46,8 +87,9 @@ export const SignUpOptionsScreen = ({ navigation }) => {
           font={fonts.inter[400]}
           size={13}
         >
-          By using the app, I agree to The Sports  <Text  highlighted>Terms of {`\n`} Service </Text>
-            and <Text highlighted>Privacy Policy</Text>
+          By using the app, I agree to The Sports{" "}
+          <Text highlighted>Terms of {`\n`} Service </Text>
+          and <Text highlighted>Privacy Policy</Text>
         </Text>
       </Block>
     </Block>

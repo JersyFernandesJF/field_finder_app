@@ -27,9 +27,9 @@ export const Input: React.FC<InputProps> = ({
   const textInputStyles = StyleSheet.flatten([
     standard !== undefined && {
       height: 52,
-      width: 315,
     },
-  ]);
+    { flex: 1 },
+  ]) as TextStyle;
 
   const boxStyles =
     standard &&
@@ -44,7 +44,11 @@ export const Input: React.FC<InputProps> = ({
   return (
     <Block row style={boxStyles}>
       {left && left}
-      <TextInput style={textInputStyles} {...props} />
+      <TextInput
+        style={textInputStyles}
+        {...props}
+        placeholderTextColor={colors.dark[3]}
+      />
       {right && right}
     </Block>
   );

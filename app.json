@@ -1,12 +1,20 @@
 {
   "expo": {
-    "name": "main-mobile-app",
-    "slug": "main-mobile-app",
+    "name": "field-finder",
+    "slug": "field-finder",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "splash": {
       "image": "./src/assets/splash.png",
       "backgroundColor": "#fff"
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
   }
 }

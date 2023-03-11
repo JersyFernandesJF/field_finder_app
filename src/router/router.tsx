@@ -8,7 +8,8 @@ import {
   SignUpScreen,
   VerificationCodeScreen,
   ChangePasswordScreen, 
-  ChangedPasswordScreen
+  ChangedPasswordScreen, 
+  OnboardingScreen
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
 
@@ -21,6 +22,7 @@ export type MainStackParamsList = {
   VerificationCode: undefined;
   ChangedPassword: undefined;
   ChangePassword: undefined;
+  Onboarding: undefined;
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -46,6 +48,14 @@ export const Router = () => {
           },
         }}
       >
+        <MainStack.Screen
+          name="Onboarding"
+          component={OnboardingScreen}
+          options={{
+            title: "Welcome Back!",
+            headerShown: false
+          }}
+        />
         <MainStack.Screen
           name="SignUpOptions"
           component={SignUpOptionsScreen}

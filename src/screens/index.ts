@@ -6,3 +6,4 @@ export * from "./sign-up-options";
 export * from "./change-password"
 export * from "./changed-password"
 export * from "./verification-code"
+export * from "./onboarding"

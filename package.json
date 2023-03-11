@@ -1,5 +1,5 @@
 {
-  "name": "main-mobile-app",
+  "name": "field-finder",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "@types/react-native": "~0.70.6",
     "expo": "~47.0.12",
     "expo-font": "~11.0.1",
+    "expo-location": "~15.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
     "module-resolver": "^1.0.0",

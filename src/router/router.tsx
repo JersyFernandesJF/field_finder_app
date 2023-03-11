@@ -3,15 +3,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useTheme } from "~/hooks/theme";
 import {
   ForgotPasswordScreen,
-  HomeScreen,
   SignInScreen,
   SignUpOptionsScreen,
   SignUpScreen,
 } from "~/screens";
+import { HomeTabsRouter } from "./home-tabs";
 
 export type MainStackParamsList = {
   SignUpOptions: undefined;
-  Home: undefined;
+  HomeTabs: undefined;
   SignUp: undefined;
   SignIn: undefined;
   ForgotPassword: undefined;
@@ -75,7 +75,7 @@ export const Router = () => {
           headerShown: false,
         }}
       >
-        <MainStack.Screen name="Home" component={HomeScreen} />
+        <MainStack.Screen name="HomeTabs" component={HomeTabsRouter} />
       </MainStack.Group>
     </MainStack.Navigator>
   );

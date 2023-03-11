@@ -37,7 +37,7 @@ export const SignInScreen = ({ navigation }: Props) => {
       </Block>
 
       <Block>
-        <Button defaultStyle onPress={() => navigation.navigate("Home")}>
+        <Button defaultStyle onPress={() => navigation.navigate("HomeTabs")}>
           Login
         </Button>
       </Block>

@@ -102,7 +102,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
         </Block>
 
 
-        <View style={styles.dotsContainer}>
+        <Block style={styles.dotsContainer}>
           {Array(3)
             .fill(1)
             .map((_, index) => {
@@ -131,7 +131,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
                 />
               );
             })}
-        </View>
+        </Block>
 
         <Block row my={60}>
           <Button onPress={skipSlide}><Text fontSize={15} font={fonts.inter[400]} color={colors.green[1]}>Skip</Text></Button>

@@ -6,6 +6,9 @@ import {
   SignInScreen,
   SignUpOptionsScreen,
   SignUpScreen,
+  VerificationCodeScreen,
+  ChangePasswordScreen, 
+  ChangedPasswordScreen
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
 
@@ -15,6 +18,9 @@ export type MainStackParamsList = {
   SignUp: undefined;
   SignIn: undefined;
   ForgotPassword: undefined;
+  VerificationCode: undefined;
+  ChangedPassword: undefined;
+  ChangePassword: undefined;
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -64,6 +70,27 @@ export const Router = () => {
         <MainStack.Screen
           name="ForgotPassword"
           component={ForgotPasswordScreen}
+          options={{
+            title: "Please enter your email",
+          }}
+        />
+        <MainStack.Screen
+          name="VerificationCode"
+          component={VerificationCodeScreen}
+          options={{
+            title: "Please enter your email",
+          }}
+        />
+        <MainStack.Screen
+          name="ChangedPassword"
+          component={ChangedPasswordScreen}
+          options={{
+            title: "Please enter your email",
+          }}
+        />
+        <MainStack.Screen
+          name="ChangePassword"
+          component={ChangePasswordScreen}
           options={{
             title: "Please enter your email",
           }}

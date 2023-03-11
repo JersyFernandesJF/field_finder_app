@@ -7,7 +7,7 @@ import { MainStackParamsList } from "~/router";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "ForgotPassword">;
 
-export const ForgotPasswordScreen = ({}: Props) => {
+export const ForgotPasswordScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
 
   return (
@@ -26,7 +26,7 @@ export const ForgotPasswordScreen = ({}: Props) => {
         />
       </Block>
       <Block my={50}>
-        <Button defaultStyle>Send instruction</Button>
+        <Button defaultStyle onPress={()=> navigation.navigate("VerificationCode")}>Send instruction</Button>
       </Block>
     </Block>
   );

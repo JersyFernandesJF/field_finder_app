@@ -23,7 +23,8 @@ export const Router = () => {
   const { colors, fonts } = useTheme();
 
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator
+    >
       <MainStack.Group
         screenOptions={{
           headerBackButtonMenuEnabled: false,

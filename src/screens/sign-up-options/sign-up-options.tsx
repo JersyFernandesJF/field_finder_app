@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   AppleSVGIcon,
@@ -6,6 +7,9 @@ import {
   GoogleSVGIcon,
 } from "~/assets/icons";
 import { Block, Button, Line } from "~/components";
+=======
+import { Block, Button, Line} from "~/components";
+>>>>>>> Stashed changes
 import { Text } from "~/components/text";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
@@ -52,7 +56,11 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
         ))}
       </Block>
 
+<<<<<<< Updated upstream
       <Line>or</Line>
+=======
+       <Line>or</Line>
+>>>>>>> Stashed changes
 
       <Block>
         <Button
@@ -69,7 +77,11 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
         </Button>
         <Block center row mt={20}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
+<<<<<<< Updated upstream
             Already have an Account?
+=======
+            Already have an Account? <Text font={fonts.inter[600]} color={colors.blue[1]}>Log In</Text>
+>>>>>>> Stashed changes
           </Text>
           <Button onPress={() => navigation.navigate("SignIn")}>
             <Text color={colors.blue[1]} fontSize={15} font={fonts.inter[600]}>
@@ -87,9 +99,14 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
           font={fonts.inter[400]}
           size={13}
         >
+<<<<<<< Updated upstream
           By using the app, I agree to The Sports{" "}
           <Text highlighted>Terms of {`\n`} Service </Text>
           and <Text highlighted>Privacy Policy</Text>
+=======
+          By using the app, I agree to The Sports  <Text color={colors.blue[1]} font={fonts.inter[400]} size={13}>Terms of {`\n`} Service </Text>
+            and <Text color={colors.blue[1]} font={fonts.inter[400]} size={13}>Privacy Policy</Text>
+>>>>>>> Stashed changes
         </Text>
       </Block>
     </Block>

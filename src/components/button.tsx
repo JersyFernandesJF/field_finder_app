@@ -53,12 +53,12 @@ export const Button: React.FC<ButtonProps> = ({
       marginVertical: marginVertical ?? my,
     },
     roundButton !== undefined && {
-       height: 70, 
-       width: 70, 
-       borderRadius: 35, 
-       backgroundColor: colors.green[1], 
-       justifyContent: 'center', 
-       alignItems:'center'
+      height: 70,
+      width: 70,
+      borderRadius: 35,
+      backgroundColor: colors.green[1],
+      justifyContent: "center",
+      alignItems: "center",
     },
     style,
   ]) as PressableProps;
@@ -68,7 +68,6 @@ export const Button: React.FC<ButtonProps> = ({
     fontFamily: fonts.inter[500],
     fontSize: 14,
   };
- 
 
   return (
     <Pressable style={buttonStyles} {...props}>

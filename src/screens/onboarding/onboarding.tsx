@@ -1,28 +1,32 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Block, Button, Text } from "~/components";
 import { useRef, useState, useEffect } from "react";
-import { Animated, Dimensions, FlatList, StyleSheet, View } from "react-native";
+import { Animated, Dimensions, FlatList, StyleSheet } from "react-native";
 import { Slide } from "./slide";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
+import { RightSvgIcon } from "~/assets/icons";
 
 const CARDS = [
   {
     imageSource: require("../../assets/image/onboarding1.png"),
     title: "Search and find fields for anywhere",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
     id: 1,
   },
   {
     imageSource: require("../../assets/image/onboarding2.png"),
     title: "Find people to practice sports with you",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
     id: 2,
   },
   {
     imageSource: require("../../assets/image/onboarding3.png"),
     title: "Search and find fields for anywhere",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
     id: 3,
   },
 ];
@@ -43,7 +47,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
   const skipSlide = () => {
     navigation.navigate("SignUpOptions");
-  }
+  };
 
   const handleGoToNextSlide = () => {
     if (currentIndex === 2) {
@@ -89,18 +93,31 @@ export const OnboardingScreen = ({ navigation }: Props) => {
           style={[styles.divider, { backgroundColor: colors.green[1] }]}
           center
         >
-          <Text color={"white"} font={fonts.inter[600]} fontSize={11}>Field Finder</Text>
+          <Text color={"white"} font={fonts.inter[600]} fontSize={11}>
+            Field Finder
+          </Text>
         </Block>
 
         <Block>
-          <Text textAlign="center" fontSize={22} color={colors.green[1]} font={fonts.inter[600]} style={styles.description}>
+          <Text
+            textAlign="center"
+            fontSize={22}
+            color={colors.green[1]}
+            font={fonts.inter[600]}
+            style={styles.description}
+          >
             {CARDS[currentIndex].title}
           </Text>
-          <Text textAlign="center" fontSize={15} color={colors.dark[1]} font={fonts.inter[400]} style={styles.description}>
+          <Text
+            textAlign="center"
+            fontSize={15}
+            color={colors.dark[1]}
+            font={fonts.inter[400]}
+            style={styles.description}
+          >
             {CARDS[currentIndex].description}
           </Text>
         </Block>
-
 
         <Block style={styles.dotsContainer}>
           {Array(3)
@@ -126,16 +143,39 @@ export const OnboardingScreen = ({ navigation }: Props) => {
 
               return (
                 <Animated.View
-                  style={[styles.dot, { width: dotWidth, opacity, backgroundColor: colors.green[1] }]}
+                  style={[
+                    styles.dot,
+                    {
+                      width: dotWidth,
+                      opacity,
+                      backgroundColor: colors.green[1],
+                    },
+                  ]}
                   key={index.toString()}
                 />
               );
             })}
         </Block>
 
-        <Block row my={60}>
-          <Button onPress={skipSlide}><Text fontSize={15} font={fonts.inter[400]} color={colors.green[1]}>Skip</Text></Button>
-          <Button onPress={handleGoToNextSlide}>Right</Button>
+        <Block
+          row
+          my={60}
+          style={{
+            alignItems: "center",
+            justifyContent: "space-around",
+            width: "100%",
+          }}
+        >
+          <Button onPress={skipSlide}>
+            <Text fontSize={15} font={fonts.inter[400]} color={colors.green[1]}>
+              Skip
+            </Text>
+          </Button>
+
+          <Block marginRight={50} />
+          <Button roundButton={true} onPress={handleGoToNextSlide}>
+            <RightSvgIcon />
+          </Button>
         </Block>
       </Block>
     </Block>
@@ -154,21 +194,21 @@ const styles = StyleSheet.create({
     right: 0,
     left: 0,
     borderRadius: 38,
-    alignItems: "center"
+    alignItems: "center",
   },
   dotsContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginVertical: 20
+    marginVertical: 20,
   },
   description: {
     textAlign: "center",
-    width: 300, 
-    marginVertical: 10
+    width: 300,
+    marginVertical: 10,
   },
   dot: {
     height: 5,
-    width: 5, 
+    width: 5,
     borderRadius: 10,
     marginRight: 6,
   },

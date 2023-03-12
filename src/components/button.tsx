@@ -11,6 +11,7 @@ export type ButtonProps = PressableProps & {
   row?: boolean;
   my?: ViewStyle["marginVertical"];
   marginVertical?: ViewStyle["marginVertical"];
+  roundButton?: Boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -23,6 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   row,
   my,
   marginVertical,
+  roundButton,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
@@ -50,6 +52,14 @@ export const Button: React.FC<ButtonProps> = ({
     (my || marginVertical) !== undefined && {
       marginVertical: marginVertical ?? my,
     },
+    roundButton !== undefined && {
+       height: 70, 
+       width: 70, 
+       borderRadius: 35, 
+       backgroundColor: colors.green[1], 
+       justifyContent: 'center', 
+       alignItems:'center'
+    },
     style,
   ]) as PressableProps;
 
@@ -58,6 +68,7 @@ export const Button: React.FC<ButtonProps> = ({
     fontFamily: fonts.inter[500],
     fontSize: 14,
   };
+ 
 
   return (
     <Pressable style={buttonStyles} {...props}>

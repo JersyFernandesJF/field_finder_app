@@ -2,7 +2,6 @@ import { Block } from "~/components";
 import type { ImageSourcePropType } from "react-native";
 import { Dimensions, Image, StyleSheet } from "react-native";
 
-
 const { width, height } = Dimensions.get("window");
 
 type SlideProps = {

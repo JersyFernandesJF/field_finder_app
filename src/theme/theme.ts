@@ -13,13 +13,13 @@ export const COLORS = {
   },
   green: {
     1: "#005C5C",
-    2: "008E0E",
+    2: "#008E0E",
   },
   orange:{
-    1: "FF9900",
+    1: "#FF9900",
   }, 
   red: {
-    1: "FF0D0D",
+    1: "#FF0D0D",
   }
 };
 

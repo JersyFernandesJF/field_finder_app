@@ -1,7 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useState } from "react";
 import { EmailSVGIcon, EyeSVGIcon } from "~/assets/icons";
-
 import { Block, Button, CheckBox, InputFormField, Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";

@@ -1,14 +1,8 @@
 import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path, SvgProps } from "react-native-svg";
 
-export const EyeSVGIcon = (props?: any) => (
-  <Svg
-    width={16}
-    height={16}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+export const EyeSVGIcon = (props?: SvgProps) => (
+  <Svg width={16} height={16} fill="none" {...props}>
     <Path
       d="M10.387 8A2.384 2.384 0 0 1 8 10.387 2.384 2.384 0 0 1 5.613 8 2.384 2.384 0 0 1 8 5.613 2.384 2.384 0 0 1 10.387 8Z"
       stroke="#111830"

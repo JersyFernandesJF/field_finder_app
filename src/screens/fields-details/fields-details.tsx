@@ -5,7 +5,6 @@ import { Animated, Dimensions, FlatList, StyleSheet } from "react-native";
 import { Slide } from "./slide";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
-import { RightSvgIcon } from "~/assets/icons";
 
 const CARDS = [
   {
@@ -122,18 +121,22 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
             Quadra Municipal do Rio Tinto
           </Text>
           <Block my={15}>
-            <Block my={5} row justifyContent='space-between' style={{width:'100%'}} >
-                <Text>OCUPADO</Text>
-                <Block row>
-                  <Text color={colors.dark[1]}>75€</Text>
-                  <Block marginHorizontal={5}/>  
-                  <Text color={colors.green[1]}>25€</Text>  
-                </Block>
-                
+            <Block
+              my={5}
+              row
+              justifyContent="space-between"
+              style={{ width: "100%" }}
+            >
+              <Text>OCUPADO</Text>
+              <Block row>
+                <Text color={colors.dark[1]}>75€</Text>
+                <Block marginHorizontal={5} />
+                <Text color={colors.green[1]}>25€</Text>
+              </Block>
             </Block>
-            <Block row justifyContent='space-between' style={{width:'100%'}}>
-                <Text>Livre dentro de 30 minitos</Text>
-                <Text color={colors.green[2]}>33% de desconto</Text>
+            <Block row justifyContent="space-between" style={{ width: "100%" }}>
+              <Text>Livre dentro de 30 minitos</Text>
+              <Text color={colors.green[2]}>33% de desconto</Text>
             </Block>
           </Block>
         </Block>

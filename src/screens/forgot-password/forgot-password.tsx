@@ -1,6 +1,5 @@
 import { Block, Button, InputFormField, Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
-
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { EmailSVGIcon } from "~/assets/icons";
 import { MainStackParamsList } from "~/router";
@@ -26,7 +25,12 @@ export const ForgotPasswordScreen = ({ navigation }: Props) => {
         />
       </Block>
       <Block my={50}>
-        <Button defaultStyle onPress={()=> navigation.navigate("VerificationCode")}>Send instruction</Button>
+        <Button
+          defaultStyle
+          onPress={() => navigation.navigate("VerificationCode")}
+        >
+          Send instruction
+        </Button>
       </Block>
     </Block>
   );

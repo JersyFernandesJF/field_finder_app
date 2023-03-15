@@ -7,11 +7,10 @@ import {
   SignUpOptionsScreen,
   SignUpScreen,
   VerificationCodeScreen,
-  ChangePasswordScreen, 
-  ChangedPasswordScreen, 
+  ChangePasswordScreen,
+  ChangedPasswordScreen,
   OnboardingScreen,
-  FieldsDetailsScreen, 
-
+  FieldsDetailsScreen,
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
 
@@ -25,7 +24,7 @@ export type MainStackParamsList = {
   ChangedPassword: undefined;
   ChangePassword: undefined;
   Onboarding: undefined;
-  FieldsDetails:undefined
+  FieldsDetails: undefined;
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -34,8 +33,7 @@ export const Router = () => {
   const { colors, fonts } = useTheme();
 
   return (
-    <MainStack.Navigator
-    >
+    <MainStack.Navigator>
       <MainStack.Group
         screenOptions={{
           headerBackButtonMenuEnabled: false,
@@ -56,7 +54,7 @@ export const Router = () => {
           component={FieldsDetailsScreen}
           options={{
             title: "Welcome Back!",
-            headerShown: false
+            headerShown: false,
           }}
         />
         <MainStack.Screen
@@ -71,13 +69,6 @@ export const Router = () => {
           component={SignInScreen}
           options={{
             title: "Welcome Back!",
-          }}
-        />
-        <MainStack.Screen
-          name="SignUp"
-          component={SignUpScreen}
-          options={{
-            title: "Create Account",
           }}
         />
         <MainStack.Screen

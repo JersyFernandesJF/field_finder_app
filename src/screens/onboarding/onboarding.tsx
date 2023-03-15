@@ -9,21 +9,21 @@ import { RightSvgIcon } from "~/assets/icons";
 
 const CARDS = [
   {
-    imageSource: require("../../assets/image/onboarding1.png"),
+    imageSource: require("../../assets/image/onboarding/onboarding1.png"),
     title: "Search and find fields for anywhere",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
     id: 1,
   },
   {
-    imageSource: require("../../assets/image/onboarding2.png"),
+    imageSource: require("../../assets/image/onboarding/onboarding2.png"),
     title: "Find people to practice sports with you",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
     id: 2,
   },
   {
-    imageSource: require("../../assets/image/onboarding3.png"),
+    imageSource: require("../../assets/image/onboarding/onboarding3.png"),
     title: "Search and find fields for anywhere",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",

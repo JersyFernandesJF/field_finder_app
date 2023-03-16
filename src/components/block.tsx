@@ -17,6 +17,8 @@ type BlockProps = ViewProps & {
   mr?: ViewStyle["marginRight"];
   marginTop?: ViewStyle["marginTop"];
   marginLeft?: ViewStyle["marginLeft"];
+  marginBottom?: ViewStyle["marginBottom"];
+  mb?: ViewStyle["marginBottom"];
   ml?: ViewStyle["marginLeft"];
   alignItems?: ViewStyle["alignItems"];
   height?: ViewStyle["height"];
@@ -42,6 +44,8 @@ export const Block: React.FC<BlockProps> = ({
   children,
   alignItems,
   marginHorizontal,
+  marginBottom,
+  mb,
   height,
   ...props
 }) => {
@@ -57,6 +61,7 @@ export const Block: React.FC<BlockProps> = ({
     },
     (ml || marginLeft) !== undefined && { marginLeft: marginLeft || ml },
     (mr || marginRight) !== undefined && { marginRight: marginRight || mr },
+    (mb || marginBottom ) !== undefined && {marginBottom: marginBottom || mb},
     (my || marginVertical) !== undefined && {
       marginVertical: marginVertical || my,
     },

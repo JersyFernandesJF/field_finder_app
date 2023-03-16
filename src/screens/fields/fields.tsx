@@ -1,4 +1,5 @@
 import { Block, Text } from "~/components";
+import { FieldsDetailsScreen } from "../fields-details";
 
 export const FieldsScreen = () => {
   return (

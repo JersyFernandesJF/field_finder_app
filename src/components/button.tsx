@@ -2,7 +2,7 @@ import { Pressable, PressableProps, StyleSheet, ViewStyle } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { Text } from "./text";
 
-export type ButtonProps = PressableProps & {
+type ButtonProps = PressableProps & {
   children?: string | React.ReactNode;
   bordered?: boolean;
   defaultStyle?: boolean;
@@ -61,7 +61,7 @@ export const Button: React.FC<ButtonProps> = ({
       alignItems: "center",
     },
     style,
-  ]) as PressableProps;
+  ]) as ViewStyle;
 
   const textStyles = defaultStyle && {
     color: colors.white,

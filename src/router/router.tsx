@@ -10,7 +10,6 @@ import {
   ChangePasswordScreen,
   ChangedPasswordScreen,
   OnboardingScreen,
-  FieldsDetailsScreen,
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
 
@@ -50,13 +49,13 @@ export const Router = () => {
         }}
       >
         <MainStack.Screen
-          name="FieldsDetails"
-          component={FieldsDetailsScreen}
+          name="Onboarding"
+          component={OnboardingScreen}
           options={{
             title: "Welcome Back!",
             headerShown: false,
           }}
-        />
+        /> 
         <MainStack.Screen
           name="SignUpOptions"
           component={SignUpOptionsScreen}
@@ -67,6 +66,13 @@ export const Router = () => {
         <MainStack.Screen
           name="SignIn"
           component={SignInScreen}
+          options={{
+            title: "Welcome Back!",
+          }}
+        />
+        <MainStack.Screen
+          name="SignUp"
+          component={SignUpScreen}
           options={{
             title: "Welcome Back!",
           }}
@@ -89,7 +95,7 @@ export const Router = () => {
           name="ChangedPassword"
           component={ChangedPasswordScreen}
           options={{
-            title: "Please enter your email",
+            headerShown: false
           }}
         />
         <MainStack.Screen

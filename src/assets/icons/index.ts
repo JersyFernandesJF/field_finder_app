@@ -11,3 +11,4 @@ export * from "./facebook-icon";
 export * from "./google-icon";
 export * from "./white-email-icon";
 export * from "./right-icon"
+export * from "./calendar"

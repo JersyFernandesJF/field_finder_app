@@ -8,7 +8,7 @@ import {
 } from "~/assets/icons";
 import { Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
-import { HomeScreen, FieldsScreen } from "~/screens";
+import { HomeScreen, FieldsScreen, FieldsDetailsScreen } from "~/screens";
 
 type HomeTabsRouteParamsList = {
   Home: undefined;
@@ -65,7 +65,7 @@ export const HomeTabsRouter = () => {
       />
       <HomeTabsNavigator.Screen
         name="Fields"
-        component={FieldsScreen}
+        component={FieldsDetailsScreen}
         options={{ headerShown: false }}
       />
       <HomeTabsNavigator.Screen name="Discover" component={HomeScreen} />

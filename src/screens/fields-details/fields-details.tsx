@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text } from "~/components";
+import { Block, Button, Text, Comment, Include } from "~/components";
 import { useRef, useState } from "react";
 import {
   Animated,
@@ -122,7 +122,7 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
               })}
           </Block>
           <Block
-           marginTop={10}
+            marginTop={10}
             justifyContent="space-around"
             alignItems="flex-start"
             paddingHorizontal={20}
@@ -168,47 +168,80 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
           </Block>
         </Block>
         <Block px={30}>
-        <Block  marginTop={30}>
-          <Button
-            row
-            left={
-              <Block marginRight={12}>
-                <CalendarSvgIcon />
+          <Block marginTop={30}>
+            <Button
+              row
+              left={
+                <Block marginRight={12}>
+                  <CalendarSvgIcon />
+                </Block>
+              }
+              defaultStyle
+              onPress={() => navigation.navigate("SignUp")}
+            >
+              To Schedule
+            </Button>
+          </Block>
+          <Block marginVertical={30}>
+            <Block mb={10}>
+              <Text fontSize={16} font={fonts.inter[600]}>
+                Details
+              </Text>
+            </Block>
+            <Text fontSize={13} color={colors.dark[1]}>
+              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
+              amet sint. Velit officia consequat duis enim velit mollit.
+              Exercitation veniam consequat sunt nostrud amet. Mollit non
+              deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
+              consequat duis enim velit mollit. Exercitation veniam consequat
+              sunt. Velit officia consequat duis enim velit mollit. Amet minim
+              mollit non deserunt ullamco est sit aliqua dolor do amet sint.
+              Velit officia consequat duis enim velit mollit. Exercitation
+              veniam consequat sunt nostrud amet.
+            </Text>
+          </Block>
+          <Block mb={30}>
+            <Block mb={10}>
+              <Text fontSize={16} font={fonts.inter[600]}>
+                Includes
+              </Text>
+            </Block>
+            <Block>
+              {Array(4)
+              .fill(1)
+              .map((_, index)=>{
+                return(
+                  <Include description="Read and listen to all premium books without limits."/>
+                )
+              })
+                
+              
+              }
+            </Block>
+          </Block>
+          <Block mb={30}>
+            <Block mb={10}>
+              <Text fontSize={16} font={fonts.inter[600]}>
+                Ratings
+              </Text>
+              <Block>
+                {Array(3)
+                  .fill(1)
+                  .map((_, index) => {
+                    return (
+                      <Comment
+                        name="João Amadeu"
+                        comment="Velit officia consequat duis enim velit mollit. Amet minim mollit non
+        deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
+        consequat duis enim velit mollit. Exercitation veniam consequat sunt
+        nostrud amet."
+                      />
+                    );
+                  })}
               </Block>
-            }
-            defaultStyle
-            onPress={() => navigation.navigate("SignUp")}
-          >
-            To Schedule
-          </Button>
-        </Block>
-        <Block  marginVertical={30}>
-          <Block mb={10}>
-            <Text fontSize={16} font={fonts.inter[600]}>Details</Text>   
-          </Block>
-          <Text fontSize={13} color={colors.dark[1]}>
-            Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-            sint. Velit officia consequat duis enim velit mollit. Exercitation
-            veniam consequat sunt nostrud amet. Mollit non deserunt ullamco est
-            sit aliqua dolor do amet sint. Velit officia consequat duis enim
-            velit mollit. Exercitation veniam consequat sunt. Velit officia
-            consequat duis enim velit mollit. Amet minim mollit non deserunt
-            ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-            duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-            amet.
-          </Text>
-        </Block>
-        <Block mb={30}>
-        <Block mb={10} > 
-            <Text fontSize={16} font={fonts.inter[600]}>Includes</Text>   
+            </Block>
           </Block>
         </Block>
-        <Block mb={30}>
-        <Block mb={10}>
-            <Text fontSize={16} font={fonts.inter[600]}>Ratings</Text>   
-          </Block>
-        </Block>  
-         </Block>
       </ScrollView>
     </Block>
   );

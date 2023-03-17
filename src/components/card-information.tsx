@@ -62,7 +62,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
             flex={1}
           >
             <Block>
-              <Text fontSize={14} font={fonts.inter[400]}>
+              <Text fontSize={16} font={fonts.inter[400]}>
                 {name}
               </Text>
             </Block>
@@ -72,7 +72,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
                   4.9
                 </Text>
                 <Text fontSize={12} color={colors.dark[1]}>
-                  (277)
+                  {" "}(277)
                 </Text>
               </Block>
 

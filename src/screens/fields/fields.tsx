@@ -1,8 +1,12 @@
 import { Block, Text, CardIformation, Button } from "~/components";
 import { ScrollView } from "react-native";
 import { useTheme } from "~/hooks/theme";
+import { MainStackOnTabParamsList } from "~/router";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-export const FieldsScreen = () => {
+type Props = NativeStackScreenProps<MainStackOnTabParamsList, "Fields">;
+
+export const FieldsScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
   return (
     <Block flex={1} center safe>
@@ -15,13 +19,14 @@ export const FieldsScreen = () => {
           </Block>
 
           <ScrollView 
+          style={{ height: 200}}
           showsHorizontalScrollIndicator = {false}
           horizontal={true}>
             {Array(4)
               .fill(1)
               .map((_, index) => {
                 return (
-                  <Button>
+                  <Button onPress={()=> navigation.navigate("FieldsDetails")} >
                     <CardIformation
                     name="St. Bento"
                     price={25}

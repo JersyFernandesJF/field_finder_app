@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet } from "react-native";
 import MapView from "react-native-maps";
-import { Block, CardIformation } from "~/components";
+import { Block } from "~/components";
 import * as Location from "expo-location";
 
 type LocationDeltaType = {

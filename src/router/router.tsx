@@ -1,5 +1,4 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
 import { useTheme } from "~/hooks/theme";
 import {
   ForgotPasswordScreen,
@@ -10,6 +9,7 @@ import {
   ChangePasswordScreen,
   ChangedPasswordScreen,
   OnboardingScreen,
+  FieldsDetailsScreen
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
 
@@ -55,7 +55,7 @@ export const Router = () => {
             title: "Welcome Back!",
             headerShown: false,
           }}
-        /> 
+        />
         <MainStack.Screen
           name="SignUpOptions"
           component={SignUpOptionsScreen}
@@ -95,7 +95,7 @@ export const Router = () => {
           name="ChangedPassword"
           component={ChangedPasswordScreen}
           options={{
-            headerShown: false
+            headerShown: false,
           }}
         />
         <MainStack.Screen
@@ -103,6 +103,13 @@ export const Router = () => {
           component={ChangePasswordScreen}
           options={{
             title: "Please enter your email",
+          }}
+        />
+        <MainStack.Screen
+          name="FieldsDetails"
+          component={FieldsDetailsScreen}
+          options={{
+            headerShown: false
           }}
         />
       </MainStack.Group>

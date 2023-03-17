@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   DiscoverSVGIcon,
   EventsSVGIcon,
@@ -10,7 +11,7 @@ import { Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { HomeScreen, FieldsScreen, FieldsDetailsScreen } from "~/screens";
 
-type HomeTabsRouteParamsList = {
+export type HomeTabsRouteParamsList = {
   Home: undefined;
   Fields: undefined;
   Discover: undefined;
@@ -18,14 +19,19 @@ type HomeTabsRouteParamsList = {
   Profile: undefined;
 };
 
-type TabsName = keyof HomeTabsRouteParamsList;
+type TabsName = keyof HomeTabsRouteParamsList; 
 
 type IconReturn = typeof DiscoverSVGIcon;
 
 type IconType = {
   [x in TabsName]: IconReturn;
 };
-
+const MainStack = createNativeStackNavigator<MainStackOnTabParamsList>();
+export type MainStackOnTabParamsList = {
+     Fields: undefined;
+     FieldsDetails: undefined;
+ 
+};
 const HomeTabsNavigator = createBottomTabNavigator<HomeTabsRouteParamsList>();
 
 const icons: IconType = {
@@ -58,6 +64,7 @@ export const HomeTabsRouter = () => {
         ),
       })}
     >
+
       <HomeTabsNavigator.Screen
         name="Home"
         options={{ headerShown: false }}
@@ -65,7 +72,7 @@ export const HomeTabsRouter = () => {
       />
       <HomeTabsNavigator.Screen
         name="Fields"
-        component={FieldsScreen}
+        component={InsideNavigator}
         options={{ headerShown: false }}
       />
       <HomeTabsNavigator.Screen name="Discover" component={HomeScreen} />
@@ -74,3 +81,35 @@ export const HomeTabsRouter = () => {
     </HomeTabsNavigator.Navigator>
   );
 };
+
+export const InsideNavigator = () => {
+  return (
+    <MainStack.Navigator>
+    <MainStack.Group
+      screenOptions={{
+        headerBackButtonMenuEnabled: false,
+        headerShadowVisible: false,
+      }}
+    >
+      <MainStack.Screen
+        name="Fields"
+        component={FieldsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <MainStack.Screen
+        name="FieldsDetails"
+        component={FieldsDetailsScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+   
+  
+    </MainStack.Group>
+
+   
+  </MainStack.Navigator>
+  )
+}

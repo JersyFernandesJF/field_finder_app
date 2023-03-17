@@ -46,7 +46,7 @@ const CARDS = [
 
 const { width, height } = Dimensions.get("window");
 
-type Props = NativeStackScreenProps<MainStackParamsList, "Fields">;
+type Props = NativeStackScreenProps<MainStackParamsList, "FieldsDetails">;
 
 export const FieldsDetailsScreen = ({ navigation }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);

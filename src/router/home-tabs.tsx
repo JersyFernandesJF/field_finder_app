@@ -65,7 +65,7 @@ export const HomeTabsRouter = () => {
       />
       <HomeTabsNavigator.Screen
         name="Fields"
-        component={FieldsDetailsScreen}
+        component={FieldsScreen}
         options={{ headerShown: false }}
       />
       <HomeTabsNavigator.Screen name="Discover" component={HomeScreen} />

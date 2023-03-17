@@ -8,3 +8,4 @@ export * from "./text";
 export * from "./line"
 export * from "./comment"
 export * from "./include"
+export * from "./card-information"

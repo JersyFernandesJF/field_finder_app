@@ -1,5 +1,12 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text, Comment, Include } from "~/components";
+import {
+  Block,
+  Button,
+  Text,
+  Comment,
+  Include,
+  CardIformation,
+} from "~/components";
 import { useRef, useState } from "react";
 import {
   Animated,
@@ -208,15 +215,12 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
             </Block>
             <Block>
               {Array(4)
-              .fill(1)
-              .map((_, index)=>{
-                return(
-                  <Include description="Read and listen to all premium books without limits."/>
-                )
-              })
-                
-              
-              }
+                .fill(1)
+                .map((_, index) => {
+                  return (
+                    <Include description="Read and listen to all premium books without limits." />
+                  );
+                })}
             </Block>
           </Block>
           <Block mb={30}>
@@ -239,6 +243,19 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
                     );
                   })}
               </Block>
+              <Block mb={30}>
+                <CardIformation
+                  name="St. Bento"
+                  price={25}
+                  imageSource={require("../../assets/image/onboarding/onboarding2.png")}
+                />
+              </Block>
+              <CardIformation
+                name="St. Bento"
+                price={25}
+                longCard
+                imageSource={require("../../assets/image/onboarding/onboarding2.png")}
+              />
             </Block>
           </Block>
         </Block>

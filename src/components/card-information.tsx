@@ -35,14 +35,15 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     backgroundColor: "#ffff",
     padding: 10,
     borderRadius: 10,
-   
+    marginLeft: 10 
   });
   const longCardStyles = StyleSheet.flatten({
     height: 150,
     flex: 1,
     backgroundColor: "#ffff",
     padding: 20,
-    borderRadius: 10
+    borderRadius: 10, 
+    marginBottom: 10
   });
   if (longCard) {
     return (
@@ -52,11 +53,11 @@ export const CardIformation: React.FC<CardInformationProps> = ({
           source={imageSource}
           style={{ width: 160, height: 110, borderRadius: 10 }}
         />
-        <Block justifyContent='space-between'>
+        <Block justifyContent='space-between' marginLeft={10} height={110}>
             <Block>
-                <Text>{name}</Text> 
+                <Text fontSize={14} font={fonts.inter[400]}>{name}</Text> 
             </Block>
-            <Block justifyContent='space-around' row >
+            <Block justifyContent='space-between' row >
                 <Text>4.9</Text>
                 <Text>{price}</Text>
             </Block>

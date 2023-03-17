@@ -8,6 +8,21 @@ type Props = NativeStackScreenProps<MainStackParamsList, "SignUp">;
 
 export const SignUpScreen = ({ navigation }: Props) => {
   const [showPassword, setShowPassword] = useState(true);
+  const [email, setEmail] = useState()
+  
+  const  validate = (text:any) => {
+    console.log(text);
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(text) === false) {
+      console.log("Email is Not Correct");
+       setEmail(text)
+      return false;
+    }
+    else {
+       setEmail(text)
+      console.log("Email is Correct");
+    }
+  }
 
   return (
     <Block flex={1} justifyContent="space-between" px={30}>
@@ -18,6 +33,8 @@ export const SignUpScreen = ({ navigation }: Props) => {
           standard
           placeholder="example@gmail.com"
           label="Email"
+          onChangeText={(text) => validate(text)}
+         value={email}
         />
         <Block my={10} />
 

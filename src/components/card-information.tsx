@@ -19,7 +19,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
 }) => {
   const { colors, fonts } = useTheme();
   const shadow = StyleSheet.flatten({
-     shadowColor: "#000",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -28,43 +28,69 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     shadowRadius: 1.41,
 
     elevation: 2,
-  })
+  });
   const commentStyles = StyleSheet.flatten({
-    width: 160,
+    minWidth: 160,
     height: 190,
     backgroundColor: "#ffff",
     padding: 10,
     borderRadius: 10,
-    marginLeft: 10 
+    marginLeft: 10,
   });
   const longCardStyles = StyleSheet.flatten({
     height: 150,
+    minWidth: 350,
     flex: 1,
     backgroundColor: "#ffff",
     padding: 20,
-    borderRadius: 10, 
-    marginBottom: 10
+    borderRadius: 10,
+    marginBottom: 10,
   });
   if (longCard) {
     return (
-      <Block style={[longCardStyles, shadow]}>
-        <Block height={78} row>
-            <Image
-          source={imageSource}
-          style={{ width: 160, height: 110, borderRadius: 10 }}
-        />
-        <Block justifyContent='space-between' marginLeft={10} height={110}>
+      <Block  row style={[longCardStyles, shadow]}>
+
+          <Image
+            source={imageSource}
+            style={{ width: 160, height: 110, borderRadius: 10 }}
+          />
+          <Block
+            justifyContent="space-between"
+            marginLeft={10}
+            height={110}
+            style={{ minWidth: 140 }}
+            flex={1}
+          >
             <Block>
-                <Text fontSize={14} font={fonts.inter[400]}>{name}</Text> 
+              <Text fontSize={14} font={fonts.inter[400]}>
+                {name}
+              </Text>
             </Block>
-            <Block justifyContent='space-between' row >
-                <Text>4.9</Text>
-                <Text>{price}</Text>
+            <Block justifyContent="space-between" row>
+              <Block row>
+                <Text fontSize={12} color={colors.green[1]}>
+                  4.9
+                </Text>
+                <Text fontSize={12} color={colors.dark[1]}>
+                  (277)
+                </Text>
+              </Block>
+
+              <Text
+                fontSize={16}
+                font={fonts.inter[600]}
+                color={colors.green[1]}
+              >
+                {price}€
+              </Text>
             </Block>
-            <Text>33% de desconto</Text>
+            <Block alignItems='flex-end'>
+              <Text fontSize={12} color={colors.green[2]}>
+                33% de desconto
+              </Text>
+            </Block>
+         
         </Block>
-        </Block>
-        
       </Block>
     );
   }

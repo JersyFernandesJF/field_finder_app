@@ -5,7 +5,6 @@ import {
   Text,
   Comment,
   Include,
-  CardIformation,
 } from "~/components";
 import { useRef, useState } from "react";
 import {
@@ -242,20 +241,7 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
                       />
                     );
                   })}
-              </Block>
-              <Block mb={30}>
-                <CardIformation
-                  name="St. Bento"
-                  price={25}
-                  imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                />
-              </Block>
-              <CardIformation
-                name="St. Bento"
-                price={25}
-                longCard
-                imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-              />
+              </Block> 
             </Block>
           </Block>
         </Block>

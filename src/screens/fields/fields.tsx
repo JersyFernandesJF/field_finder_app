@@ -50,12 +50,14 @@ export const FieldsScreen = ({ navigation }: Props) => {
               .fill(1)
               .map((_, index) => {
                 return (
+                  <Button onPress={()=> navigation.navigate("FieldsDetails")} >
                   <CardIformation
                     name="St. Bento"
                     longCard
                     price={25}
                     imageSource={require("../../assets/image/onboarding/onboarding2.png")}
                   />
+                  </Button>
                 );
               })}
           </Block>

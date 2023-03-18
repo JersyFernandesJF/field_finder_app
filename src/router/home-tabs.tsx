@@ -19,7 +19,7 @@ export type HomeTabsRouteParamsList = {
   Profile: undefined;
 };
 
-type TabsName = keyof HomeTabsRouteParamsList; 
+type TabsName = keyof HomeTabsRouteParamsList;
 
 type IconReturn = typeof DiscoverSVGIcon;
 
@@ -28,9 +28,8 @@ type IconType = {
 };
 const MainStack = createNativeStackNavigator<MainStackOnTabParamsList>();
 export type MainStackOnTabParamsList = {
-     Fields: undefined;
-     FieldsDetails: undefined;
- 
+  Fields: undefined;
+  FieldsDetails: undefined;
 };
 const HomeTabsNavigator = createBottomTabNavigator<HomeTabsRouteParamsList>();
 
@@ -64,7 +63,6 @@ export const HomeTabsRouter = () => {
         ),
       })}
     >
-
       <HomeTabsNavigator.Screen
         name="Home"
         options={{ headerShown: false }}
@@ -85,31 +83,27 @@ export const HomeTabsRouter = () => {
 export const InsideNavigator = () => {
   return (
     <MainStack.Navigator>
-    <MainStack.Group
-      screenOptions={{
-        headerBackButtonMenuEnabled: false,
-        headerShadowVisible: false,
-      }}
-    >
-      <MainStack.Screen
-        name="Fields"
-        component={FieldsScreen}
-        options={{
-          headerShown: false,
+      <MainStack.Group
+        screenOptions={{
+          headerBackButtonMenuEnabled: false,
+          headerShadowVisible: false,
         }}
-      />
-      <MainStack.Screen
-        name="FieldsDetails"
-        component={FieldsDetailsScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
-   
-  
-    </MainStack.Group>
-
-   
-  </MainStack.Navigator>
-  )
-}
+      >
+        <MainStack.Screen
+          name="Fields"
+          component={FieldsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <MainStack.Screen
+          name="FieldsDetails"
+          component={FieldsDetailsScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </MainStack.Group>
+    </MainStack.Navigator>
+  );
+};

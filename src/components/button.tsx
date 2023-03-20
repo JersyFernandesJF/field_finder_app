@@ -2,7 +2,7 @@ import { Pressable, PressableProps, StyleSheet, ViewStyle } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { Text } from "./text";
 
-export type ButtonProps = PressableProps & {
+type ButtonProps = PressableProps & {
   children?: string | React.ReactNode;
   bordered?: boolean;
   defaultStyle?: boolean;
@@ -11,6 +11,7 @@ export type ButtonProps = PressableProps & {
   row?: boolean;
   my?: ViewStyle["marginVertical"];
   marginVertical?: ViewStyle["marginVertical"];
+  roundButton?: Boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -23,6 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   row,
   my,
   marginVertical,
+  roundButton,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
@@ -50,8 +52,16 @@ export const Button: React.FC<ButtonProps> = ({
     (my || marginVertical) !== undefined && {
       marginVertical: marginVertical ?? my,
     },
+    roundButton !== undefined && {
+      height: 70,
+      width: 70,
+      borderRadius: 35,
+      backgroundColor: colors.green[1],
+      justifyContent: "center",
+      alignItems: "center",
+    },
     style,
-  ]) as PressableProps;
+  ]) as ViewStyle;
 
   const textStyles = defaultStyle && {
     color: colors.white,

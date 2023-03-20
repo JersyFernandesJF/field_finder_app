@@ -45,7 +45,12 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
       </Block>
 
       <Block my={50}>
-        <Button defaultStyle onPress={()=> navigation.navigate("ChangePassword")}>Verify</Button>
+        <Button
+          defaultStyle
+          onPress={() => navigation.navigate("ChangePassword")}
+        >
+          Verify
+        </Button>
         <Block my={20} row center>
           <Text
             textAlign="center"

@@ -1,14 +1,8 @@
 import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path, SvgProps } from "react-native-svg";
 
-export const EmailWhiteSVGIcon = (props?: any) => (
-  <Svg
-    width={20}
-    height={20}
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+export const EmailWhiteSVGIcon = (props?: SvgProps) => (
+  <Svg width={20} height={20} fill="none" {...props}>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

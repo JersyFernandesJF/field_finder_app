@@ -14,12 +14,14 @@ type InputProps = TextInputProps & {
   right?: JSX.Element;
   justifyContent?: TextStyle["justifyContent"];
   standard?: boolean;
+  number?: boolean;
 };
 
 export const Input: React.FC<InputProps> = ({
   left,
   standard,
   right,
+  number,
   ...props
 }) => {
   const { colors } = useTheme();
@@ -45,6 +47,7 @@ export const Input: React.FC<InputProps> = ({
     <Block row style={boxStyles}>
       {left && left}
       <TextInput
+        keyboardType={number ? "numeric" : "default"}
         style={textInputStyles}
         {...props}
         placeholderTextColor={colors.dark[3]}

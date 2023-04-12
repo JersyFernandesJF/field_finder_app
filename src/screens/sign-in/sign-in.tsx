@@ -28,7 +28,6 @@ export const SignInScreen = ({ navigation }: Props) => {
       });
   }
 
-
   return (
     <Block safe flex={1} justifyContent="space-between" px={30}>
       <Block>

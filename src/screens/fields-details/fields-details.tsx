@@ -183,7 +183,6 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
                 </Block>
               }
               defaultStyle
-              onPress={() => navigation.navigate("SignUp")}
             >
               To Schedule
             </Button>

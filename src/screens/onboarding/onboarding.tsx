@@ -23,10 +23,10 @@ const CARDS = [
     id: 2,
   },
   {
-    imageSource: require("../../assets/image/onboarding/onboarding3.png"),
+    imageSource: require("../../assets/image/onboarding/onboarding2.png"),
     title: "Search and find fields for anywhere",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiunpx expo install expo-locationsmod tempor incididunt ut labore ",
     id: 3,
   },
 ];
@@ -89,6 +89,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
       />
 
       <Block style={styles.content}>
+        <Block></Block>
         <Block
           style={[styles.divider, { backgroundColor: colors.green[1] }]}
           center
@@ -159,11 +160,12 @@ export const OnboardingScreen = ({ navigation }: Props) => {
 
         <Block
           row
-          my={60}
+          
           style={{
             alignItems: "center",
             justifyContent: "space-around",
             width: "100%",
+          
           }}
         >
           <Button onPress={skipSlide}>
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
     left: 0,
-    borderRadius: 38,
+    borderRadius: 20,
     alignItems: "center",
   },
   dotsContainer: {

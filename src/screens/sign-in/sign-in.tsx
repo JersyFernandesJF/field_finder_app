@@ -4,41 +4,40 @@ import { EmailSVGIcon, EyeSVGIcon } from "~/assets/icons";
 import { Block, Button, CheckBox, InputFormField, Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "~/config/firebase";
-
+import { useAuth } from "~/config/AuthProvider";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "SignIn">;
 
 export const SignInScreen = ({ navigation }: Props) => {
-  const { colors, fonts } = useTheme();
-  const [showPassword, setShowPassword] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('')
+  const { colors, fonts } = useTheme()
+  const [showPassword, setShowPassword] = useState(true)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { signIn } = useAuth();
 
-  function handleSignIn() {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        navigation.navigate("HomeTabs");
-      })
-      .catch((err) => {
-        console.log(err.code);
-        console.log(err.message);
-      });
+  async function Sigin() {
+    try {
+      await signIn(email, password)
+        .then((_) => { navigation.navigate("HomeTabs") })
+        .catch((err) => {
+          console.log(err.code);
+          console.log(err.message);
+        });
+    } catch (error: unknown) {
+      console.log(error);
+    }
   }
-
   return (
     <Block safe flex={1} justifyContent="space-between" px={30}>
       <Block>
-         <InputFormField
-             standard
-             left={<EmailSVGIcon style={{ marginRight: 10 }} />}
-             placeholder="Email"
-             label="Email"
-             onChangeText={setEmail}
-           />
-        
+        <InputFormField
+          standard
+          left={<EmailSVGIcon style={{ marginRight: 10 }} />}
+          placeholder="Email"
+          label="Email"
+          onChangeText={setEmail}
+        />
+
         <Block mt={10}>
           <InputFormField
             standard
@@ -56,7 +55,7 @@ export const SignInScreen = ({ navigation }: Props) => {
       </Block>
 
       <Block>
-        <Button defaultStyle onPress={()=> navigation.navigate("HomeTabs")}>
+        <Button defaultStyle onPress={Sigin}>
           Login
         </Button>
       </Block>

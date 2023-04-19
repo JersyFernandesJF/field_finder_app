@@ -44,7 +44,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     backgroundColor: "#ffff",
     padding: 20,
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 10
   });
   if (longCard) {
     return (

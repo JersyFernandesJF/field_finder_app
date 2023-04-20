@@ -15,6 +15,7 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "~/hooks/theme";
 import { Router } from "~/router";
+import { AuthProvider } from "~/config/AuthProvider"
 
 SplashScreen.preventAutoHideAsync();
 
@@ -39,9 +40,11 @@ export default function App() {
   return (
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <ThemeProvider>
+        <AuthProvider>
         <NavigationContainer>
           <Router />
         </NavigationContainer>
+        </AuthProvider>
       </ThemeProvider>
       <StatusBar style="dark" />
     </SafeAreaProvider>

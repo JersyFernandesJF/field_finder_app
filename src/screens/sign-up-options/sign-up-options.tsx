@@ -45,7 +45,7 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
               </Block>
             }
           >
-            <Block flex={1} center>
+            <Block flex={1} center marginRight={30}>
               <Text>{label}</Text>
             </Block>
           </Button>

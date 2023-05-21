@@ -13,3 +13,5 @@ export * from "./white-email-icon";
 export * from "./right-icon"
 export * from "./calendar-icon"
 export * from "./check-include-icon"
+export * from "./pin-icon"
+export * from "./sports/footbal-icon"

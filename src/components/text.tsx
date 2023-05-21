@@ -12,8 +12,9 @@ type TextProps = RNTextProps & {
   font?: TextStyle["fontFamily"];
   size?: TextStyle["fontSize"];
   fontSize?: TextStyle["fontSize"];
-  textDecorationLine?: TextStyle["textDecorationLine"]
+  textDecorationLine?: TextStyle["textDecorationLine"];
   highlighted?: boolean;
+  chips?: boolean;
 };
 
 export const Text: React.FC<TextProps> = ({
@@ -26,11 +27,16 @@ export const Text: React.FC<TextProps> = ({
   fontSize,
   highlighted,
   textDecorationLine,
+  chips,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
 
   const textStyles = StyleSheet.flatten([
+    chips !== undefined && {
+      fontSize: 14,
+      color: colors.green[1],
+    },
     textAlign !== undefined && { textAlign },
     textDecorationLine !== undefined && { textDecorationLine },
     color !== undefined && { color },

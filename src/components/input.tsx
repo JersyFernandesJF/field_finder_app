@@ -15,6 +15,7 @@ type InputProps = TextInputProps & {
   justifyContent?: TextStyle["justifyContent"];
   standard?: boolean;
   number?: boolean;
+  search?: boolean;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -38,11 +39,13 @@ export const Input: React.FC<InputProps> = ({
     ({
       borderWidth: 0.5,
       borderColor: colors.dark[2],
+      backgroundColor: colors.white,
       alignItems: "center",
       borderRadius: 12,
       paddingHorizontal: 16,
+      height: 52,
+      minWidth: 365,
     } as ViewStyle);
-
   return (
     <Block row style={boxStyles}>
       {left && left}

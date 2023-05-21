@@ -18,22 +18,22 @@ export const FieldsScreen = ({ navigation }: Props) => {
             </Text>
           </Block>
 
-          <ScrollView 
-          style={{ height: 200}}
-          showsHorizontalScrollIndicator = {false}
-          horizontal={true}>
+          <ScrollView
+            style={{ height: 200 }}
+            showsHorizontalScrollIndicator={false}
+            horizontal={true}
+          >
             {Array(4)
               .fill(1)
               .map((_, index) => {
                 return (
-                  <Button onPress={()=> navigation.navigate("FieldsDetails")} >
+                  <Button onPress={() => navigation.navigate("FieldsDetails")}>
                     <CardIformation
-                    name="St. Bento"
-                    price={25}
-                    imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                  />
+                      name="St. Bento"
+                      price={25}
+                      imageSource={require("../../assets/image/onboarding/onboarding2.png")}
+                    />
                   </Button>
-                  
                 );
               })}
           </ScrollView>
@@ -50,13 +50,13 @@ export const FieldsScreen = ({ navigation }: Props) => {
               .fill(1)
               .map((_, index) => {
                 return (
-                  <Button onPress={()=> navigation.navigate("FieldsDetails")} >
-                  <CardIformation
-                    name="St. Bento"
-                    longCard
-                    price={25}
-                    imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                  />
+                  <Button onPress={() => navigation.navigate("FieldsDetails")}>
+                    <CardIformation
+                      name="St. Bento"
+                      longCard
+                      price={25}
+                      imageSource={require("../../assets/image/onboarding/onboarding2.png")}
+                    />
                   </Button>
                 );
               })}

@@ -4,29 +4,29 @@ import { useTheme } from "~/hooks/theme";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { EmailSVGIcon } from "~/assets/icons";
 import { MainStackParamsList } from "~/router";
-import { useAuth } from "~/config/AuthProvider";
+import { useAuth } from "~/config/firebase/Providers/AuthProvider";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "ForgotPassword">;
 
 export const ForgotPasswordScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const { resetPassword } = useAuth();
 
-   async function sendCode() {
-     try {
-       await resetPassword(email)
-         .then((_) => {
-           navigation.navigate("VerificationCode");
-         })
-         .catch((err:any) => {
-           console.log(err.code);
-           console.log(err.message);
-         });
-     } catch (error: unknown) {
-       console.log(error);
-     }
-   }
+  async function sendCode() {
+    try {
+      await resetPassword(email)
+        .then((_) => {
+          navigation.navigate("VerificationCode");
+        })
+        .catch((err: any) => {
+          console.log(err.code);
+          console.log(err.message);
+        });
+    } catch (error: unknown) {
+      console.log(error);
+    }
+  }
   return (
     <Block safe flex={1} px={30}>
       <Block my={30}>
@@ -44,10 +44,7 @@ export const ForgotPasswordScreen = ({ navigation }: Props) => {
         />
       </Block>
       <Block my={50}>
-        <Button
-          defaultStyle
-          onPress={sendCode}
-        >
+        <Button defaultStyle onPress={sendCode}>
           Send instruction
         </Button>
       </Block>

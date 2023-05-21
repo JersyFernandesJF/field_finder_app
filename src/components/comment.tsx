@@ -25,14 +25,13 @@ export const Comment: React.FC<CommentProps> = ({
           <Image source={require("../assets/image/user/example.png")} />
         </Block>
         <Block>
-           <Block>
-          <Text fontSize={14} font={fonts.inter[600]}>
-            {name}
-          </Text>
+          <Block>
+            <Text fontSize={14} font={fonts.inter[600]}>
+              {name}
+            </Text>
+          </Block>
+          <Block height={20}></Block>
         </Block>
-        <Block height={20}></Block>
-        </Block>
-       
       </Block>
       <Block mb={20}>
         <Text color={colors.dark[1]} textAlign="auto">

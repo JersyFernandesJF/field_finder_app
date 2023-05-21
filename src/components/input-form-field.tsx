@@ -24,7 +24,7 @@ export const InputFormField: React.FC<InputFormField> = ({
           {label}
         </Text>
       </Block>
-      <Input {...props}  />
+      <Input {...props} />
     </Block>
   );
 };

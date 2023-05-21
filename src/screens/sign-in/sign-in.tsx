@@ -4,21 +4,26 @@ import { EmailSVGIcon, EyeSVGIcon } from "~/assets/icons";
 import { Block, Button, CheckBox, InputFormField, Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
-import { useAuth } from "~/config/AuthProvider";
+import { useAuth } from "~/config/firebase/Providers/AuthProvider";
+import { Alert } from "react-native";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "SignIn">;
 
 export const SignInScreen = ({ navigation }: Props) => {
-  const { colors, fonts } = useTheme()
-  const [showPassword, setShowPassword] = useState(true)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const { colors, fonts } = useTheme();
+  const [showPassword, setShowPassword] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { signIn } = useAuth();
 
   async function Sigin() {
     try {
       await signIn(email, password)
-        .then((_) => { navigation.navigate("HomeTabs") })
+        .then((credential) => {
+          const { user } = credential;
+          Alert.alert(user.uid);
+          navigation.navigate("HomeTabs");
+        })
         .catch((err) => {
           console.log(err.code);
           console.log(err.message);
@@ -37,7 +42,6 @@ export const SignInScreen = ({ navigation }: Props) => {
           label="Email"
           onChangeText={setEmail}
         />
-
         <Block mt={10}>
           <InputFormField
             standard
@@ -53,7 +57,6 @@ export const SignInScreen = ({ navigation }: Props) => {
           <CheckBox />
         </Block>
       </Block>
-
       <Block>
         <Button defaultStyle onPress={Sigin}>
           Login

@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
   image: {
     backgroundColor: "white",
     width,
-    height: 335
+    height: 335,
   },
 });

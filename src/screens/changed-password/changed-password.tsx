@@ -9,7 +9,7 @@ type Props = NativeStackScreenProps<MainStackParamsList, "ChangedPassword">;
 export const ChangedPasswordScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
   return (
-    <Block flex={1} justifyContent="space-around"  px={30}>
+    <Block flex={1} justifyContent="space-around" px={30}>
       <Block>
         <Image
           style={{

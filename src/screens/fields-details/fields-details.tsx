@@ -1,11 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import {
-  Block,
-  Button,
-  Text,
-  Comment,
-  Include,
-} from "~/components";
+import { Block, Button, Text, Comment, Include } from "~/components";
 import { useRef, useState } from "react";
 import {
   Animated,
@@ -240,7 +234,7 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
                       />
                     );
                   })}
-              </Block> 
+              </Block>
             </Block>
           </Block>
         </Block>

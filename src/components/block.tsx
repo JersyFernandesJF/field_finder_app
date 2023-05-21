@@ -22,6 +22,9 @@ type BlockProps = ViewProps & {
   ml?: ViewStyle["marginLeft"];
   alignItems?: ViewStyle["alignItems"];
   height?: ViewStyle["height"];
+  width?: ViewStyle["width"];
+  position?: ViewStyle["position"];
+  top?: ViewStyle["top"];
 };
 
 export const Block: React.FC<BlockProps> = ({
@@ -47,6 +50,9 @@ export const Block: React.FC<BlockProps> = ({
   marginBottom,
   mb,
   height,
+  width,
+  position,
+  top,
   ...props
 }) => {
   const blockStyle = StyleSheet.flatten([
@@ -55,17 +61,20 @@ export const Block: React.FC<BlockProps> = ({
     justifyContent !== undefined && { justifyContent },
     alignItems !== undefined && { alignItems },
     height !== undefined && { height },
+    width !== undefined && width,
+    position !== undefined && { position },
     row !== undefined && { flexDirection: "row" },
     (px || paddingHorizontal) !== undefined && {
       paddingHorizontal: paddingHorizontal || px,
     },
+    top !== undefined && { top },
     (ml || marginLeft) !== undefined && { marginLeft: marginLeft || ml },
     (mr || marginRight) !== undefined && { marginRight: marginRight || mr },
-    (mb || marginBottom ) !== undefined && {marginBottom: marginBottom || mb},
+    (mb || marginBottom) !== undefined && { marginBottom: marginBottom || mb },
     (my || marginVertical) !== undefined && {
       marginVertical: marginVertical || my,
     },
-    ( marginHorizontal) !== undefined && {
+    marginHorizontal !== undefined && {
       marginHorizontal: marginHorizontal,
     },
     (mt || marginTop) !== undefined && { marginTop: marginTop || mt },

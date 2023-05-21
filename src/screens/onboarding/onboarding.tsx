@@ -160,12 +160,10 @@ export const OnboardingScreen = ({ navigation }: Props) => {
 
         <Block
           row
-          
           style={{
             alignItems: "center",
             justifyContent: "space-around",
             width: "100%",
-          
           }}
         >
           <Button onPress={skipSlide}>

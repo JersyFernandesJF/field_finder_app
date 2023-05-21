@@ -44,52 +44,47 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     backgroundColor: "#ffff",
     padding: 20,
     borderRadius: 10,
-    marginBottom: 10
+    marginBottom: 10,
   });
   if (longCard) {
     return (
-      <Block  row style={[longCardStyles, shadow]}>
+      <Block row style={[longCardStyles, shadow]}>
+        <Image
+          source={imageSource}
+          style={{ width: 160, height: 110, borderRadius: 10 }}
+        />
+        <Block
+          justifyContent="space-between"
+          marginLeft={10}
+          height={110}
+          style={{ minWidth: 140 }}
+          flex={1}
+        >
+          <Block>
+            <Text fontSize={16} font={fonts.inter[400]}>
+              {name}
+            </Text>
+          </Block>
+          <Block justifyContent="space-between" row>
+            <Block row>
+              <Text fontSize={12} color={colors.green[1]}>
+                4.9
+              </Text>
+              <Text fontSize={12} color={colors.dark[1]}>
+                {" "}
+                (277)
+              </Text>
+            </Block>
 
-          <Image
-            source={imageSource}
-            style={{ width: 160, height: 110, borderRadius: 10 }}
-          />
-          <Block
-            justifyContent="space-between"
-            marginLeft={10}
-            height={110}
-            style={{ minWidth: 140 }}
-            flex={1}
-          >
-            <Block>
-              <Text fontSize={16} font={fonts.inter[400]}>
-                {name}
-              </Text>
-            </Block>
-            <Block justifyContent="space-between" row>
-              <Block row>
-                <Text fontSize={12} color={colors.green[1]}>
-                  4.9
-                </Text>
-                <Text fontSize={12} color={colors.dark[1]}>
-                  {" "}(277)
-                </Text>
-              </Block>
-
-              <Text
-                fontSize={16}
-                font={fonts.inter[600]}
-                color={colors.green[1]}
-              >
-                {price}€
-              </Text>
-            </Block>
-            <Block alignItems='flex-end'>
-              <Text fontSize={12} color={colors.green[2]}>
-                33% de desconto
-              </Text>
-            </Block>
-         
+            <Text fontSize={16} font={fonts.inter[600]} color={colors.green[1]}>
+              {price}€
+            </Text>
+          </Block>
+          <Block alignItems="flex-end">
+            <Text fontSize={12} color={colors.green[2]}>
+              33% de desconto
+            </Text>
+          </Block>
         </Block>
       </Block>
     );

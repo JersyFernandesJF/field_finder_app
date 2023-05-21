@@ -6,6 +6,7 @@ type ButtonProps = PressableProps & {
   children?: string | React.ReactNode;
   bordered?: boolean;
   defaultStyle?: boolean;
+  chips?: boolean;
   left?: JSX.Element;
   right?: JSX.Element;
   row?: boolean;
@@ -25,11 +26,22 @@ export const Button: React.FC<ButtonProps> = ({
   my,
   marginVertical,
   roundButton,
+  chips,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
 
   const buttonStyles = StyleSheet.flatten([
+    chips !== undefined && {
+      height: 26,
+      minWidth: 74,
+      flex: 1,
+      backgroundColor: colors.white,
+      justifyContent: "center",
+      borderRadius: 20,
+      alignItems: "center",
+      marginHorizontal: 2,
+    },
     bordered !== undefined && {
       borderWidth: StyleSheet.hairlineWidth,
       borderRadius: 12,

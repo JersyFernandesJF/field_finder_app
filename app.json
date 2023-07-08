@@ -8,13 +8,20 @@
       "image": "./src/assets/splash.png",
       "backgroundColor": "#fff"
     },
-    "plugins": [
-      [
-        "expo-location",
-        {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
-        }
-      ]
+    "android": {
+      "googleServicesFile": "./google-services.json"
+    },
+    "ios": {
+      "googleServicesFile": "./GoogleService-Info.plist"
+    }
+  },
+  "plugins": [
+    [
+      "expo-apple-authentication",
+      "expo-location",
+      {
+        "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+      }
     ]
-  }
+  ]
 }

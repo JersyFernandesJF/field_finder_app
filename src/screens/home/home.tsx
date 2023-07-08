@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { ScrollView, StyleSheet } from "react-native";
-import MapView from "react-native-maps";
+import { Platform, ScrollView, StatusBar, StyleSheet } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import {
   Block,
   Button,
@@ -8,40 +8,63 @@ import {
   Input,
   Text,
   Directions,
+  PointEvent,
 } from "~/components";
 import * as Location from "expo-location";
 import { PinSVGIcon } from "~/assets/icons";
-import { MainStackOnTabParamsList } from "~/router";
+import { MainStackParamsList } from "~/router";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useSportsList } from "~/config/firebase/Providers/SportsProvider";
+import { useFieldsList } from "~/config/firebase/Providers/FieldsProvider";
+import { useEventList } from "~/config/firebase/Providers/EventProvider";
+import { useNavigation } from "@react-navigation/native";
 import { FilterIcons } from "~/assets/icons/sports";
-import { handleSearch } from "~/config/googleAPI/googleServices";
+import { eventPlace, handleSearch } from "~/config/googleAPI/googleServices";
+import { useTheme } from "~/hooks/theme";
 
 type LocationDeltaType = {
   latitudeDelta: number;
   longitudeDelta: number;
 };
 
-type Props = NativeStackScreenProps<MainStackOnTabParamsList, "Fields">;
+type Props = NativeStackScreenProps<MainStackParamsList, "HomeTabs">;
 
-export const HomeScreen = ({ navigation }: Props) => {
+export const HomeScreen = () => {
+  const { colors } = useTheme();
+  const navigation = useNavigation<Props["navigation"]>();
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
+  const [showCardInformation, setShowCardInformation] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [sports, setSports] = useState(useSportsList());
+  const [fields, setFields] = useState(useFieldsList());
   const [errorMsg, setErrorMsg] = useState("");
-  const destination = {
-    latitude: 41.15,
-    longitude: -8.61024,
-  };
+  const [event, seEvents] = useState(useEventList());
 
-  useEffect(() => {
-    handleSearch(query).then((data) => {
-      setResults(data);
-    });
-  }, [query]);
+  const destination = [
+    { latitude: 41.1423411, longitude: -8.6317603 },
+    { latitude: 41.1565632, longitude: -8.6293085 },
+    { latitude: 41.1679527, longitude: -8.6865483 },
+    { latitude: 41.1530112, longitude: -8.6280178 },
+    { latitude: 41.1554843, longitude: -8.6173559 },
+    { latitude: 41.1594964, longitude: -8.6192736 },
+    { latitude: 41.1718485, longitude: -8.6947784 },
+    { latitude: 41.1626996, longitude: -8.6887401 },
+    { latitude: 41.1492501, longitude: -8.6028047 },
+    { latitude: 41.1586125, longitude: -8.6341311 },
+    { latitude: 41.1651968, longitude: -8.6761584 },
+    { latitude: 41.1698316, longitude: -8.6045752 },
+    { latitude: 41.1548059, longitude: -8.6241646 },
+    { latitude: 41.163219, longitude: -8.6533487 },
+    { latitude: 41.1444013, longitude: -8.6595308 },
+    { latitude: 41.1357328, longitude: -8.6103521 },
+    { latitude: 41.1557958, longitude: -8.6211189 },
+    { latitude: 41.1705167, longitude: -8.6749572 },
+    { latitude: 41.1461492, longitude: -8.6521727 },
+  ];
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -71,7 +94,19 @@ export const HomeScreen = ({ navigation }: Props) => {
 
   return (
     <Block flex={1} center>
-      <MapView showsUserLocation loadingEnabled style={styles.map}>
+      <StatusBar barStyle="dark-content" />
+      <MapView
+        showsUserLocation
+        tintColor={colors.green[1]}
+        loadingEnabled
+        style={styles.map}
+        mapPadding={{
+          top: 30,
+          right: 0,
+          bottom: 0,
+          left: 0,
+        }}
+      >
         {destination && (
           <Directions
             origin={location}
@@ -79,15 +114,24 @@ export const HomeScreen = ({ navigation }: Props) => {
             onReady={() => {}}
           />
         )}
+        {sports.map((_, index) => {
+          return (
+            <Marker coordinate={destination[index]} anchor={{ x: 0, y: 0 }}>
+              <PointEvent />
+            </Marker>
+          );
+        })}
       </MapView>
-      <Block center position="absolute" top={90}>
+      <Block center position="absolute" top={Platform.OS === "ios" ? 90 : 60}>
         <Input
           left={<PinSVGIcon style={{ marginLeft: 10, marginRight: 10 }} />}
-          placeholder="Enter an address, Field or Sport"
+          placeholder="Enter an address, event name, Field or Sport"
           onChangeText={(text) => {
-            setQuery(text);
+            handleSearch(text).then((data) => {
+              setResults(data);
+              console.log(results);
+            });
           }}
-          value={query}
           standard
         />
         <Block mt={10}>
@@ -109,32 +153,6 @@ export const HomeScreen = ({ navigation }: Props) => {
             })}
           </ScrollView>
         </Block>
-      </Block>
-      <Block
-        style={{
-          position: "absolute",
-          bottom: 20,
-        }}
-      >
-        <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-          {Array(4)
-            .fill(1)
-            .map((_, index) => {
-              return (
-                <Button
-                  style={{ marginLeft: 10 }}
-                  onPress={() => navigation.navigate("FieldsDetails")}
-                >
-                  <CardIformation
-                    name="St. Bento"
-                    price={25}
-                    longCard
-                    imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                  />
-                </Button>
-              );
-            })}
-        </ScrollView>
       </Block>
     </Block>
   );

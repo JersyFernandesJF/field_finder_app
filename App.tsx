@@ -15,8 +15,11 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "~/hooks/theme";
 import { Router } from "~/router";
-import { AuthProvider } from "~/config/firebase/Providers/AuthProvider"
+import { AuthProvider } from "~/config/firebase/Providers/AuthProvider";
 import { SportsDatabaseProvider } from "~/config/firebase/Providers/SportsProvider";
+import { FieldsDataBaseProvider } from "~/config/firebase/Providers/FieldsProvider";
+import { EventDataBaseProvider } from "~/config/firebase/Providers/EventProvider";
+
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -41,11 +44,15 @@ export default function App() {
     <SafeAreaProvider onLayout={onLayoutRootView}>
       <ThemeProvider>
         <AuthProvider>
-          <SportsDatabaseProvider>
-           <NavigationContainer>
-           <Router />
-          </NavigationContainer>
-        </SportsDatabaseProvider>
+          <FieldsDataBaseProvider>
+            <SportsDatabaseProvider>
+              <EventDataBaseProvider>
+                <NavigationContainer>
+                  <Router />
+                </NavigationContainer>
+              </EventDataBaseProvider>
+            </SportsDatabaseProvider>
+          </FieldsDataBaseProvider>
         </AuthProvider>
       </ThemeProvider>
       <StatusBar style="dark" />

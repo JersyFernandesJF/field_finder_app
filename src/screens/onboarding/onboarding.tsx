@@ -1,32 +1,38 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text } from "~/components";
+import { Block, Button, Text, Slide } from "~/components";
 import { useRef, useState, useEffect } from "react";
-import { Animated, Dimensions, FlatList, StyleSheet } from "react-native";
-import { Slide } from "./slide";
+import {
+  Animated,
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  Platform,
+} from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
 import { RightSvgIcon } from "~/assets/icons";
+import { StatusBar } from "react-native";
 
 const CARDS = [
   {
-    imageSource: require("../../assets/image/onboarding/onboarding1.png"),
-    title: "Search and find fields for anywhere",
+    imageSource: require("../../assets/image/onboarding/onboarding2.jpg"),
+    title: "Encontre o seu desporto e pratique ao máximo!",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
+      "A vida é um presente, explore seus limites e descubra sua paixão pelo esporte, encontre seu desporto e comece a viver ao máximo!",
     id: 1,
   },
   {
-    imageSource: require("../../assets/image/onboarding/onboarding2.png"),
-    title: "Find people to practice sports with you",
+    imageSource: require("../../assets/image/onboarding/onboarding1.jpg"),
+    title: "Encontre pessoas para praticar consigo!",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
+      "O esporte é feito para ser compartilhado! Encontre camaradas de equipe, treinadores e amigos para superar limites, alcançar objetivos e construir amizades duradouras, descubra seus parceiros de esporte.",
     id: 2,
   },
   {
-    imageSource: require("../../assets/image/onboarding/onboarding2.png"),
-    title: "Search and find fields for anywhere",
+    imageSource: require("../../assets/image/onboarding/onboarding3.jpg"),
+    title: "Encontre locais para poder praticar!",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiunpx expo install expo-locationsmod tempor incididunt ut labore ",
+      "Não deixe que a falta de locais impeça você de alcançar seus sonhos esportivos! Descubra novos lugares para treinar, jogar e competir, encontre o campo, quadra ou ginásio perfeito para levar suas habilidades esportivas ao próximo nível.",
     id: 3,
   },
 ];
@@ -64,32 +70,34 @@ export const OnboardingScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <Block style={styles.mainContainer}>
-      <FlatList
-        data={CARDS}
-        renderItem={({ item }) => <Slide imageSource={item.imageSource} />}
-        pagingEnabled
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        bounces={false}
-        onScroll={Animated.event(
-          [
+    <Block flex={1} justifyContent="space-between">
+      <StatusBar barStyle={"light-content"} />
+      <Block flex={2}>
+        <FlatList
+          data={CARDS}
+          renderItem={({ item }) => <Slide imageSource={item.imageSource} />}
+          pagingEnabled
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          bounces={false}
+          onScroll={Animated.event(
+            [
+              {
+                nativeEvent: { contentOffset: { x: scrollX } },
+              },
+            ],
             {
-              nativeEvent: { contentOffset: { x: scrollX } },
-            },
-          ],
-          {
-            useNativeDriver: false,
-          }
-        )}
-        onViewableItemsChanged={viewableItemsChanged}
-        scrollEventThrottle={32}
-        viewabilityConfig={viewConfig}
-        ref={slidesRef}
-      />
+              useNativeDriver: false,
+            }
+          )}
+          onViewableItemsChanged={viewableItemsChanged}
+          scrollEventThrottle={32}
+          viewabilityConfig={viewConfig}
+          ref={slidesRef}
+        />
+      </Block>
 
       <Block style={styles.content}>
-        <Block></Block>
         <Block
           style={[styles.divider, { backgroundColor: colors.green[1] }]}
           center
@@ -99,83 +107,92 @@ export const OnboardingScreen = ({ navigation }: Props) => {
           </Text>
         </Block>
 
-        <Block>
-          <Text
-            textAlign="center"
-            fontSize={22}
-            color={colors.green[1]}
-            font={fonts.inter[600]}
-            style={styles.description}
-          >
-            {CARDS[currentIndex].title}
-          </Text>
-          <Text
-            textAlign="center"
-            fontSize={15}
-            color={colors.dark[1]}
-            font={fonts.inter[400]}
-            style={styles.description}
-          >
-            {CARDS[currentIndex].description}
-          </Text>
-        </Block>
-
-        <Block style={styles.dotsContainer}>
-          {Array(3)
-            .fill(1)
-            .map((_, index) => {
-              const inputRange = [
-                (index - 1) * width,
-                index * width,
-                (index + 1) * width,
-              ];
-
-              const dotWidth = scrollX.interpolate({
-                inputRange,
-                outputRange: [8, 32, 8],
-                extrapolate: "clamp",
-              });
-
-              const opacity = scrollX.interpolate({
-                inputRange,
-                outputRange: [0.3, 1, 0.3],
-                extrapolate: "clamp",
-              });
-
-              return (
-                <Animated.View
-                  style={[
-                    styles.dot,
-                    {
-                      width: dotWidth,
-                      opacity,
-                      backgroundColor: colors.green[1],
-                    },
-                  ]}
-                  key={index.toString()}
-                />
-              );
-            })}
-        </Block>
-
-        <Block
-          row
-          style={{
-            alignItems: "center",
-            justifyContent: "space-around",
-            width: "100%",
-          }}
-        >
-          <Button onPress={skipSlide}>
-            <Text fontSize={15} font={fonts.inter[400]} color={colors.green[1]}>
-              Skip
+        <Block flex={2} alignItems="center" justifyContent="space-between">
+          <Block marginTop={60} center>
+            <Text
+              textAlign="center"
+              fontSize={22}
+              color={colors.green[1]}
+              font={fonts.inter[600]}
+              style={styles.description}
+            >
+              {CARDS[currentIndex].title}
             </Text>
-          </Button>
+            <Block height={150} alignItems="center" justifyContent="center">
+              <Text
+                textAlign="center"
+                fontSize={15}
+                color={colors.dark[1]}
+                font={fonts.inter[400]}
+                style={styles.description}
+              >
+                {CARDS[currentIndex].description}
+              </Text>
+            </Block>
+            <Block row>
+              {Array(3)
+                .fill(1)
+                .map((_, index) => {
+                  const inputRange = [
+                    (index - 1) * width,
+                    index * width,
+                    (index + 1) * width,
+                  ];
 
-          <Block marginRight={50} />
-          <Button roundButton={true} onPress={handleGoToNextSlide}>
-            <RightSvgIcon />
-          </Button>
+                  const dotWidth = scrollX.interpolate({
+                    inputRange,
+                    outputRange: [8, 32, 8],
+                    extrapolate: "clamp",
+                  });
+
+                  const opacity = scrollX.interpolate({
+                    inputRange,
+                    outputRange: [0.3, 1, 0.3],
+                    extrapolate: "clamp",
+                  });
+
+                  return (
+                    <Animated.View
+                      style={[
+                        styles.dot,
+                        {
+                          width: dotWidth,
+                          opacity,
+                          backgroundColor: colors.green[1],
+                        },
+                      ]}
+                      key={index.toString()}
+                    />
+                  );
+                })}
+            </Block>
+          </Block>
+
+          <Block
+            alignItems="center"
+            justifyContent="space-around"
+            row
+            marginBottom={Platform.OS === "ios" ? 50 : 30}
+          >
+            <Block>
+              <Button onPress={skipSlide}>
+                <Text
+                  fontSize={15}
+                  font={fonts.inter[400]}
+                  color={colors.green[1]}
+                >
+                  Skip
+                </Text>
+              </Button>
+            </Block>
+            <Block marginLeft={"50%"}>
+              <Button roundButton onPress={handleGoToNextSlide}>
+                <RightSvgIcon />
+              </Button>
+            </Block>
+
+            <Block />
+          </Block>
         </Block>
       </Block>
     </Block>
@@ -183,28 +200,18 @@ export const OnboardingScreen = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-  },
   content: {
+    flex: 2,
     backgroundColor: "white",
-    position: "absolute",
-    top: height - 450,
-    bottom: 0,
-    right: 0,
-    left: 0,
-    borderRadius: 20,
     alignItems: "center",
   },
   dotsContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    marginVertical: 20,
   },
   description: {
     textAlign: "center",
     width: 300,
-    marginVertical: 10,
   },
   dot: {
     height: 5,
@@ -213,10 +220,10 @@ const styles = StyleSheet.create({
     marginRight: 6,
   },
   divider: {
+    position: "absolute",
     height: 100,
     width: 100,
     borderRadius: 50,
     top: -50,
-    alignItems: "center",
   },
 });

@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text, Comment, Include } from "~/components";
+import { Block, Button, Text, Comment, Include, Slide } from "~/components";
 import { useRef, useState } from "react";
 import {
   Animated,
@@ -8,10 +8,10 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
-import { Slide } from "./slide";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
 import { CalendarSvgIcon } from "~/assets/icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const CARDS = [
   {
@@ -37,11 +37,13 @@ const CARDS = [
   },
 ];
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 type Props = NativeStackScreenProps<MainStackParamsList, "FieldsDetails">;
 
-export const FieldsDetailsScreen = ({ navigation }: Props) => {
+export const FieldsDetailsScreen = () => {
+  const navigation = useNavigation<Props["navigation"]>();
+  const { params } = useRoute<Props["route"]>();
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef<FlatList>(null);
@@ -51,10 +53,6 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
     setCurrentIndex(viewableItems[0].index);
   }).current;
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
-  const skipSlide = () => {
-    navigation.navigate("SignUpOptions");
-  };
-
   return (
     <Block flex={1} style={{ backgroundColor: "#ffff" }}>
       <ScrollView>
@@ -128,7 +126,7 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
             paddingHorizontal={20}
           >
             <Text fontSize={18} font={fonts.inter[600]}>
-              Quadra Municipal do Rio Tinto
+              {params.name ? params.name : "jdsjdsk"}
             </Text>
             <Block my={15}>
               <Block
@@ -137,18 +135,22 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
                 justifyContent="space-between"
                 style={{ width: "100%" }}
               >
-                <Text color={colors.red[1]}>OCUPADO</Text>
+                <Text
+                  color={params.availability ? colors.green[1] : colors.red[1]}
+                >
+                  {params.availability ? "LIVRE" : "OCUPADO"}
+                </Text>
                 <Block row marginTop={5}>
                   <Text
                     textDecorationLine="line-through"
                     fontSize={14}
                     color={colors.dark[1]}
                   >
-                    75€
+                    {params.price ? params.price : 34}€
                   </Text>
                   <Block marginHorizontal={5} />
                   <Text fontSize={14} color={colors.green[1]}>
-                    25€
+                    {params.price ? params.price : 37}€
                   </Text>
                 </Block>
               </Block>
@@ -170,6 +172,7 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
         <Block px={30}>
           <Block marginTop={30}>
             <Button
+              onPress={() => navigation.navigate("CreateEvent")}
               row
               left={
                 <Block marginRight={12}>
@@ -188,15 +191,7 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
               </Text>
             </Block>
             <Text fontSize={13} color={colors.dark[1]}>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do
-              amet sint. Velit officia consequat duis enim velit mollit.
-              Exercitation veniam consequat sunt nostrud amet. Mollit non
-              deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
-              consequat duis enim velit mollit. Exercitation veniam consequat
-              sunt. Velit officia consequat duis enim velit mollit. Amet minim
-              mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-              Velit officia consequat duis enim velit mollit. Exercitation
-              veniam consequat sunt nostrud amet.
+              {params.details ? params.details : "iweuhnkdsniod"}
             </Text>
           </Block>
           <Block mb={30}>
@@ -206,13 +201,9 @@ export const FieldsDetailsScreen = ({ navigation }: Props) => {
               </Text>
             </Block>
             <Block>
-              {Array(4)
-                .fill(1)
-                .map((_, index) => {
-                  return (
-                    <Include description="Read and listen to all premium books without limits." />
-                  );
-                })}
+              {params.rules.map((element) => {
+                return <Include description={element} />;
+              })}
             </Block>
           </Block>
           <Block mb={30}>

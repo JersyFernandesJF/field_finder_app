@@ -1,8 +1,8 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useState } from "react";
-import { Alert } from "react-native";
 import { EyeSVGIcon } from "~/assets/icons";
-import { Block, Button, InputFormField } from "~/components";
+import { useTheme } from "~/hooks/theme";
+import { Block, Button, InputFormField, Text } from "~/components";
 import { MainStackParamsList } from "~/router";
 import { useAuth } from "~/config/firebase/Providers/AuthProvider";
 
@@ -14,14 +14,15 @@ interface SignUpFormValues {
   repeatPassword: string;
 }
 export const SignUpScreen = ({ navigation }: Props) => {
+  const { colors, fonts } = useTheme();
   const [showPassword, setShowPassword] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [ShowConfirmPassword, setShowConfirmPassword] = useState(true);
   const { signUp } = useAuth();
-  const { user } = useAuth();
 
   async function SignUp() {
     try {
@@ -77,6 +78,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
             />
           }
           standard
+          security={showPassword}
           placeholder="Password"
           onChangeText={setPassword}
           label="Password"
@@ -87,20 +89,39 @@ export const SignUpScreen = ({ navigation }: Props) => {
           standard
           right={
             <EyeSVGIcon
-              onPress={() => setShowPassword(!showPassword)}
+              onPress={() => setShowConfirmPassword(!ShowConfirmPassword)}
               style={{ marginRight: 10 }}
             />
           }
           onChangeText={setConfirmPassword}
           placeholder="Password"
           label="Confirm Password"
+          security={ShowConfirmPassword}
         />
       </Block>
 
       <Block my={50}>
-        <Button defaultStyle onPress={SignUp}>
-          Create Account
-        </Button>
+        <Block my={12}>
+          <Button defaultStyle onPress={SignUp}>
+            Create Account
+          </Button>
+        </Block>
+        <Block row center>
+          <Text
+            textAlign="center"
+            color={colors.blue[10]}
+            font={fonts.inter[400]}
+            size={15}
+          >
+            Do you have any account?
+          </Text>
+          <Button onPress={() => navigation.navigate("SignIn")}>
+            <Text color={colors.blue[1]} font={fonts.inter[400]} size={15}>
+              {" "}
+              Sign In
+            </Text>
+          </Button>
+        </Block>
       </Block>
     </Block>
   );

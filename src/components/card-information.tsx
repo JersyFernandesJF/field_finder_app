@@ -26,7 +26,6 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     },
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
-
     elevation: 2,
   });
   const commentStyles = StyleSheet.flatten({

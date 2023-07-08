@@ -8,6 +8,7 @@ type BlockProps = ViewProps & {
   justifyContent?: ViewStyle["justifyContent"];
   row?: boolean;
   px?: ViewStyle["paddingHorizontal"];
+  py?: ViewStyle["paddingVertical"];
   paddingHorizontal?: ViewStyle["paddingHorizontal"];
   my?: ViewStyle["marginVertical"];
   marginVertical?: ViewStyle["marginVertical"];
@@ -35,6 +36,7 @@ export const Block: React.FC<BlockProps> = ({
   justifyContent,
   row,
   px,
+  py,
   paddingHorizontal,
   my,
   marginVertical,
@@ -66,6 +68,9 @@ export const Block: React.FC<BlockProps> = ({
     row !== undefined && { flexDirection: "row" },
     (px || paddingHorizontal) !== undefined && {
       paddingHorizontal: paddingHorizontal || px,
+    },
+    py !== undefined && {
+      paddingVertical: py,
     },
     top !== undefined && { top },
     (ml || marginLeft) !== undefined && { marginLeft: marginLeft || ml },

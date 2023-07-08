@@ -9,9 +9,15 @@ import {
 } from "~/assets/icons";
 import { Text } from "~/components";
 import { useTheme } from "~/hooks/theme";
-import { HomeScreen, FieldsScreen, FieldsDetailsScreen } from "~/screens";
+import {
+  HomeScreen,
+  FieldsScreen,
+  EventsScreen,
+  DiscoverScreen,
+  ProfileScreen,
+} from "~/screens";
 
-export type HomeTabsRouteParamsList = {
+export type HomeTabsRouteParamList = {
   Home: undefined;
   Fields: undefined;
   Discover: undefined;
@@ -19,19 +25,15 @@ export type HomeTabsRouteParamsList = {
   Profile: undefined;
 };
 
-type TabsName = keyof HomeTabsRouteParamsList;
+type TabsName = keyof HomeTabsRouteParamList;
 
 type IconReturn = typeof DiscoverSVGIcon;
 
 type IconType = {
   [x in TabsName]: IconReturn;
 };
-const MainStack = createNativeStackNavigator<MainStackOnTabParamsList>();
-export type MainStackOnTabParamsList = {
-  Fields: undefined;
-  FieldsDetails: undefined;
-};
-const HomeTabsNavigator = createBottomTabNavigator<HomeTabsRouteParamsList>();
+
+const HomeTabsNavigator = createBottomTabNavigator<HomeTabsRouteParamList>();
 
 const icons: IconType = {
   Home: HomeSVGIcon,
@@ -70,40 +72,12 @@ export const HomeTabsRouter = () => {
       />
       <HomeTabsNavigator.Screen
         name="Fields"
-        component={InsideNavigator}
+        component={FieldsScreen}
         options={{ headerShown: false }}
       />
-      <HomeTabsNavigator.Screen name="Discover" component={HomeScreen} />
-      <HomeTabsNavigator.Screen name="Events" component={HomeScreen} />
-      <HomeTabsNavigator.Screen name="Profile" component={HomeScreen} />
+      <HomeTabsNavigator.Screen name="Discover" component={DiscoverScreen} />
+      <HomeTabsNavigator.Screen name="Events" component={EventsScreen} />
+      <HomeTabsNavigator.Screen name="Profile" component={ProfileScreen} />
     </HomeTabsNavigator.Navigator>
-  );
-};
-
-export const InsideNavigator = () => {
-  return (
-    <MainStack.Navigator>
-      <MainStack.Group
-        screenOptions={{
-          headerBackButtonMenuEnabled: false,
-          headerShadowVisible: false,
-        }}
-      >
-        <MainStack.Screen
-          name="Fields"
-          component={FieldsScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-        <MainStack.Screen
-          name="FieldsDetails"
-          component={FieldsDetailsScreen}
-          options={{
-            headerShown: false,
-          }}
-        />
-      </MainStack.Group>
-    </MainStack.Navigator>
   );
 };

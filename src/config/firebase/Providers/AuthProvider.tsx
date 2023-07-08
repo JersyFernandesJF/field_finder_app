@@ -5,7 +5,7 @@ import React, {
   useContext,
   createContext,
 } from "react";
-import { app, auth } from "../firebase";
+import { app, auth, ClientID } from "../firebase";
 import {
   Auth,
   UserCredential,
@@ -13,8 +13,17 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
+  signInWithCredential,
+  AuthCredential,
+  OAuthProvider,
 } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
+import * as AppleAuthentication from "expo-apple-authentication";
+import { AppleAuthenticationCredential } from "expo-apple-authentication";
 
 export interface AuthProviderProps {
   children?: ReactNode;
@@ -39,6 +48,8 @@ export interface AuthContextModel {
     name: string,
     number: string
   ) => Promise<UserCredential>;
+  signInWithGoogle: () => Promise<UserCredential>;
+  sigInWithApple: () => Promise<UserCredential>;
   sendPasswordResetEmail?: (email: string) => Promise<void>;
 }
 
@@ -68,16 +79,47 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
           name: name,
           number: number,
         });
+        console.log(userCredential);
         return userCredential;
       }
     );
   }
-
+  function signInWithGoogle() {
+    const provider = new GoogleAuthProvider();
+    return signInWithPopup(auth, provider);
+  }
   function signIn(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(auth, email, password);
   }
   function resetPassword(email: string): Promise<void> {
     return sendPasswordResetEmail(auth, email);
+  }
+  async function sigInWithApple() {
+    const appleCredential = await AppleAuthentication.signInAsync({
+      requestedScopes: [
+        AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+        AppleAuthentication.AppleAuthenticationScope.EMAIL,
+      ],
+    });
+
+    // Create a new instance of AuthCredential
+    const authCredential: AuthCredential = {
+      providerId: "apple.com", // Use empty string ('') as a fallback for null values
+      signInMethod: "oauth",
+      toJSON: () => ({
+        providerId: "apple.com",
+        signInMethod: "oauth",
+        user: appleCredential.user,
+        email: appleCredential.email,
+        fullName: appleCredential.fullName,
+      }),
+    };
+
+    console.log("okkkk");
+    console.log(authCredential);
+    console.log(auth);
+
+    return signInWithPopup(auth, authCredential);
   }
   useEffect(() => {
     const unsubsrcibe = auth.onAuthStateChanged((user) => {
@@ -91,6 +133,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     user,
     signIn,
     resetPassword,
+    signInWithGoogle,
+    sigInWithApple,
     auth,
   };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

@@ -13,6 +13,7 @@ type ButtonProps = PressableProps & {
   my?: ViewStyle["marginVertical"];
   marginVertical?: ViewStyle["marginVertical"];
   roundButton?: Boolean;
+  inlineButton?: Boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -26,6 +27,7 @@ export const Button: React.FC<ButtonProps> = ({
   my,
   marginVertical,
   roundButton,
+  inlineButton,
   chips,
   ...props
 }) => {
@@ -69,6 +71,15 @@ export const Button: React.FC<ButtonProps> = ({
       width: 70,
       borderRadius: 35,
       backgroundColor: colors.green[1],
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    inlineButton !== undefined && {
+      borderWidth: StyleSheet.hairlineWidth,
+      borderRadius: 12,
+      borderColor: colors.green[1],
+      height: 52,
+      width: 125,
       justifyContent: "center",
       alignItems: "center",
     },

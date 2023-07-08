@@ -19,14 +19,11 @@ export const SignInScreen = ({ navigation }: Props) => {
   async function Sigin() {
     try {
       await signIn(email, password)
-        .then((credential) => {
-          const { user } = credential;
-          Alert.alert(user.uid);
+        .then((_) => {
           navigation.navigate("HomeTabs");
         })
-        .catch((err) => {
-          console.log(err.code);
-          console.log(err.message);
+        .catch((_) => {
+          Alert.alert("Error", "Wrong email or password!");
         });
     } catch (error: unknown) {
       console.log(error);
@@ -41,6 +38,7 @@ export const SignInScreen = ({ navigation }: Props) => {
           placeholder="Email"
           label="Email"
           onChangeText={setEmail}
+          autoCapitalize="none"
         />
         <Block mt={10}>
           <InputFormField
@@ -51,6 +49,7 @@ export const SignInScreen = ({ navigation }: Props) => {
             placeholder="Password"
             label="Password"
             onChangeText={setPassword}
+            security={showPassword}
           />
         </Block>
         <Block my={10}>

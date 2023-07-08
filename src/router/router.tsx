@@ -9,9 +9,11 @@ import {
   ChangePasswordScreen,
   ChangedPasswordScreen,
   OnboardingScreen,
-  FieldsDetailsScreen
+  FieldsDetailsScreen,
+  CreateEventScreen,
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
+import { StatusBar } from "expo-status-bar";
 
 export type MainStackParamsList = {
   SignUpOptions: undefined;
@@ -23,7 +25,15 @@ export type MainStackParamsList = {
   ChangedPassword: undefined;
   ChangePassword: undefined;
   Onboarding: undefined;
-  FieldsDetails: undefined;
+  CreateEvent: undefined;
+  FieldsDetails: {
+    name: string;
+    price: number;
+    details: string;
+    rules: string[];
+    address: string;
+    availability: boolean;
+  };
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamsList>();
@@ -61,20 +71,23 @@ export const Router = () => {
           component={SignUpOptionsScreen}
           options={{
             title: "Welcome Back!",
+            headerTitleAlign: "center",
           }}
         />
         <MainStack.Screen
           name="SignIn"
           component={SignInScreen}
           options={{
-            title: "Welcome Back!",
+            title: "Sign In",
+            headerTitleAlign: "center",
           }}
         />
         <MainStack.Screen
           name="SignUp"
           component={SignUpScreen}
           options={{
-            title: "Welcome Back!",
+            title: "Sign Up",
+            headerTitleAlign: "center",
           }}
         />
         <MainStack.Screen
@@ -82,6 +95,7 @@ export const Router = () => {
           component={ForgotPasswordScreen}
           options={{
             title: "Please enter your email",
+            headerTitleAlign: "center",
           }}
         />
         <MainStack.Screen
@@ -89,6 +103,7 @@ export const Router = () => {
           component={VerificationCodeScreen}
           options={{
             title: "Please enter your email",
+            headerTitleAlign: "center",
           }}
         />
         <MainStack.Screen
@@ -103,13 +118,21 @@ export const Router = () => {
           component={ChangePasswordScreen}
           options={{
             title: "Please enter your email",
+            headerTitleAlign: "center",
           }}
         />
         <MainStack.Screen
           name="FieldsDetails"
           component={FieldsDetailsScreen}
           options={{
-            headerShown: false
+            headerShown: false,
+          }}
+        />
+        <MainStack.Screen
+          name="CreateEvent"
+          component={CreateEventScreen}
+          options={{
+            headerShown: false,
           }}
         />
       </MainStack.Group>

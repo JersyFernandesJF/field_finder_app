@@ -1,6 +1,7 @@
 import { Pressable, PressableProps, StyleSheet, ViewStyle } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { Text } from "./text";
+import { Block } from "./block";
 
 type ButtonProps = PressableProps & {
   children?: string | React.ReactNode;
@@ -14,6 +15,8 @@ type ButtonProps = PressableProps & {
   marginVertical?: ViewStyle["marginVertical"];
   roundButton?: Boolean;
   inlineButton?: Boolean;
+  toggleButton?: Boolean;
+  active?: Boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -29,11 +32,21 @@ export const Button: React.FC<ButtonProps> = ({
   roundButton,
   inlineButton,
   chips,
+  toggleButton,
+  active = false,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
 
   const buttonStyles = StyleSheet.flatten([
+    toggleButton !== undefined && {
+      backgroundColor: active ? colors.green[1] : colors.white,
+      height: 26,
+      borderRadius: 20,
+      paddingHorizontal: 20,
+      alignItems: "center",
+      justifyContent: "center",
+    },
     chips !== undefined && {
       height: 26,
       minWidth: 74,
@@ -94,13 +107,15 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <Pressable style={buttonStyles} {...props}>
-      {left && left}
-      {typeof children === "string" ? (
-        <Text style={textStyles}>{children}</Text>
-      ) : (
-        children
-      )}
-      {right && right}
+      <Block row>
+        {left && left}
+        {typeof children === "string" ? (
+          <Text style={textStyles}>{children}</Text>
+        ) : (
+          children
+        )}
+        {right && right}
+      </Block>
     </Pressable>
   );
 };

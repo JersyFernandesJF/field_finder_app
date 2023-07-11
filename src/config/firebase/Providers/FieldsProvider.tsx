@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { database } from "~/config/firebase/firebase";
 import { ref, child, get } from "firebase/database";
+import { server } from "~/config/database/common";
+import axios from "axios";
 
 const dbRef = ref(database);
 
@@ -34,8 +36,19 @@ export const FieldsDataBaseProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [fields, setFields] = useState<FieldsInfo[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [fiedlsTest, setFieldsTest] = useState();
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${server}/field`);
+      setFieldsTest(response.data);
+      console.log(fiedlsTest);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
+    fetchData();
     get(child(dbRef, `fields`))
       .then((snapshot) => {
         if (snapshot.exists()) {

@@ -24,6 +24,7 @@ import {
 import { getDatabase, ref, set } from "firebase/database";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { AppleAuthenticationCredential } from "expo-apple-authentication";
+import { server } from "~/config/database/common";
 
 export interface AuthProviderProps {
   children?: ReactNode;

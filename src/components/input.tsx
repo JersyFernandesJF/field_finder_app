@@ -26,7 +26,6 @@ export const Input: React.FC<InputProps> = ({
   right,
   number,
   security,
-  wrong = false,
   ...props
 }) => {
   const { colors } = useTheme();
@@ -42,7 +41,7 @@ export const Input: React.FC<InputProps> = ({
     standard &&
     ({
       borderWidth: 0.5,
-      borderColor: wrong ? "red" : colors.dark[2],
+      borderColor: colors.dark[2],
       backgroundColor: colors.white,
       alignItems: "center",
       borderRadius: 12,
@@ -50,6 +49,7 @@ export const Input: React.FC<InputProps> = ({
       height: 52,
       maxWidth: 365,
     } as ViewStyle);
+
   return (
     <Block row style={boxStyles}>
       {left && left}

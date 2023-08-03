@@ -3,14 +3,14 @@ import { Block } from "./block";
 import { Text } from "./text";
 import { CheckIncludeSvgIcon } from "~/assets/icons";
 
-type IncludProps = {
+type IncludeProps = {
   description: string;
 };
 
-export const Include: React.FC<IncludProps> = ({ description, ...props }) => {
+export const Include: React.FC<IncludeProps> = ({ description, ...props }) => {
   const { colors, fonts } = useTheme();
   return (
-    <Block mt={20} center row>
+    <Block mt={20} justifyContent="flex-start" row ml={10}>
       <CheckIncludeSvgIcon />
       <Block marginHorizontal={20}>
         <Text fontSize={13} color={colors.dark[1]}>

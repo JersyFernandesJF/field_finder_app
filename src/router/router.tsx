@@ -13,7 +13,8 @@ import {
   CreateEventScreen,
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
-import { StatusBar } from "expo-status-bar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { NavigationActions } from "react-navigation";
 
 export type MainStackParamsList = {
   SignUpOptions: undefined;
@@ -40,6 +41,15 @@ const MainStack = createNativeStackNavigator<MainStackParamsList>();
 
 export const Router = () => {
   const { colors, fonts } = useTheme();
+  const getIdToken = async () => {
+    try {
+      const idToken = await AsyncStorage.getItem("idToken");
+      return idToken;
+    } catch (error) {
+      console.log("Erro ao obter o idToken:", error);
+      return null;
+    }
+  };
 
   return (
     <MainStack.Navigator>

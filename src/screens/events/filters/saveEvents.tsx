@@ -5,23 +5,14 @@ import { Block, Button, Text, Comment, Include, Input } from "~/components";
 export const SaveEvents = () => (
   <Block>
     <Block>
-      <Input
-        right={<SearchSvgIcon style={{ marginLeft: 10, marginRight: 10 }} />}
-        placeholder="Search for events"
-        standard
-      />
-      <Block mt={15}>
-        <Button
-          row
-          right={<PencilSvgIcon style={{ marginLeft: 10 }} />}
-          defaultStyle
-        >
-          Create Event
-        </Button>
-      </Block>
+      <Button
+        row
+        right={<PencilSvgIcon style={{ marginLeft: 10 }} />}
+        defaultStyle
+      >
+        Create Event
+      </Button>
     </Block>
-
-    <Text fontSize={17}>Category</Text>
-    <Text fontSize={17}>All Events</Text>
+    <Text fontSize={17}>Draft</Text>
   </Block>
 );

@@ -1,27 +1,42 @@
-import * as React from "react";
-import { PencilSvgIcon, SearchSvgIcon } from "~/assets/icons";
-import { Block, Button, Text, Comment, Include, Input } from "~/components";
+import React, { useState } from "react";
+import { PencilSvgIcon } from "~/assets/icons";
+import { Block, Button, Text, CreateEventForm } from "~/components";
+import { useTheme } from "~/hooks/theme";
 
-export const MyEvents = () => (
-  <Block>
-    <Block>
-      <Input
-        right={<SearchSvgIcon style={{ marginLeft: 10, marginRight: 10 }} />}
-        placeholder="Search for events"
-        standard
-      />
-      <Block mt={15}>
-        <Button
-          row
-          right={<PencilSvgIcon style={{ marginLeft: 10 }} />}
-          defaultStyle
-        >
-          Create Event
-        </Button>
-      </Block>
+export const MyEvents = () => {
+  const [data, setData] = useState(false);
+  const { colors } = useTheme();
+
+  return (
+    <Block flex={1} justifyContent="center">
+      {!data && (
+        <Block flex={2} justifyContent="space-between">
+          <Block flex={3} justifyContent="flex-end">
+            <Block center>
+              <Text fontSize={22}>Your list of events is empty</Text>
+              <Text fontSize={15} color={colors.dark[1]}>
+                Search for events
+              </Text>
+            </Block>
+          </Block>
+
+          <Block flex={3} justifyContent="flex-end">
+            <Block>
+              <Button
+                row
+                right={<PencilSvgIcon style={{ marginLeft: 10 }} />}
+                defaultStyle
+                onPress={() => {
+                  setData(true);
+                }}
+              >
+                Create Event
+              </Button>
+            </Block>
+          </Block>
+        </Block>
+      )}
+      {data && <CreateEventForm />}
     </Block>
-
-    <Text fontSize={17}>Category</Text>
-    <Text fontSize={17}>All Events</Text>
-  </Block>
-);
+  );
+};

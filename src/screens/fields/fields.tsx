@@ -62,11 +62,7 @@ export const FieldsScreen = () => {
             </Text>
           </Block>
 
-          <ScrollView
-            style={{ height: 200 }}
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-          >
+          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
             {Array(4)
               .fill(1)
               .map((_, index) => {

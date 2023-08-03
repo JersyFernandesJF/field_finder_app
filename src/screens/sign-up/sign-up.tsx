@@ -1,8 +1,16 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useState } from "react";
-import { EyeSVGIcon } from "~/assets/icons";
+import { useRef, useState } from "react";
+import { Alert, StyleSheet, Pressable } from "react-native";
+import PhoneInput from "react-native-phone-number-input";
 import { useTheme } from "~/hooks/theme";
-import { Block, Button, InputFormField, Text } from "~/components";
+import {
+  Block,
+  Button,
+  InputFormField,
+  Text,
+  InputFormFieldPassword,
+  InputFormFieldNumber,
+} from "~/components";
 import { MainStackParamsList } from "~/router";
 import { useAuth } from "~/config/firebase/Providers/AuthProvider";
 
@@ -15,13 +23,11 @@ interface SignUpFormValues {
 }
 export const SignUpScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
-  const [showPassword, setShowPassword] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [ShowConfirmPassword, setShowConfirmPassword] = useState(true);
   const { signUp } = useAuth();
 
   async function SignUp() {
@@ -60,43 +66,22 @@ export const SignUpScreen = ({ navigation }: Props) => {
           value={email}
         />
         <Block my={10} />
-
-        <InputFormField
-          standard
-          placeholder="xxx xxx xxx"
-          label="Phone Number"
-          onChangeText={setNumber}
-          value={number}
-        />
+        <InputFormFieldNumber label="Number Phone" />
         <Block my={10} />
 
-        <InputFormField
-          right={
-            <EyeSVGIcon
-              onPress={() => setShowPassword(!showPassword)}
-              style={{ marginRight: 10 }}
-            />
-          }
+        <InputFormFieldPassword
           standard
-          security={showPassword}
           placeholder="Password"
           onChangeText={setPassword}
           label="Password"
         />
         <Block my={10} />
 
-        <InputFormField
+        <InputFormFieldPassword
           standard
-          right={
-            <EyeSVGIcon
-              onPress={() => setShowConfirmPassword(!ShowConfirmPassword)}
-              style={{ marginRight: 10 }}
-            />
-          }
           onChangeText={setConfirmPassword}
           placeholder="Password"
           label="Confirm Password"
-          security={ShowConfirmPassword}
         />
       </Block>
 

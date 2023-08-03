@@ -1,12 +1,15 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, InputFormField, Text } from "~/components";
+import { Block, Button, InputVerifyGmail, Text } from "~/components";
 import { MainStackParamsList } from "~/router";
 import { useTheme } from "~/hooks/theme";
+import { useEffect, useState } from "react";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "VerificationCode">;
 
 export const VerificationCodeScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
+  const [count, setCount] = useState(45);
+
   return (
     <Block flex={1} px={30}>
       <Block my={30}>
@@ -18,11 +21,10 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
         </Text>
       </Block>
       <Block row justifyContent="space-around">
-        <InputFormField standard number placeholder="1" />
-        <InputFormField standard number placeholder="2" />
-        <InputFormField standard number placeholder="5" />
-        <InputFormField standard number placeholder="3" />
-        <InputFormField standard number placeholder="4" />
+        <InputVerifyGmail placeholder="1" />
+        <InputVerifyGmail placeholder="2" />
+        <InputVerifyGmail placeholder="3" />
+        <InputVerifyGmail placeholder="4" />
       </Block>
       <Block row my={18}>
         <Text
@@ -40,7 +42,7 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
           size={15}
         >
           {" "}
-          00:45
+          00:{count}
         </Text>
       </Block>
 

@@ -1,11 +1,19 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useState } from "react";
-import { EmailSVGIcon, EyeSVGIcon } from "~/assets/icons";
-import { Block, Button, CheckBox, InputFormField, Text } from "~/components";
+import { EmailSVGIcon } from "~/assets/icons";
+import {
+  Block,
+  Button,
+  CheckBox,
+  InputFormField,
+  Text,
+  InputFormFieldPassword,
+} from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
 import { useAuth } from "~/config/firebase/Providers/AuthProvider";
 import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "SignIn">;
 
@@ -14,26 +22,32 @@ export const SignInScreen = ({ navigation }: Props) => {
   const [showPassword, setShowPassword] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
   const { signIn } = useAuth();
 
   async function Sigin() {
     try {
       await signIn(email, password)
-        .then((_) => {
+        .then(async (userCredential) => {
+          const user = userCredential.user;
+          const idToken = await user.getIdToken();
+          if (remember) await AsyncStorage.setItem("token", idToken);
           navigation.navigate("HomeTabs");
         })
         .catch((_) => {
           Alert.alert("Error", "Wrong email or password!");
         });
-    } catch (error: unknown) {
+    } catch (error) {
       console.log(error);
     }
   }
+
   return (
     <Block safe flex={1} justifyContent="space-between" px={30}>
       <Block>
         <InputFormField
           standard
+          security={false}
           left={<EmailSVGIcon style={{ marginRight: 10 }} />}
           placeholder="Email"
           label="Email"
@@ -41,19 +55,15 @@ export const SignInScreen = ({ navigation }: Props) => {
           autoCapitalize="none"
         />
         <Block mt={10}>
-          <InputFormField
+          <InputFormFieldPassword
             standard
-            right={
-              <EyeSVGIcon onPress={() => setShowPassword(!showPassword)} />
-            }
             placeholder="Password"
             label="Password"
             onChangeText={setPassword}
-            security={showPassword}
           />
         </Block>
         <Block my={10}>
-          <CheckBox />
+          <CheckBox active={remember} onPress={() => setRemember(!remember)} />
         </Block>
       </Block>
       <Block>

@@ -1,6 +1,15 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text, Comment, Include, Slide } from "~/components";
+import {
+  Block,
+  Button,
+  Text,
+  Comment,
+  Include,
+  Slide,
+  ShareAddress,
+} from "~/components";
 import { useRef, useState } from "react";
+import MapView, { Marker } from "react-native-maps";
 import {
   Animated,
   Dimensions,
@@ -52,7 +61,9 @@ export const FieldsDetailsScreen = () => {
   const viewableItemsChanged = useRef(({ viewableItems }: any) => {
     setCurrentIndex(viewableItems[0].index);
   }).current;
+
   const viewConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
+
   return (
     <Block flex={1} style={{ backgroundColor: "#ffff" }}>
       <ScrollView>
@@ -194,6 +205,7 @@ export const FieldsDetailsScreen = () => {
               {params.details ? params.details : "iweuhnkdsniod"}
             </Text>
           </Block>
+
           <Block mb={30}>
             <Block mb={10}>
               <Text fontSize={16} font={fonts.inter[600]}>
@@ -206,6 +218,17 @@ export const FieldsDetailsScreen = () => {
               })}
             </Block>
           </Block>
+
+          <Block mb={30}>
+            <Block mb={10}>
+              <Text fontSize={16} font={fonts.inter[600]}>
+                Address
+              </Text>
+            </Block>
+            <MapView style={styles.map}></MapView>
+            <ShareAddress address="Rua dom Afonso Henriques, 655"></ShareAddress>
+          </Block>
+
           <Block mb={30}>
             <Block mb={10}>
               <Text fontSize={16} font={fonts.inter[600]}>
@@ -253,5 +276,12 @@ const styles = StyleSheet.create({
     width: 5,
     borderRadius: 10,
     marginRight: 6,
+  },
+  map: {
+    width: "100%",
+    height: 150,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 12,
   },
 });

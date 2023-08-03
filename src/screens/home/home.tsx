@@ -4,7 +4,6 @@ import MapView, { Marker } from "react-native-maps";
 import {
   Block,
   Button,
-  CardIformation,
   Input,
   Text,
   Directions,
@@ -23,6 +22,8 @@ import { eventPlace, handleSearch } from "~/config/googleAPI/googleServices";
 import { useTheme } from "~/hooks/theme";
 
 type LocationDeltaType = {
+  latitude: number;
+  longitude: number;
   latitudeDelta: number;
   longitudeDelta: number;
 };
@@ -30,12 +31,18 @@ type LocationDeltaType = {
 type Props = NativeStackScreenProps<MainStackParamsList, "HomeTabs">;
 
 export const HomeScreen = () => {
+  const [mapRegion, setMapRegion] = useState<LocationDeltaType>({
+    latitude: 0,
+    longitude: 0,
+    latitudeDelta: 0,
+    longitudeDelta: 0,
+  });
   const { colors } = useTheme();
   const navigation = useNavigation<Props["navigation"]>();
   const [location, setLocation] = useState<Location.LocationObject | null>(
     null
   );
-  const [showCardInformation, setShowCardInformation] = useState(false);
+
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [sports, setSports] = useState(useSportsList());
@@ -74,6 +81,13 @@ export const HomeScreen = () => {
       }
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
+      const updatedMapRegion = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+      };
+      setMapRegion(updatedMapRegion);
     })();
   }, []);
 
@@ -91,7 +105,6 @@ export const HomeScreen = () => {
   } else if (location) {
     text = JSON.stringify(location);
   }
-
   return (
     <Block flex={1} center>
       <StatusBar barStyle="dark-content" />
@@ -100,6 +113,9 @@ export const HomeScreen = () => {
         tintColor={colors.green[1]}
         loadingEnabled
         style={styles.map}
+        onRegionChange={(region) => {
+          setMapRegion(region);
+        }}
         mapPadding={{
           top: 30,
           right: 0,
@@ -129,7 +145,6 @@ export const HomeScreen = () => {
           onChangeText={(text) => {
             handleSearch(text).then((data) => {
               setResults(data);
-              console.log(results);
             });
           }}
           standard

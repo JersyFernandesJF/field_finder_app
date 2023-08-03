@@ -5,7 +5,7 @@ import React, {
   useContext,
   createContext,
 } from "react";
-import { app, auth, ClientID } from "../firebase";
+import { app, auth } from "../firebase";
 import {
   Auth,
   UserCredential,
@@ -15,16 +15,11 @@ import {
   sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
-  getRedirectResult,
-  signInWithCredential,
+  signInWithCustomToken,
   AuthCredential,
-  OAuthProvider,
 } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import * as AppleAuthentication from "expo-apple-authentication";
-import { AppleAuthenticationCredential } from "expo-apple-authentication";
-import { server } from "~/config/database/common";
 
 export interface AuthProviderProps {
   children?: ReactNode;
@@ -52,6 +47,7 @@ export interface AuthContextModel {
   signInWithGoogle: () => Promise<UserCredential>;
   sigInWithApple: () => Promise<UserCredential>;
   sendPasswordResetEmail?: (email: string) => Promise<void>;
+  signInWithToken: (auth: string) => Promise<UserCredential>;
 }
 
 export const AuthContext = React.createContext<AuthContextModel>(
@@ -91,6 +87,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
   function signIn(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(auth, email, password);
+  }
+
+  function signInWithToken(idToken: string): Promise<UserCredential> {
+    return signInWithCustomToken(auth, idToken);
   }
   function resetPassword(email: string): Promise<void> {
     return sendPasswordResetEmail(auth, email);
@@ -136,6 +136,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     resetPassword,
     signInWithGoogle,
     sigInWithApple,
+    signInWithToken,
     auth,
   };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

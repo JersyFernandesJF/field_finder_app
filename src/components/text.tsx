@@ -13,6 +13,7 @@ type TextProps = RNTextProps & {
   size?: TextStyle["fontSize"];
   fontSize?: TextStyle["fontSize"];
   textDecorationLine?: TextStyle["textDecorationLine"];
+  fontWeight?: TextStyle["fontWeight"];
   highlighted?: boolean;
   chips?: boolean;
 };
@@ -28,6 +29,7 @@ export const Text: React.FC<TextProps> = ({
   highlighted,
   textDecorationLine,
   chips,
+  fontWeight,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
@@ -37,6 +39,7 @@ export const Text: React.FC<TextProps> = ({
       fontSize: 14,
       color: colors.green[1],
     },
+    fontWeight !== undefined && { fontWeight },
     textAlign !== undefined && { textAlign },
     textDecorationLine !== undefined && { textDecorationLine },
     color !== undefined && { color },

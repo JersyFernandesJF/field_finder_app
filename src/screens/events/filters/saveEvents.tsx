@@ -1,18 +1,36 @@
 import * as React from "react";
-import { PencilSvgIcon, SearchSvgIcon } from "~/assets/icons";
-import { Block, Button, Text, Comment, Include, Input } from "~/components";
+import { Block, Text, EventCard } from "~/components";
+import { useTheme } from "~/hooks/theme";
 
-export const SaveEvents = () => (
-  <Block>
+export const SaveEvents = () => {
+  const { colors } = useTheme();
+
+  return (
     <Block>
-      <Button
-        row
-        right={<PencilSvgIcon style={{ marginLeft: 10 }} />}
-        defaultStyle
-      >
-        Create Event
-      </Button>
+      <Block>
+        <Text color={colors.green[1]} fontWeight="600">
+          Monday, August 3RD, 2023
+        </Text>
+        <EventCard event />
+      </Block>
+      <Block>
+        <Text color={colors.green[1]} fontWeight="600">
+          Monday, August 3RD, 2023
+        </Text>
+        <EventCard event />
+      </Block>
+      <Block>
+        <Text color={colors.green[1]} fontWeight="600">
+          Monday, August 3RD, 2023
+        </Text>
+        <EventCard event />
+      </Block>
+      <Block>
+        <Text color={colors.green[1]} fontWeight="600">
+          Monday, August 3RD, 2023
+        </Text>
+        <EventCard event />
+      </Block>
     </Block>
-    <Text fontSize={17}>Draft</Text>
-  </Block>
-);
+  );
+};

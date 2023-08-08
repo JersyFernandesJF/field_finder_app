@@ -26,20 +26,21 @@ export const SignInScreen = ({ navigation }: Props) => {
   const { signIn } = useAuth();
 
   async function Sigin() {
-    try {
-      await signIn(email, password)
-        .then(async (userCredential) => {
-          const user = userCredential.user;
-          const idToken = await user.getIdToken();
-          if (remember) await AsyncStorage.setItem("token", idToken);
-          navigation.navigate("HomeTabs");
-        })
-        .catch((_) => {
-          Alert.alert("Error", "Wrong email or password!");
-        });
-    } catch (error) {
-      console.log(error);
-    }
+    navigation.navigate("HomeTabs");
+    // try {
+    //   await signIn(email, password)
+    //     .then(async (userCredential) => {
+    //       const user = userCredential.user;
+    //       const idToken = await user.getIdToken();
+    //       if (remember) await AsyncStorage.setItem("token", idToken);
+    //       navigation.navigate("HomeTabs");
+    //     })
+    //     .catch((_) => {
+    //       Alert.alert("Error", "Wrong email or password!");
+    //     });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   return (

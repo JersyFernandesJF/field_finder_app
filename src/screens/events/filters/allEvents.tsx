@@ -1,27 +1,38 @@
 import * as React from "react";
 import { PencilSvgIcon, SearchSvgIcon } from "~/assets/icons";
-import { Block, Button, Text, Comment, Include, Input } from "~/components";
+import {
+  Block,
+  Text,
+  Input,
+  HorizontalDatePicker,
+  EventCard,
+} from "~/components";
+import { useTheme } from "~/hooks/theme";
 
-export const AllEvents = () => (
-  <Block>
+export const AllEvents = () => {
+  const { colors } = useTheme();
+  return (
     <Block>
-      <Input
-        right={<SearchSvgIcon style={{ marginLeft: 10, marginRight: 10 }} />}
-        placeholder="Search for events"
-        standard
-      />
-      <Block mt={15}>
-        <Button
-          row
-          right={<PencilSvgIcon style={{ marginLeft: 10 }} />}
-          defaultStyle
-        >
-          Create Event
-        </Button>
+      <Block>
+        <Input
+          right={<SearchSvgIcon style={{ marginLeft: 10, marginRight: 10 }} />}
+          placeholder="Search for events"
+          standard
+        />
+        <Block>
+          <Block>
+            <HorizontalDatePicker days={14} />
+          </Block>
+
+          <Text color={colors.green[1]} fontWeight="600">
+            Monday, August 3RD, 2023
+          </Text>
+          <EventCard event />
+          <EventCard event />
+          <EventCard event />
+          <EventCard event />
+        </Block>
       </Block>
     </Block>
-
-    <Text fontSize={17}>Category</Text>
-    <Text fontSize={17}>All Events</Text>
-  </Block>
-);
+  );
+};

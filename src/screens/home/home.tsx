@@ -8,6 +8,7 @@ import {
   Text,
   Directions,
   PointEvent,
+  HorizontalFilterButton,
 } from "~/components";
 import * as Location from "expo-location";
 import { PinSVGIcon } from "~/assets/icons";
@@ -149,25 +150,7 @@ export const HomeScreen = () => {
           }}
           standard
         />
-        <Block mt={10}>
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-            {sports.map((element, index) => {
-              return (
-                <Button chips>
-                  <Block
-                    center
-                    justifyContent="space-around"
-                    paddingHorizontal={10}
-                    style={{ flexDirection: "row" }}
-                  >
-                    {setIcon(element.name)}
-                    <Text chips>{element.name}</Text>
-                  </Block>
-                </Button>
-              );
-            })}
-          </ScrollView>
-        </Block>
+        <HorizontalFilterButton />
       </Block>
     </Block>
   );

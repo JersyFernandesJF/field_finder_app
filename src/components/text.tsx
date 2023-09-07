@@ -15,7 +15,6 @@ type TextProps = RNTextProps & {
   textDecorationLine?: TextStyle["textDecorationLine"];
   fontWeight?: TextStyle["fontWeight"];
   highlighted?: boolean;
-  chips?: boolean;
 };
 
 export const Text: React.FC<TextProps> = ({
@@ -28,17 +27,12 @@ export const Text: React.FC<TextProps> = ({
   fontSize,
   highlighted,
   textDecorationLine,
-  chips,
   fontWeight,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
 
   const textStyles = StyleSheet.flatten([
-    chips !== undefined && {
-      fontSize: 14,
-      color: colors.green[1],
-    },
     fontWeight !== undefined && { fontWeight },
     textAlign !== undefined && { textAlign },
     textDecorationLine !== undefined && { textDecorationLine },

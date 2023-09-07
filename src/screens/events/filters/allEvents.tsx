@@ -6,6 +6,7 @@ import {
   Input,
   HorizontalDatePicker,
   EventCard,
+  HorizontalFilterButton,
 } from "~/components";
 import { useTheme } from "~/hooks/theme";
 
@@ -21,6 +22,7 @@ export const AllEvents = () => {
         />
         <Block>
           <Block>
+            <HorizontalFilterButton />
             <HorizontalDatePicker days={14} />
           </Block>
 

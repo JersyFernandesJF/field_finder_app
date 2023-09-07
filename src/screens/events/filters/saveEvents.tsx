@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Block, Text, EventCard } from "~/components";
+import { Block, Text, EventCard, HorizontalFilterButton } from "~/components";
 import { useTheme } from "~/hooks/theme";
 
 export const SaveEvents = () => {
@@ -7,6 +7,7 @@ export const SaveEvents = () => {
 
   return (
     <Block>
+      <HorizontalFilterButton />
       <Block>
         <Text color={colors.green[1]} fontWeight="600">
           Monday, August 3RD, 2023

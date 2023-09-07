@@ -51,7 +51,7 @@ export const Button: React.FC<ButtonProps> = ({
       height: 26,
       minWidth: 74,
       flex: 1,
-      backgroundColor: colors.white,
+      backgroundColor: active ? colors.green[1] : colors.white,
       justifyContent: "center",
       borderRadius: 20,
       alignItems: "center",

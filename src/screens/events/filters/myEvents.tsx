@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { PencilSvgIcon } from "~/assets/icons";
-import { Block, Button, Text, CreateEventForm, EventCard } from "~/components";
+import {
+  Block,
+  Button,
+  Text,
+  CreateEventForm,
+  EventCard,
+  HorizontalFilterButton,
+} from "~/components";
 import { useTheme } from "~/hooks/theme";
 
 export const MyEvents = () => {
@@ -39,6 +46,10 @@ export const MyEvents = () => {
 
             {list && (
               <Block>
+                <Block>
+                  <HorizontalFilterButton />
+                </Block>
+
                 <Block>
                   <Text color={colors.green[1]} fontWeight="600">
                     Monday, August 3RD, 2023

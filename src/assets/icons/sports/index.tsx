@@ -14,7 +14,7 @@ type IconsSports = {
 };
 
 export const IconsSports: IconsSports = {
-  Football: <FootbalIcon style={{ marginRight: 5 }} />,
+  Football: <FootbalIcon style={{ marginRight: 5 }} fill={"red"} />,
   Swimming: <SwimmingIcon style={{ marginRight: 5 }} />,
   Cricket: <CricketIcon style={{ marginRight: 5 }} />,
   Baseball: <BaseBallIcon style={{ marginRight: 5 }} />,

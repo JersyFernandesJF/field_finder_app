@@ -31,20 +31,21 @@ export const SignUpScreen = ({ navigation }: Props) => {
   const { signUp } = useAuth();
 
   async function SignUp() {
-    try {
-      if (password == confirmPassword) {
-        await signUp(email, password, name, number)
-          .then((_) => {
-            navigation.navigate("HomeTabs");
-          })
-          .catch((err) => {
-            console.log(err.code);
-            console.log(err.message);
-          });
-      }
-    } catch (error: unknown) {
-      console.log(error);
-    }
+    navigation.navigate("Interest");
+    // try {
+    //   if (password == confirmPassword) {
+    //     await signUp(email, password, name, number)
+    //       .then((_) => {
+    //         navigation.navigate("HomeTabs");
+    //       })
+    //       .catch((err) => {
+    //         console.log(err.code);
+    //         console.log(err.message);
+    //       });
+    //   }
+    // } catch (error: unknown) {
+    //   console.log(error);
+    // }
   }
 
   return (

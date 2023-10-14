@@ -11,6 +11,7 @@ import {
   OnboardingScreen,
   FieldsDetailsScreen,
   CreateEventScreen,
+  InterestScreen,
 } from "~/screens";
 import { HomeTabsRouter } from "./home-tabs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -27,6 +28,7 @@ export type MainStackParamsList = {
   ChangePassword: undefined;
   Onboarding: undefined;
   CreateEvent: undefined;
+  Interest: undefined;
   FieldsDetails: {
     name: string;
     price: number;
@@ -97,6 +99,14 @@ export const Router = () => {
           component={SignUpScreen}
           options={{
             title: "Sign Up",
+            headerTitleAlign: "center",
+          }}
+        />
+        <MainStack.Screen
+          name="Interest"
+          component={InterestScreen}
+          options={{
+            title: "What are you interested in ?",
             headerTitleAlign: "center",
           }}
         />

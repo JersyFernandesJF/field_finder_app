@@ -3,7 +3,7 @@ import { Block } from "./block";
 import { Input } from "./input";
 import { Text } from "./text";
 import { useRef, useState } from "react";
-import { StyleSheet, ViewStyle } from "react-native";
+import { ViewStyle } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
 
 type InputFormFieldNumber = React.ComponentProps<typeof Input> & {

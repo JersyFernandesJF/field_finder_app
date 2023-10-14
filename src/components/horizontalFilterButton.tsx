@@ -12,8 +12,12 @@ export const HorizontalFilterButton = () => {
   });
   const { colors, fonts } = useTheme();
   const Icons = FilterIcons(listIcons);
-  const setIcon = (name: string) => {
-    if (Object.keys(Icons).includes(name)) return Icons[name];
+
+  const setIcon = (name: string, active: boolean) => {
+    if (Object.keys(Icons).includes(name)) {
+      const IconComponent = Icons[name];
+      return <IconComponent active={active} style={{ marginRight: 5 }} />;
+    }
   };
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -33,7 +37,7 @@ export const HorizontalFilterButton = () => {
                 paddingHorizontal={10}
                 style={{ flexDirection: "row" }}
               >
-                {setIcon(element.name)}
+                {setIcon(element.name, currentIndex == index)}
                 <Text
                   fontSize={14}
                   color={index == currentIndex ? colors.white : colors.green[1]}

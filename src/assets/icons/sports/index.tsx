@@ -10,19 +10,19 @@ import { IceHockeyIcon } from "./iceHockey-icon";
 import { TennisIcon } from "./tennis-icon";
 
 type IconsSports = {
-  [key: string]: React.ReactElement;
+  [key: string]: any;
 };
 
 export const IconsSports: IconsSports = {
-  Football: <FootbalIcon style={{ marginRight: 5 }} fill={"red"} />,
-  Swimming: <SwimmingIcon style={{ marginRight: 5 }} />,
-  Cricket: <CricketIcon style={{ marginRight: 5 }} />,
-  Baseball: <BaseBallIcon style={{ marginRight: 5 }} />,
-  Basketball: <BasketBallIcon style={{ marginRight: 5 }} />,
-  "Ice Hockey": <IceHockeyIcon style={{ marginRight: 5 }} />,
-  Tennis: <TennisIcon style={{ marginRight: 5 }} />,
-  Volleyball: <VoleiballIcon style={{ marginRight: 5 }} />,
-  "American Football": <AmericanFootbalIcon style={{ marginRight: 5 }} />,
+  Football: FootbalIcon,
+  Swimming: SwimmingIcon,
+  Cricket: CricketIcon,
+  Baseball: BaseBallIcon,
+  Basketball: BasketBallIcon,
+  "Ice Hockey": IceHockeyIcon,
+  Tennis: TennisIcon,
+  Volleyball: VoleiballIcon,
+  "American Football": AmericanFootbalIcon,
 };
 export function FilterIcons(names: string[]): IconsSports {
   const filteredIcons: IconsSports = {};
@@ -34,4 +34,7 @@ export function FilterIcons(names: string[]): IconsSports {
   }
 
   return filteredIcons;
+}
+function renderIcon(name: string) {
+  return <></>;
 }

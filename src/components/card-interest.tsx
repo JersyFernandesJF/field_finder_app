@@ -1,24 +1,23 @@
-import { CheckSVGIcon } from "~/assets/icons";
+import React, { useState } from "react";
 import { useTheme } from "~/hooks/theme";
 import { Block } from "./block";
 import { Text } from "./text";
 import { Button } from "./button";
-import { PressableProps, Image } from "react-native";
+import { PressableProps, Image, StyleSheet, ImageStyle } from "react-native";
 import { CheckInterestSVG } from "~/assets/icons";
 import type { ImageSourcePropType } from "react-native";
 
 type checkBoxProps = PressableProps & {
-  active?: boolean;
   tittle: string;
   imageSource: ImageSourcePropType;
 };
 
 export const CardInterest: React.FC<checkBoxProps> = ({
-  active,
   tittle,
   imageSource,
-  ...props
 }) => {
+  const [active, setActive] = useState(false);
+
   const { fonts, colors } = useTheme();
 
   const CardInterest = {
@@ -28,28 +27,27 @@ export const CardInterest: React.FC<checkBoxProps> = ({
     height: 130,
     width: 105,
   };
+  const ImageStyles: ImageStyle = {
+    height: 105,
+    width: 105,
+    borderRadius: 15,
+    alignItems: "flex-end",
+    marginBottom: 10,
+  };
 
+  const clickCard = () => {
+    setActive(!active);
+  };
   return (
-    <Button {...props} style={CardInterest}>
+    <Button style={CardInterest} onPress={() => clickCard()}>
       <Block center flex={1}>
-        <Block
-          style={{
-            height: 105,
-            width: 105,
-            alignItems: "flex-end",
-            marginBottom: 5,
-          }}
-        >
+        <Block style={ImageStyles}>
           <Image
             source={imageSource}
-            style={{
-              height: 105,
-              width: 105,
-              borderRadius: 15,
-            }}
+            style={ImageStyles}
             accessibilityIgnoresInvertColors
           />
-          <CheckInterestSVG style={{ position: "absolute" }} />
+          {active && <CheckInterestSVG style={{ position: "absolute" }} />}
         </Block>
 
         <Text>{tittle}</Text>

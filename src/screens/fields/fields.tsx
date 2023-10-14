@@ -27,33 +27,14 @@ export const FieldsScreen = () => {
   };
 
   return (
-    <Block flex={1} center safe>
-      <ScrollView>
+    <Block flex={1} center>
+      <ScrollView style={{ marginTop: 60 }}>
         <Block center>
           <Input
             left={<PinSVGIcon style={{ marginLeft: 10, marginRight: 10 }} />}
             placeholder="Enter an address, Field or Sport"
             standard
           />
-        </Block>
-        <Block mt={10}>
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-            {sports.map((element, index) => {
-              return (
-                <Button chips>
-                  <Block
-                    center
-                    justifyContent="space-around"
-                    paddingHorizontal={10}
-                    style={{ flexDirection: "row" }}
-                  >
-                    {setIcon(element.name)}
-                    <Text chips>{element.name}</Text>
-                  </Block>
-                </Button>
-              );
-            })}
-          </ScrollView>
         </Block>
         <Block marginTop={30}>
           <Block mb={10} marginLeft={20}>
@@ -89,7 +70,6 @@ export const FieldsScreen = () => {
               })}
           </ScrollView>
         </Block>
-
         <Block px={20} mt={20}>
           <Block marginVertical={10}>
             <Text fontSize={16} font={fonts.inter[600]}>

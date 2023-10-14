@@ -22,7 +22,6 @@ export const AllEvents = () => {
         />
         <Block>
           <Block>
-            <HorizontalFilterButton />
             <HorizontalDatePicker days={14} />
           </Block>
 

@@ -3,23 +3,56 @@ import { useTheme } from "~/hooks/theme";
 import { Block } from "./block";
 import { Text } from "./text";
 import { Button } from "./button";
-import { PressableProps } from "react-native";
+import { PressableProps, Image } from "react-native";
+import { CheckInterestSVG } from "~/assets/icons";
+import type { ImageSourcePropType } from "react-native";
 
 type checkBoxProps = PressableProps & {
   active?: boolean;
+  tittle: string;
+  imageSource: ImageSourcePropType;
 };
 
-export const CardInterest: React.FC<checkBoxProps> = ({ active, ...props }) => {
+export const CardInterest: React.FC<checkBoxProps> = ({
+  active,
+  tittle,
+  imageSource,
+  ...props
+}) => {
   const { fonts, colors } = useTheme();
+
+  const CardInterest = {
+    color: colors.white,
+    fontFamily: fonts.inter[500],
+    fontSize: 14,
+    height: 130,
+    width: 105,
+  };
+
   return (
-    <Button {...props}>
-      <Block row>
-        <CheckSVGIcon remember={active} />
-        <Block ml={10}>
-          <Text size={13} font={fonts.inter[400]} color={colors.dark[1]}>
-            Remember me
-          </Text>
+    <Button {...props} style={CardInterest}>
+      <Block center flex={1}>
+        <Block
+          style={{
+            height: 105,
+            width: 105,
+            alignItems: "flex-end",
+            marginBottom: 5,
+          }}
+        >
+          <Image
+            source={imageSource}
+            style={{
+              height: 105,
+              width: 105,
+              borderRadius: 15,
+            }}
+            accessibilityIgnoresInvertColors
+          />
+          <CheckInterestSVG style={{ position: "absolute" }} />
         </Block>
+
+        <Text>{tittle}</Text>
       </Block>
     </Button>
   );

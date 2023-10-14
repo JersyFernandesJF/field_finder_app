@@ -59,7 +59,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {
             </Block>
             <Block row>
               <Block row mr={5}>
-                <FootbalIcon />
+                <FootbalIcon active />
                 <Text fontSize={11} color={colors.green[1]}>
                   Footbal
                 </Text>

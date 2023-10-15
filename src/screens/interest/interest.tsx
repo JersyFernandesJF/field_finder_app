@@ -20,7 +20,7 @@ export const InterestScreen = ({ navigation }: Props) => {
         />
       </Block>
       <Block my={12}>
-        <Button defaultStyle>Create Account</Button>
+        <Button defaultStyle>Finish</Button>
       </Block>
     </Block>
   );

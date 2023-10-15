@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
-import { Platform, ScrollView, StatusBar, StyleSheet } from "react-native";
+import {
+  Platform,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import {
   Block,
   Button,
   Input,
   Text,
+  DetailModal,
   Directions,
   PointEvent,
   HorizontalFilterButton,
@@ -32,6 +41,7 @@ type LocationDeltaType = {
 type Props = NativeStackScreenProps<MainStackParamsList, "HomeTabs">;
 
 export const HomeScreen = () => {
+  const [modalView, setModalView] = useState(false);
   const [mapRegion, setMapRegion] = useState<LocationDeltaType>({
     latitude: 0,
     longitude: 0,
@@ -72,7 +82,10 @@ export const HomeScreen = () => {
     { latitude: 41.1705167, longitude: -8.6749572 },
     { latitude: 41.1461492, longitude: -8.6521727 },
   ];
-
+  const OpenDetails = (index: number) => {
+    setModalView(!modalView);
+    console.log(index);
+  };
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -134,7 +147,9 @@ export const HomeScreen = () => {
         {sports.map((_, index) => {
           return (
             <Marker coordinate={destination[index]} anchor={{ x: 0, y: 0 }}>
-              <PointEvent />
+              <TouchableOpacity onPressIn={() => OpenDetails(index)}>
+                <PointEvent />
+              </TouchableOpacity>
             </Marker>
           );
         })}
@@ -152,6 +167,7 @@ export const HomeScreen = () => {
         />
         <HorizontalFilterButton />
       </Block>
+      {modalView && <DetailModal />}
     </Block>
   );
 };

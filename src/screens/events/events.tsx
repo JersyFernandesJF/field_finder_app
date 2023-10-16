@@ -74,6 +74,7 @@ export const EventsScreen = () => {
         {myEvents && !all && !save && <MyEvents />}
         {save && !all && !myEvents && <SaveEvents />}
       </ScrollView>
+      <Button floatButton />
     </Block>
   );
 };

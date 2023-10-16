@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  Modal,
   Platform,
   ScrollView,
   StatusBar,
@@ -84,7 +85,6 @@ export const HomeScreen = () => {
   ];
   const OpenDetails = (index: number) => {
     setModalView(!modalView);
-    console.log(index);
   };
   useEffect(() => {
     (async () => {
@@ -167,7 +167,22 @@ export const HomeScreen = () => {
         />
         <HorizontalFilterButton />
       </Block>
-      {modalView && <DetailModal />}
+
+      <Button floatButton />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalView}
+        onRequestClose={() => {
+          setModalView(!modalView);
+        }}
+      >
+        <DetailModal
+          onClose={() => {
+            setModalView(!modalView);
+          }}
+        />
+      </Modal>
     </Block>
   );
 };

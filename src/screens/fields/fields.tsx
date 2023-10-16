@@ -111,6 +111,7 @@ export const FieldsScreen = () => {
           </Block>
         </Block>
       </ScrollView>
+      <Button floatButton />
     </Block>
   );
 };

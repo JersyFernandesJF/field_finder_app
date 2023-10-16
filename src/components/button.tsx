@@ -2,6 +2,7 @@ import { Pressable, PressableProps, StyleSheet, ViewStyle } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { Text } from "./text";
 import { Block } from "./block";
+import { FiltersSVGIcon } from "~/assets/icons";
 
 type ButtonProps = PressableProps & {
   children?: string | React.ReactNode;
@@ -17,6 +18,7 @@ type ButtonProps = PressableProps & {
   inlineButton?: Boolean;
   toggleButton?: Boolean;
   active?: Boolean;
+  floatButton?: Boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -33,12 +35,31 @@ export const Button: React.FC<ButtonProps> = ({
   inlineButton,
   chips,
   toggleButton,
+  floatButton,
   active = false,
   ...props
 }) => {
   const { colors, fonts } = useTheme();
 
   const buttonStyles = StyleSheet.flatten([
+    floatButton !== undefined && {
+      width: 50,
+      height: 50,
+      backgroundColor: colors.white,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 6,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.22,
+      shadowRadius: 2.22,
+
+      elevation: 3,
+    },
     toggleButton !== undefined && {
       backgroundColor: active ? colors.green[1] : colors.white,
       height: 26,
@@ -104,7 +125,14 @@ export const Button: React.FC<ButtonProps> = ({
     fontFamily: fonts.inter[500],
     fontSize: 14,
   };
-
+  if (floatButton)
+    return (
+      <Block position="absolute" style={{ bottom: 20, right: 10 }}>
+        <Pressable style={buttonStyles} {...props}>
+          <FiltersSVGIcon />
+        </Pressable>
+      </Block>
+    );
   return (
     <Pressable style={buttonStyles} {...props}>
       <Block row>

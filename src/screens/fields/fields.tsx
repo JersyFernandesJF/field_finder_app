@@ -42,33 +42,38 @@ export const FieldsScreen = () => {
               Popular Fields
             </Text>
           </Block>
-
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-            {Array(4)
-              .fill(1)
-              .map((_, index) => {
-                return (
-                  <Button
-                    onPress={() =>
-                      navigation.navigate("FieldsDetails", {
-                        name: "wdss",
-                        price: 34,
-                        details: "werfw",
-                        rules: ["ewrew"],
-                        address: "ewrwerw",
-                        availability: true,
-                      })
-                    }
-                  >
-                    <CardIformation
-                      name="St. Bento"
-                      price={25}
-                      imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                    />
-                  </Button>
-                );
-              })}
-          </ScrollView>
+          <Block>
+            <ScrollView
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
+              {Array(4)
+                .fill(1)
+                .map((_, index) => {
+                  return (
+                    <Button
+                      onPress={() =>
+                        navigation.navigate("FieldsDetails", {
+                          name: "wdss",
+                          price: 34,
+                          details: "werfw",
+                          rules: ["ewrew"],
+                          address: "ewrwerw",
+                          availability: true,
+                        })
+                      }
+                    >
+                      <CardIformation
+                        key={index}
+                        name="St. Bento"
+                        price={25}
+                        imageSource={require("../../assets/image/onboarding/onboarding2.png")}
+                      />
+                    </Button>
+                  );
+                })}
+            </ScrollView>
+          </Block>
         </Block>
         <Block px={20} mt={20}>
           <Block marginVertical={10}>
@@ -94,6 +99,7 @@ export const FieldsScreen = () => {
                     }
                   >
                     <CardIformation
+                      key={index}
                       name="St. Bento"
                       longCard
                       price={25}

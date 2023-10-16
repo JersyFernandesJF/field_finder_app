@@ -27,6 +27,7 @@ export const HorizontalFilterButton = () => {
         {sports.map((element, index) => {
           return (
             <Button
+              key={index}
               onPress={() => setCurrentIndex(index)}
               chips
               active={index == currentIndex}

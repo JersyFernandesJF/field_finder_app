@@ -37,7 +37,7 @@ const CARDS = [
   },
 ];
 
-const { width, height } = Dimensions.get("window");
+const { width } = Dimensions.get("window");
 
 type Props = NativeStackScreenProps<MainStackParamsList, "Onboarding">;
 

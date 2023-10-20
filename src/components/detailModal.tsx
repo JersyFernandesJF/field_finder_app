@@ -42,6 +42,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ onClose }) => {
     borderWidth: 1,
     borderColor: colors.green[1],
   } as ViewStyle;
+
   return (
     <Block center mt={22} flex={1}>
       <Block
@@ -51,7 +52,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ onClose }) => {
           height: 380,
           width: 350,
 
-          borderRadius: 14,
+          borderRadius: 12,
           shadowColor: "#000",
           shadowOffset: {
             width: 0,

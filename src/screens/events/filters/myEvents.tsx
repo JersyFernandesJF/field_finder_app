@@ -9,11 +9,16 @@ import {
   HorizontalFilterButton,
 } from "~/components";
 import { useTheme } from "~/hooks/theme";
-
-export const MyEvents = () => {
+type DetailModalProps = {
+  onClose: () => void;
+};
+export const MyEvents: React.FC<DetailModalProps> = ({ onClose }) => {
   const [data, setData] = useState(false);
   const [list, setList] = useState(true);
   const { colors } = useTheme();
+  const onOpen = () => {
+    onClose();
+  };
   //tem que colocar o eventCardInfo + o text em um so elemento
   return (
     <Block flex={1} justifyContent="center">
@@ -75,7 +80,13 @@ export const MyEvents = () => {
           </Block>
         </Block>
       )}
-      {data && <CreateEventForm />}
+      {data && (
+        <CreateEventForm
+          onClose={() => {
+            onOpen();
+          }}
+        />
+      )}
     </Block>
   );
 };

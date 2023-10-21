@@ -46,7 +46,7 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
         </Text>
       </Block>
 
-      <Block my={50}>
+      <Block center my={50}>
         <Button
           defaultStyle
           onPress={() => navigation.navigate("ChangePassword")}

@@ -154,11 +154,11 @@ export const DetailModal: React.FC<DetailModalProps> = ({ onClose }) => {
           </Block>
         </Block>
         <Block row justifyContent="space-between" px={20} mb={15}>
-          <Button defaultStyle onPress={onClose}>
+          <Button borderedSmall onPress={onClose}>
             Close
           </Button>
-          <Button defaultStyle onPress={onClose}>
-            Close
+          <Button defaultSmallStyle onPress={onClose}>
+            Join
           </Button>
         </Block>
       </Block>

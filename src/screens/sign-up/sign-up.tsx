@@ -87,7 +87,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
       </Block>
 
       <Block my={50}>
-        <Block my={12}>
+        <Block center my={12}>
           <Button defaultStyle onPress={SignUp}>
             Create Account
           </Button>

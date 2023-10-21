@@ -11,21 +11,22 @@ type Props = NativeStackScreenProps<MainStackParamsList, "ForgotPassword">;
 export const ForgotPasswordScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
   const [email, setEmail] = useState("");
-  const { resetPassword } = useAuth();
+  // const { resetPassword } = useAuth();
 
   async function sendCode() {
-    try {
-      await resetPassword(email)
-        .then((_) => {
-          navigation.navigate("VerificationCode");
-        })
-        .catch((err: any) => {
-          console.log(err.code);
-          console.log(err.message);
-        });
-    } catch (error: unknown) {
-      console.log(error);
-    }
+    navigation.navigate("VerificationCode");
+    // try {
+    //   await resetPassword(email)
+    //     .then((_) => {
+
+    //     })
+    //     .catch((err: any) => {
+    //       console.log(err.code);
+    //       console.log(err.message);
+    //     });
+    // } catch (error: unknown) {
+    //   console.log(error);
+    // }
   }
   return (
     <Block safe flex={1} px={30}>
@@ -43,7 +44,7 @@ export const ForgotPasswordScreen = ({ navigation }: Props) => {
           label="Email"
         />
       </Block>
-      <Block my={50}>
+      <Block my={50} center>
         <Button defaultStyle onPress={sendCode}>
           Send instruction
         </Button>

@@ -19,6 +19,8 @@ type ButtonProps = PressableProps & {
   toggleButton?: Boolean;
   active?: Boolean;
   floatButton?: Boolean;
+  defaultSmallStyle?: Boolean;
+  borderedSmall?: Boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -36,6 +38,8 @@ export const Button: React.FC<ButtonProps> = ({
   chips,
   toggleButton,
   floatButton,
+  defaultSmallStyle,
+  borderedSmall,
   active = false,
   ...props
 }) => {
@@ -70,7 +74,7 @@ export const Button: React.FC<ButtonProps> = ({
     },
     chips !== undefined && {
       height: 26,
-      minWidth: 74,
+      Width: 74,
       flex: 1,
       backgroundColor: active ? colors.green[1] : colors.white,
       justifyContent: "center",
@@ -84,6 +88,16 @@ export const Button: React.FC<ButtonProps> = ({
       borderColor: colors.dark[2],
       backgroundColor: colors.white,
       height: 52,
+      width: 345,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    borderedSmall !== undefined && {
+      borderWidth: 1,
+      borderRadius: 11,
+      borderColor: colors.green[1],
+      height: 45,
+      width: 85,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -91,6 +105,15 @@ export const Button: React.FC<ButtonProps> = ({
       backgroundColor: colors.green[1],
       borderRadius: 12,
       height: 52,
+      width: 345,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    defaultSmallStyle !== undefined && {
+      backgroundColor: colors.green[1],
+      borderRadius: 11,
+      height: 45,
+      width: 85,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -120,11 +143,18 @@ export const Button: React.FC<ButtonProps> = ({
     style,
   ]) as ViewStyle;
 
-  const textStyles = defaultStyle && {
-    color: colors.white,
-    fontFamily: fonts.inter[500],
-    fontSize: 14,
-  };
+  const textStyles = [
+    (defaultStyle || defaultSmallStyle) && {
+      color: colors.white,
+      fontFamily: fonts.inter[500],
+      fontSize: 14,
+    },
+    borderedSmall && {
+      color: colors.green[1],
+      fontFamily: fonts.inter[500],
+      fontSize: 14,
+    },
+  ];
   if (floatButton)
     return (
       <Block position="absolute" style={{ bottom: 20, right: 10 }}>

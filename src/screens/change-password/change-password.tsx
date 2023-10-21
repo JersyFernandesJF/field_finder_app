@@ -30,7 +30,7 @@ export const ChangePasswordScreen = ({ navigation }: Props) => {
         />
       </Block>
 
-      <Block my={50}>
+      <Block center my={50}>
         <Button
           defaultStyle
           onPress={() => navigation.navigate("ChangedPassword")}

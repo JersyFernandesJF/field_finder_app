@@ -78,7 +78,7 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
 
       <Line>or</Line>
 
-      <Block>
+      <Block center>
         <Button
           row
           left={

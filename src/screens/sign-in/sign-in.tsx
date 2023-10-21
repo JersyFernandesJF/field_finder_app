@@ -67,7 +67,7 @@ export const SignInScreen = ({ navigation }: Props) => {
           <CheckBox active={remember} onPress={() => setRemember(!remember)} />
         </Block>
       </Block>
-      <Block>
+      <Block center>
         <Button defaultStyle onPress={Sigin}>
           Login
         </Button>

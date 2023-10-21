@@ -100,8 +100,6 @@ export const EventsScreen = () => {
         ref={bottomSheetModalRef}
         index={1}
         snapPoints={snapPoints}
-        backdropColor="#ff0000"
-        backdropOpacity={0.5}
       >
         <View style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>

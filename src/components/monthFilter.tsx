@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, ViewStyle } from "react-native";
 import { Block } from "./block";
 import { Text } from "./text";
+import { Button } from "./button";
 import moment from "moment";
 
 export const MonthFilter = () => {
   const [months, setMonths] = useState(Array<Array<string>>);
   const month: string[] = moment.months();
   const [selectedMonth, setSelectedMonth] = useState(Array<number>);
-  const currentlyMonth = moment().format("MMMM");
 
   const splitMonths = (months: string[]) => {
     const result: Array<Array<string>> = [[]];
@@ -26,6 +25,7 @@ export const MonthFilter = () => {
     return result;
   };
   const findIndex = (month: string) => {
+    console.log(month);
     for (let i = 0; i < months.length; i++) {
       for (let j = 0; j < months[i].length; j++) {
         if (months[i][j] === month) {
@@ -33,59 +33,58 @@ export const MonthFilter = () => {
         }
       }
     }
-    return null;
+    return [0, 0];
   };
-
+  const setIndex = (indexRow: number, indexColumn: number) => {
+    setSelectedMonth([indexRow, indexColumn]);
+  };
   useEffect(() => {
-    setSelectedMonth(findIndex(currentlyMonth));
     setMonths(splitMonths(month));
+    setSelectedMonth(findIndex(moment().format("MMMM")));
   }, []);
-  const boxStyle = (selected: boolean) => {
-    return {
-      height: 30,
-      width: 100,
-      borderRadius: 6,
-      backgroundColor: selected ? "#005C5C" : "white",
-    };
+  const boxStyle = {
+    height: 30,
+    width: 100,
+    borderRadius: 6,
   };
   return (
     <Block center>
       {months.map((array, indexRow) => (
         <Block row mb={10} key={indexRow}>
           {array.map((month, indexColumn) => (
-            <Block
-              key={indexColumn}
-              row
-              mr={10}
-              center
-              style={boxStyle(
-                indexColumn == selectedMonth[1] && indexRow == selectedMonth[0]
-                  ? true
-                  : false
-              )}
-            >
-              <Text fontSize={15} fontWeight="500">
-                {month}
-              </Text>
-            </Block>
+            <Button onPress={() => setIndex(indexRow, indexColumn)}>
+              <Block
+                key={indexColumn}
+                row
+                mr={10}
+                center
+                style={[
+                  boxStyle,
+                  {
+                    backgroundColor:
+                      indexColumn == selectedMonth[1] &&
+                      indexRow == selectedMonth[0]
+                        ? "#005C5C"
+                        : "white",
+                  },
+                ]}
+              >
+                <Text
+                  fontSize={15}
+                  color={
+                    indexColumn == selectedMonth[1] &&
+                    indexRow == selectedMonth[0]
+                      ? "white"
+                      : "black"
+                  }
+                >
+                  {month}
+                </Text>
+              </Block>
+            </Button>
           ))}
         </Block>
       ))}
     </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  list: {
-    flexDirection: "row",
-    margin: 10,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  item: {
-    height: 30,
-    width: 100,
-    borderRadius: 6,
-    backgroundColor: "#005C5C",
-  },
-});

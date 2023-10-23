@@ -4,44 +4,35 @@ import { Text } from "./text";
 import { Button } from "./button";
 import moment from "moment";
 
+const months = [
+  ["January", "February", "March"],
+  ["April", "May", "June"],
+  ["July", "August", "September"],
+  ["October", "November", "December"],
+];
 export const MonthFilter = () => {
-  const [months, setMonths] = useState(Array<Array<string>>);
   const month: string[] = moment.months();
   const [selectedMonth, setSelectedMonth] = useState(Array<number>);
 
-  const splitMonths = (months: string[]) => {
-    const result: Array<Array<string>> = [[]];
-    let index = 0;
-
-    for (const month of months) {
-      if (result[index].length < 3) {
-        result[index].push(month);
-      } else {
-        result.push([]);
-        index++;
-        result[index].push(month);
-      }
-    }
-    return result;
-  };
   const findIndex = (month: string) => {
-    console.log(month);
     for (let i = 0; i < months.length; i++) {
       for (let j = 0; j < months[i].length; j++) {
-        if (months[i][j] === month) {
+        if (months[i][j] == month) {
           return [i, j];
         }
       }
     }
     return [0, 0];
   };
+
   const setIndex = (indexRow: number, indexColumn: number) => {
     setSelectedMonth([indexRow, indexColumn]);
   };
+
   useEffect(() => {
-    setMonths(splitMonths(month));
     setSelectedMonth(findIndex(moment().format("MMMM")));
   }, []);
+
   const boxStyle = {
     height: 30,
     width: 100,
@@ -88,3 +79,6 @@ export const MonthFilter = () => {
     </Block>
   );
 };
+function componentDidMount() {
+  throw new Error("Function not implemented.");
+}

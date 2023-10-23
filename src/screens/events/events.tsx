@@ -4,6 +4,7 @@ import { useTheme } from "~/hooks/theme";
 import { useState } from "react";
 import { ScrollView } from "react-native";
 import {
+  BottomSheetBackdrop,
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
@@ -100,6 +101,9 @@ export const EventsScreen = () => {
         ref={bottomSheetModalRef}
         index={1}
         snapPoints={snapPoints}
+        backdropComponent={(backdropProps) => (
+          <BottomSheetBackdrop {...backdropProps} enableTouchThrough={true} />
+        )}
       >
         <View style={styles.contentContainer}>
           <Text>Awesome 🎉</Text>

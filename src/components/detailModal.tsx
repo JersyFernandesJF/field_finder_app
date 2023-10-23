@@ -73,43 +73,7 @@ export const DetailModal: React.FC<DetailModalProps> = ({ onClose }) => {
             source={require("../assets/image/onboarding/onboarding2.jpg")}
           />
         </Block>
-        <Block row>
-          {Array(3)
-            .fill(1)
-            .map((_, index) => {
-              const inputRange = [
-                (index - 1) * 20,
-                index * 20,
-                (index + 1) * 20,
-              ];
 
-              const dotWidth = scrollX.interpolate({
-                inputRange,
-                outputRange: [8, 18, 8],
-                extrapolate: "clamp",
-              });
-
-              const opacity = scrollX.interpolate({
-                inputRange,
-                outputRange: [0.3, 1, 0.3],
-                extrapolate: "clamp",
-              });
-
-              return (
-                <Animated.View
-                  style={[
-                    styles.dot,
-                    {
-                      width: dotWidth,
-                      opacity,
-                      backgroundColor: colors.green[1],
-                    },
-                  ]}
-                  key={index.toString()}
-                />
-              );
-            })}
-        </Block>
         <Block row justifyContent="space-between" px={20}>
           <Block>
             <Block>

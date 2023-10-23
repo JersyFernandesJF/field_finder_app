@@ -97,7 +97,7 @@ export const Button: React.FC<ButtonProps> = ({
       borderRadius: 11,
       borderColor: colors.green[1],
       height: 45,
-      width: 85,
+      width: 75,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -113,7 +113,7 @@ export const Button: React.FC<ButtonProps> = ({
       backgroundColor: colors.green[1],
       borderRadius: 11,
       height: 45,
-      width: 85,
+      width: 75,
       justifyContent: "center",
       alignItems: "center",
     },
@@ -147,12 +147,12 @@ export const Button: React.FC<ButtonProps> = ({
     (defaultStyle || defaultSmallStyle) && {
       color: colors.white,
       fontFamily: fonts.inter[500],
-      fontSize: 14,
+      fontSize: defaultSmallStyle ? 12 : 14,
     },
     borderedSmall && {
       color: colors.green[1],
       fontFamily: fonts.inter[500],
-      fontSize: 14,
+      fontSize: 12,
     },
   ];
   if (floatButton)

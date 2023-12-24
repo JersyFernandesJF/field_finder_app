@@ -31,6 +31,7 @@ import { useNavigation } from "@react-navigation/native";
 import { FilterIcons } from "~/assets/icons/sports";
 import { eventPlace, handleSearch } from "~/config/googleAPI/googleServices";
 import { useTheme } from "~/hooks/theme";
+import SportsDummy from "~/assets/dummy/sports";
 
 type LocationDeltaType = {
   latitude: number;
@@ -88,6 +89,7 @@ export const HomeScreen = () => {
   };
   useEffect(() => {
     (async () => {
+      console.log(SportsDummy);
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         setErrorMsg("Permission to access location was denied");

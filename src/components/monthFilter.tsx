@@ -11,7 +11,7 @@ const months = [
   ["October", "November", "December"],
 ];
 export const MonthFilter = () => {
-  const month: string[] = moment.months();
+  const month = moment().format("MMMM");
   const [selectedMonth, setSelectedMonth] = useState(Array<number>);
 
   const findIndex = (month: string) => {
@@ -25,6 +25,16 @@ export const MonthFilter = () => {
     return [0, 0];
   };
 
+  const setColors = (indexRow: number, indexColumn: number) => {
+    let currentMonth = findIndex(month);
+    const selectedMonthNumbers = selectedMonth.map((number) => number);
+    console.log(currentMonth[0] === selectedMonthNumbers[0]);
+    return {
+      height: 30,
+      width: 100,
+      borderRadius: 6,
+    };
+  };
   const setIndex = (indexRow: number, indexColumn: number) => {
     setSelectedMonth([indexRow, indexColumn]);
   };
@@ -50,7 +60,7 @@ export const MonthFilter = () => {
                 mr={10}
                 center
                 style={[
-                  boxStyle,
+                  setColors(indexRow, indexColumn),
                   {
                     backgroundColor:
                       indexColumn == selectedMonth[1] &&

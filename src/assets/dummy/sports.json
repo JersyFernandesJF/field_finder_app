@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "Football",
+    "details": "Lorem Ipsum"
+  },
+  {
+    "id": 2,
+    "name": "Basketball",
+    "details": "Lorem Ipsum"
+  }
+]

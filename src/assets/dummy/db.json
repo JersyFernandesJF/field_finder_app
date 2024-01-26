@@ -1,0 +1,209 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "password": "hashed_password_1",
+      "email": "user1@example.com",
+      "name": "John Doe",
+      "birth_date": "1990-05-15",
+      "images": "https://randomuser.me/api/portraits/women/18.jpg"
+    },
+    {
+      "id": 2,
+      "password": "hashed_password_2",
+      "email": "user2@example.com",
+      "name": "Jane Smith",
+      "birth_date": "1985-11-25",
+      "images": "https://randomuser.me/api/portraits/women/71.jpg"
+    },
+    {
+      "id": 3,
+      "password": "hashed_password_3",
+      "email": "user3@example.com",
+      "name": "Alex Johnson",
+      "birth_date": "1993-08-07",
+      "images": "https://randomuser.me/api/portraits/men/53.jpg"
+    },
+    {
+      "id": 4,
+      "password": "hashed_password_4",
+      "email": "user4@example.com",
+      "name": "Emily Brown",
+      "birth_date": "1988-04-12",
+      "images": "https://randomuser.me/api/portraits/men/51.jpg"
+    },
+    {
+      "id": 5,
+      "password": "hashed_password_5",
+      "email": "user5@example.com",
+      "name": "Daniel Lee",
+      "birth_date": "1997-09-30",
+      "images": "https://randomuser.me/api/portraits/men/91.jpg"
+    }
+  ],
+  "sports": [
+    { "id": 1, "name": "Football", "details": "Exciting sport" },
+    { "id": 2, "name": "Basketball", "details": "Fast-paced game" },
+    { "id": 3, "name": "Tennis", "details": "Racket sport" },
+    { "id": 4, "name": "Swimming", "details": "Water sport" },
+    { "id": 5, "name": "Running", "details": "Track and field activity" }
+  ],
+  "fieldSports": [
+    { "id": 1, "field": 1, "sport": 1 },
+    { "id": 2, "field": 2, "sport": 2 },
+    { "id": 3, "field": 3, "sport": 3 },
+    { "id": 4, "field": 4, "sport": 4 },
+    { "id": 5, "field": 5, "sport": 5 }
+  ],
+  "userSports": [
+    { "id": 1, "user": 1, "sport": 1 },
+    { "id": 2, "user": 2, "sport": 2 },
+    { "id": 3, "user": 3, "sport": 3 },
+    { "id": 4, "user": 4, "sport": 4 },
+    { "id": 5, "user": 5, "sport": 5 }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "user": 1,
+      "name_event": "Soccer Tournament",
+      "field": 1,
+      "date": "2022-05-20",
+      "minguest": 10,
+      "maxguest": 20,
+      "repeat": false,
+      "start_time": "15:00",
+      "end_time": "17:00"
+    },
+    {
+      "id": 2,
+      "user": 2,
+      "name_event": "Tennis Match",
+      "field": 2,
+      "date": "2022-06-10",
+      "minguest": 5,
+      "maxguest": 10,
+      "repeat": true,
+      "start_time": "09:00",
+      "end_time": "11:00"
+    },
+    {
+      "id": 3,
+      "user": 3,
+      "name_event": "Swimming Pool Party",
+      "field": 3,
+      "date": "2022-07-15",
+      "minguest": 15,
+      "maxguest": 30,
+      "repeat": false,
+      "start_time": "18:00",
+      "end_time": "22:00"
+    },
+    {
+      "id": 4,
+      "user": 4,
+      "name_event": "Running Club Meetup",
+      "field": 4,
+      "date": "2022-08-05",
+      "minguest": 8,
+      "maxguest": 15,
+      "repeat": true,
+      "start_time": "17:30",
+      "end_time": "19:30"
+    },
+    {
+      "id": 5,
+      "user": 5,
+      "name_event": "Basketball Game",
+      "field": 5,
+      "date": "2022-09-18",
+      "minguest": 12,
+      "maxguest": 25,
+      "repeat": false,
+      "start_time": "20:00",
+      "end_time": "22:00"
+    }
+  ],
+  "fieldsDB": [
+    {
+      "id": 1,
+      "name": "Football Field",
+      "price": 50.0,
+      "availability": true,
+      "fieldsdetails": "Standard football field",
+      "fieldrules": ["No metal cleats allowed"],
+      "length": 100,
+      "width": 50,
+      "images": [
+        "https://www.spized.com/media/75/f7/f8/1680187076/Fu%C3%9Fballfeld.jpg",
+        "https://en.reformsports.com/oxegrebi/2020/09/mini-futbol-sahasi-ozellikleri-ve-olculeri.jpg"
+      ],
+      "latitude": 41.1423411,
+      "longitude": -8.6317603
+    },
+    {
+      "id": 2,
+      "name": "Tennis Court",
+      "price": 30.0,
+      "availability": true,
+      "fieldsdetails": "All-weather tennis court",
+      "fieldrules": ["Reservations required"],
+      "length": 78,
+      "width": 36,
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQubqpe840ITUzHW5AydrfY6hv4n2q3tU1_tXDxzjvMdPIsJSGmKyD3UNkz2NHuk4fY7ZA&usqp=CAU",
+        "https://www.aircourts.com/uploads/sites/pp.jpg"
+      ],
+      "latitude": 41.1554843,
+      "longitude": -8.6173559
+    },
+    {
+      "id": 3,
+      "name": "Swimming Pool",
+      "price": 75.0,
+      "availability": false,
+      "fieldsdetails": "Olympic-sized swimming pool",
+      "fieldrules": ["Open during summer only"],
+      "length": 50,
+      "width": 25,
+      "images": [
+        "https://www.fluidra.com/projects//web/app/uploads/2022/07/shutterstock_56958220_shutterstock_569582201.jpg",
+        "https://media.istockphoto.com/id/182218668/photo/swimming-pool.webp?b=1&s=170667a&w=0&k=20&c=s-sOd0uZf12SHVlJ0pEZa9M0Dwo572K5V7j11DQn6pM="
+      ],
+      "latitude": 41.1718485,
+      "longitude": -8.6947784
+    },
+    {
+      "id": 4,
+      "name": "Running Track",
+      "price": 20.0,
+      "availability": true,
+      "fieldsdetails": "400-meter synthetic track",
+      "fieldrules": ["No cycling allowed"],
+      "length": 400,
+      "width": 10,
+      "images": [
+        "https://trackandturf.com/wp-content/uploads/2016/12/Wilmington_Charter_HS_Track-8-scaled.jpg",
+        "https://sportsvenuecalculator.com/wp-content/uploads/2021/11/6-1.jpg"
+      ],
+      "latitude": 41.163219,
+      "longitude": -8.6533487
+    },
+    {
+      "id": 5,
+      "name": "Basketball Court",
+      "price": 40.0,
+      "availability": true,
+      "fieldsdetails": "Professional basketball court",
+      "fieldrules": ["No dunking allowed after 8 PM"],
+      "length": 94,
+      "width": 50,
+      "images": [
+        "https://cdn.versacourt.com/cmss_files/imagelibrary/general-use/thb-court-size.jpg",
+        "https://www.versacourt.com/cmss_files/imagelibrary/thb-cost-of-court2.jpg"
+      ],
+      "latitude": 41.1705167,
+      "longitude": -8.6749572
+    }
+  ]
+}

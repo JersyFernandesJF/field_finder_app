@@ -1,19 +1,19 @@
 import { useTheme } from "~/hooks/theme";
-import { StyleSheet, Image, ImageSourcePropType } from "react-native";
+import { StyleSheet, Image, ImageURISource } from "react-native";
 import { Block } from "./block";
 import { Text } from "./text";
 
 type CardInformationProps = {
-  name: string;
-  price: number;
-  imageSource: ImageSourcePropType;
+  data: {
+    images: string[];
+    name: string;
+    price: number;
+  };
   longCard?: boolean;
 };
 
 export const CardIformation: React.FC<CardInformationProps> = ({
-  name,
-  price,
-  imageSource,
+  data,
   longCard,
   ...props
 }) => {
@@ -49,7 +49,9 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     return (
       <Block row style={[longCardStyles, shadow]}>
         <Image
-          source={imageSource}
+          source={{
+            uri: `${data.images[0]}`,
+          }}
           style={{ width: 160, height: 110, borderRadius: 10 }}
         />
         <Block
@@ -61,7 +63,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
         >
           <Block>
             <Text fontSize={16} font={fonts.inter[400]}>
-              {name}
+              {data.name}
             </Text>
           </Block>
           <Block justifyContent="space-between" row>
@@ -76,7 +78,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
             </Block>
 
             <Text fontSize={16} font={fonts.inter[600]} color={colors.green[1]}>
-              {price}€
+              {data.price}€
             </Text>
           </Block>
           <Block alignItems="flex-end">
@@ -88,18 +90,21 @@ export const CardIformation: React.FC<CardInformationProps> = ({
       </Block>
     );
   }
+
   return (
     <Block style={[commentStyles, shadow]} justifyContent="space-around">
       <Image
-        source={imageSource}
+        source={{
+          uri: `${data.images[0]}`,
+        }}
         style={{ width: 140, height: 140, borderRadius: 10 }}
       />
       <Block row justifyContent="space-between">
         <Text fontSize={14} font={fonts.inter[600]}>
-          {name}
+          {data.name}
         </Text>
         <Text fontSize={14} color={colors.green[1]} font={fonts.inter[600]}>
-          {price}€
+          {data.price}€
         </Text>
       </Block>
     </Block>

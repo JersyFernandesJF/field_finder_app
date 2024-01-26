@@ -1,18 +1,19 @@
 import { Block, Text, CardIformation, Button, Input } from "~/components";
 import { useEffect, useState } from "react";
-import { ScrollView, StatusBar } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
-import { PinSVGIcon } from "~/assets/icons";
 import { FilterIcons } from "~/assets/icons/sports";
 import { useSportsList } from "~/config/firebase/Providers/SportsProvider";
 import { useFieldsList } from "~/config/firebase/Providers/FieldsProvider";
+import Db from "~/assets/dummy/db.json";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "HomeTabs">;
 
 export const FieldsScreen = () => {
+  const { fieldsDB } = Db;
   const navigation = useNavigation<Props["navigation"]>();
   const [fields, setFields] = useState(useFieldsList());
   const { colors, fonts } = useTheme();
@@ -27,35 +28,9 @@ export const FieldsScreen = () => {
   };
 
   return (
-    <Block flex={1} center safe>
+    <SafeAreaView>
       <ScrollView>
-        <Block center>
-          <Input
-            left={<PinSVGIcon style={{ marginLeft: 10, marginRight: 10 }} />}
-            placeholder="Enter an address, Field or Sport"
-            standard
-          />
-        </Block>
-        <Block mt={10}>
-          <ScrollView showsHorizontalScrollIndicator={false} horizontal>
-            {sports.map((element, index) => {
-              return (
-                <Button chips>
-                  <Block
-                    center
-                    justifyContent="space-around"
-                    paddingHorizontal={10}
-                    style={{ flexDirection: "row" }}
-                  >
-                    {setIcon(element.name)}
-                    <Text chips>{element.name}</Text>
-                  </Block>
-                </Button>
-              );
-            })}
-          </ScrollView>
-        </Block>
-        <Block marginTop={30}>
+        <Block marginBottom={10}>
           <Block mb={10} marginLeft={20}>
             <Text fontSize={16} font={fonts.inter[600]}>
               Popular Fields
@@ -63,30 +38,18 @@ export const FieldsScreen = () => {
           </Block>
 
           <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-            {Array(4)
-              .fill(1)
-              .map((_, index) => {
-                return (
-                  <Button
-                    onPress={() =>
-                      navigation.navigate("FieldsDetails", {
-                        name: "wdss",
-                        price: 34,
-                        details: "werfw",
-                        rules: ["ewrew"],
-                        address: "ewrwerw",
-                        availability: true,
-                      })
-                    }
-                  >
-                    <CardIformation
-                      name="St. Bento"
-                      price={25}
-                      imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                    />
-                  </Button>
-                );
-              })}
+            {fieldsDB.map((field) => {
+              return (
+                <Button
+                  marginVertical={10}
+                  onPress={() =>
+                    navigation.navigate("FieldsDetails", { data: field })
+                  }
+                >
+                  <CardIformation data={field} />
+                </Button>
+              );
+            })}
           </ScrollView>
         </Block>
 
@@ -97,34 +60,20 @@ export const FieldsScreen = () => {
             </Text>
           </Block>
           <Block>
-            {Array(4)
-              .fill(1)
-              .map((_, index) => {
-                return (
-                  <Button
-                    onPress={() =>
-                      navigation.navigate("FieldsDetails", {
-                        name: "wdss",
-                        price: 34,
-                        details: "werfw",
-                        rules: ["ewrew", "sdldmldsfç", "flçmfeçm"],
-                        address: "ewrwerw",
-                        availability: true,
-                      })
-                    }
-                  >
-                    <CardIformation
-                      name="St. Bento"
-                      longCard
-                      price={25}
-                      imageSource={require("../../assets/image/onboarding/onboarding2.png")}
-                    />
-                  </Button>
-                );
-              })}
+            {fieldsDB.map((field) => {
+              return (
+                <Button
+                  onPress={() =>
+                    navigation.navigate("FieldsDetails", { data: field })
+                  }
+                >
+                  <CardIformation data={field} longCard />
+                </Button>
+              );
+            })}
           </Block>
         </Block>
       </ScrollView>
-    </Block>
+    </SafeAreaView>
   );
 };

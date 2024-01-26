@@ -16,6 +16,7 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
+  Image,
 } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
@@ -46,7 +47,7 @@ const CARDS = [
   },
 ];
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 type Props = NativeStackScreenProps<MainStackParamsList, "FieldsDetails">;
 
@@ -69,8 +70,16 @@ export const FieldsDetailsScreen = () => {
       <ScrollView>
         <Block flex={1}>
           <FlatList
-            data={CARDS}
-            renderItem={({ item }) => <Slide imageSource={item.imageSource} />}
+            data={params.data.images}
+            renderItem={({ item }) => (
+              <Block style={styles.container}>
+                <Image
+                  source={{ uri: item }}
+                  style={styles.image}
+                  accessibilityIgnoresInvertColors
+                />
+              </Block>
+            )}
             pagingEnabled
             horizontal
             style={{ flex: 1, height: 335 }}
@@ -94,41 +103,39 @@ export const FieldsDetailsScreen = () => {
         </Block>
         <Block flex={1} marginTop={10}>
           <Block style={styles.dotsContainer}>
-            {Array(CARDS.length)
-              .fill(1)
-              .map((_, index) => {
-                const inputRange = [
-                  (index - 1) * width,
-                  index * width,
-                  (index + 1) * width,
-                ];
+            {params.data.images.map((_, index) => {
+              const inputRange = [
+                (index - 1) * width,
+                index * width,
+                (index + 1) * width,
+              ];
 
-                const dotWidth = scrollX.interpolate({
-                  inputRange,
-                  outputRange: [5, 5, 5],
-                  extrapolate: "clamp",
-                });
+              const dotWidth = scrollX.interpolate({
+                inputRange,
+                outputRange: [5, 5, 5],
+                extrapolate: "clamp",
+              });
 
-                const opacity = scrollX.interpolate({
-                  inputRange,
-                  outputRange: [0.3, 1, 0.3],
-                  extrapolate: "clamp",
-                });
+              const opacity = scrollX.interpolate({
+                inputRange,
+                outputRange: [0.3, 1, 0.3],
+                extrapolate: "clamp",
+              });
 
-                return (
-                  <Animated.View
-                    style={[
-                      styles.dot,
-                      {
-                        width: dotWidth,
-                        opacity,
-                        backgroundColor: colors.green[1],
-                      },
-                    ]}
-                    key={index.toString()}
-                  />
-                );
-              })}
+              return (
+                <Animated.View
+                  style={[
+                    styles.dot,
+                    {
+                      width: dotWidth,
+                      opacity,
+                      backgroundColor: colors.green[1],
+                    },
+                  ]}
+                  key={index.toString()}
+                />
+              );
+            })}
           </Block>
           <Block
             marginTop={10}
@@ -137,7 +144,7 @@ export const FieldsDetailsScreen = () => {
             paddingHorizontal={20}
           >
             <Text fontSize={18} font={fonts.inter[600]}>
-              {params.name ? params.name : "jdsjdsk"}
+              {params.data.name ? params.data.name : "jdsjdsk"}
             </Text>
             <Block my={15}>
               <Block
@@ -147,9 +154,11 @@ export const FieldsDetailsScreen = () => {
                 style={{ width: "100%" }}
               >
                 <Text
-                  color={params.availability ? colors.green[1] : colors.red[1]}
+                  color={
+                    params.data.availability ? colors.green[1] : colors.red[1]
+                  }
                 >
-                  {params.availability ? "LIVRE" : "OCUPADO"}
+                  {params.data.availability ? "LIVRE" : "OCUPADO"}
                 </Text>
                 <Block row marginTop={5}>
                   <Text
@@ -157,11 +166,11 @@ export const FieldsDetailsScreen = () => {
                     fontSize={14}
                     color={colors.dark[1]}
                   >
-                    {params.price ? params.price : 34}€
+                    {params.data.price ? params.data.price : 34}€
                   </Text>
                   <Block marginHorizontal={5} />
                   <Text fontSize={14} color={colors.green[1]}>
-                    {params.price ? params.price : 37}€
+                    {params.data.price ? params.data.price : 37}€
                   </Text>
                 </Block>
               </Block>
@@ -202,7 +211,9 @@ export const FieldsDetailsScreen = () => {
               </Text>
             </Block>
             <Text fontSize={13} color={colors.dark[1]}>
-              {params.details ? params.details : "iweuhnkdsniod"}
+              {params.data.fieldsdetails
+                ? params.data.fieldsdetails
+                : "iweuhnkdsniod"}
             </Text>
           </Block>
 
@@ -213,7 +224,7 @@ export const FieldsDetailsScreen = () => {
               </Text>
             </Block>
             <Block>
-              {params.rules.map((element) => {
+              {params.data.fieldrules.map((element) => {
                 return <Include description={element} />;
               })}
             </Block>
@@ -283,5 +294,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 12,
+  },
+  container: { width, height },
+  image: {
+    backgroundColor: "white",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height / 2,
   },
 });

@@ -28,12 +28,18 @@ export type MainStackParamsList = {
   Onboarding: undefined;
   CreateEvent: undefined;
   FieldsDetails: {
-    name: string;
-    price: number;
-    details: string;
-    rules: string[];
-    address: string;
-    availability: boolean;
+    data: {
+      name: string;
+      price: number;
+      availability: boolean;
+      fieldsdetails: string;
+      fieldrules: string[];
+      length: number;
+      width: number;
+      images: string[];
+      latitude: number;
+      longitude: number;
+    };
   };
 };
 

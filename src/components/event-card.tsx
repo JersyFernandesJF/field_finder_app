@@ -7,6 +7,15 @@ import { ViewStyle, Pressable, FlatList, Dimensions } from "react-native";
 import { useState } from "react";
 
 type EventCardProps = React.ComponentProps<typeof Input> & {
+  data: {
+    image: string[];
+    user: number;
+    minguest: number;
+    maxguest: number;
+    start_time: string;
+    end_time: string;
+    date: string;
+  };
   event?: boolean;
 };
 export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {

@@ -29,8 +29,9 @@ export type MainStackParamsList = {
   CreateEvent: undefined;
   FieldsDetails: {
     data: {
-      name: string;
+      name_field: string;
       price: number;
+      guest: number;
       availability: boolean;
       fieldsdetails: string;
       fieldrules: string[];

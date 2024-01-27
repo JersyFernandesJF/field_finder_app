@@ -12,8 +12,23 @@ import Db from "~/assets/dummy/db.json";
 import { useTheme } from "~/hooks/theme";
 
 export const AllEvents = () => {
-  const { eventsDB } = Db;
+  const { eventsDB, fieldsDB, usersDB } = Db;
   const { colors } = useTheme();
+
+  const elemntsFiltered = (id: number) => {
+    let dataEvents = eventsDB.filter((obj) => obj.id === id);
+    let dataFields = fieldsDB.filter((obj) => obj.id === dataEvents[0].field);
+    let dataUsers = usersDB.filter((obj) => obj.id === dataEvents[0].user);
+
+    const dataFinal = Object.assign(
+      {},
+      dataEvents[0],
+      dataUsers[0],
+      dataFields[0]
+    );
+
+    return dataFinal;
+  };
 
   return (
     <SafeAreaView>
@@ -32,7 +47,7 @@ export const AllEvents = () => {
         </Text>
         <Block>
           {eventsDB.map((event, index) => {
-            return <EventCard key={index} data={event} />;
+            return <EventCard key={index} data={elemntsFiltered(event.id)} />;
           })}
         </Block>
       </Block>

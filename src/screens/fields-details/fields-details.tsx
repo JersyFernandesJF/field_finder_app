@@ -23,30 +23,6 @@ import { MainStackParamsList } from "~/router";
 import { CalendarSvgIcon } from "~/assets/icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-const CARDS = [
-  {
-    imageSource: require("../../assets/image/onboarding/onboarding1.png"),
-    title: "Search and find fields for anywhere",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
-    id: 1,
-  },
-  {
-    imageSource: require("../../assets/image/onboarding/onboarding2.png"),
-    title: "Find people to practice sports with you",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
-    id: 2,
-  },
-  {
-    imageSource: require("../../assets/image/onboarding/onboarding3.png"),
-    title: "Search and find fields for anywhere",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore ",
-    id: 3,
-  },
-];
-
 const { width, height } = Dimensions.get("window");
 
 type Props = NativeStackScreenProps<MainStackParamsList, "FieldsDetails">;
@@ -144,7 +120,7 @@ export const FieldsDetailsScreen = () => {
             paddingHorizontal={20}
           >
             <Text fontSize={18} font={fonts.inter[600]}>
-              {params.data.name ? params.data.name : "jdsjdsk"}
+              {params.data.name_field}
             </Text>
             <Block my={15}>
               <Block

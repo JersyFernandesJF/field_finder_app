@@ -6,7 +6,7 @@ import { Text } from "./text";
 type CardInformationProps = {
   data: {
     images: string[];
-    name: string;
+    name_field: string;
     price: number;
   };
   longCard?: boolean;
@@ -63,7 +63,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
         >
           <Block>
             <Text fontSize={16} font={fonts.inter[400]}>
-              {data.name}
+              {data.name_field}
             </Text>
           </Block>
           <Block justifyContent="space-between" row>
@@ -90,7 +90,6 @@ export const CardIformation: React.FC<CardInformationProps> = ({
       </Block>
     );
   }
-
   return (
     <Block style={[commentStyles, shadow]} justifyContent="space-around">
       <Image
@@ -101,7 +100,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
       />
       <Block row justifyContent="space-between">
         <Text fontSize={14} font={fonts.inter[600]}>
-          {data.name}
+          {data.name_field}
         </Text>
         <Text fontSize={14} color={colors.green[1]} font={fonts.inter[600]}>
           {data.price}€

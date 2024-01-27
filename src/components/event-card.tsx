@@ -3,22 +3,28 @@ import { Block } from "./block";
 import { Input } from "./input";
 import { Text } from "./text";
 import { FootbalIcon, SaveSVGIcon } from "~/assets/icons";
-import { ViewStyle, Pressable, FlatList, Dimensions } from "react-native";
-import { useState } from "react";
+import { ViewStyle, Pressable, Image, Dimensions } from "react-native";
+import { useEffect, useState } from "react";
 
 type EventCardProps = React.ComponentProps<typeof Input> & {
   data: {
-    image: string[];
-    user: number;
+    user: any;
+    images: string[];
     minguest: number;
     maxguest: number;
     start_time: string;
+    name: string;
     end_time: string;
+    guest: number;
     date: string;
   };
   event?: boolean;
 };
-export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {
+export const EventCard: React.FC<EventCardProps> = ({
+  event,
+  data,
+  ...props
+}) => {
   const [save, setSave] = useState(true);
   const { colors, fonts } = useTheme();
   const boxStyle = {
@@ -47,6 +53,10 @@ export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {
     elevation: 2,
   } as ViewStyle;
 
+  useEffect(() => {
+    console.log(data);
+  });
+
   return (
     <Block style={container} my={15} px={18}>
       <Block
@@ -56,14 +66,19 @@ export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {
         alignItems="flex-start"
       >
         <Block row alignItems="center" flex={1}>
-          <Text>Jersy</Text>
+          <Image
+            source={{
+              uri: `${data.images[0]}`,
+            }}
+            style={{ width: 80, height: 60, borderRadius: 6 }}
+          />
           <Block ml={10} height={65} justifyContent="space-between">
             <Block>
               <Text fontSize={12}>11:00 AM - Rio Tinto, Areosa</Text>
             </Block>
             <Block>
               <Text fontSize={10} color={colors.dark[1]}>
-                by @Jersy Fernandes
+                by @{data.name}
               </Text>
             </Block>
             <Block row>
@@ -74,12 +89,12 @@ export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {
                 </Text>
               </Block>
               <Text fontSize={11} color={colors.green[1]}>
-                11:00 AM
+                {data.date}
               </Text>
             </Block>
             <Block>
               <Text fontSize={9} color={colors.dark[1]}>
-                19 Min Players
+                {data.minguest} Min guest
               </Text>
             </Block>
           </Block>
@@ -92,7 +107,7 @@ export const EventCard: React.FC<EventCardProps> = ({ event, ...props }) => {
           )}
           <Block style={boxStyle} my={8}>
             <Text color={colors.green[1]} fontSize={10}>
-              13 / 14
+              {data.guest} / {data.maxguest}
             </Text>
           </Block>
         </Block>

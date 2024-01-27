@@ -1,5 +1,5 @@
 {
-  "users": [
+  "usersDB": [
     {
       "id": 1,
       "password": "hashed_password_1",
@@ -69,6 +69,7 @@
       "name_event": "Soccer Tournament",
       "field": 1,
       "date": "2022-05-20",
+      "guest": 3,
       "minguest": 10,
       "maxguest": 20,
       "repeat": false,
@@ -81,6 +82,7 @@
       "name_event": "Tennis Match",
       "field": 2,
       "date": "2022-06-10",
+      "guest": 4,
       "minguest": 5,
       "maxguest": 10,
       "repeat": true,
@@ -93,6 +95,7 @@
       "name_event": "Swimming Pool Party",
       "field": 3,
       "date": "2022-07-15",
+      "guest": 10,
       "minguest": 15,
       "maxguest": 30,
       "repeat": false,
@@ -105,6 +108,7 @@
       "name_event": "Running Club Meetup",
       "field": 4,
       "date": "2022-08-05",
+      "guest": 4,
       "minguest": 8,
       "maxguest": 15,
       "repeat": true,
@@ -117,6 +121,7 @@
       "name_event": "Basketball Game",
       "field": 5,
       "date": "2022-09-18",
+      "guest": 3,
       "minguest": 12,
       "maxguest": 25,
       "repeat": false,
@@ -127,7 +132,7 @@
   "fieldsDB": [
     {
       "id": 1,
-      "name": "Football Field",
+      "name_field": "Football Field",
       "price": 50.0,
       "availability": true,
       "fieldsdetails": "Standard football field",
@@ -143,7 +148,7 @@
     },
     {
       "id": 2,
-      "name": "Tennis Court",
+      "name_field": "Tennis Court",
       "price": 30.0,
       "availability": true,
       "fieldsdetails": "All-weather tennis court",
@@ -159,7 +164,7 @@
     },
     {
       "id": 3,
-      "name": "Swimming Pool",
+      "name_field": "Swimming Pool",
       "price": 75.0,
       "availability": false,
       "fieldsdetails": "Olympic-sized swimming pool",
@@ -175,7 +180,7 @@
     },
     {
       "id": 4,
-      "name": "Running Track",
+      "name_field": "Running Track",
       "price": 20.0,
       "availability": true,
       "fieldsdetails": "400-meter synthetic track",
@@ -191,7 +196,7 @@
     },
     {
       "id": 5,
-      "name": "Basketball Court",
+      "name_field": "Basketball Court",
       "price": 40.0,
       "availability": true,
       "fieldsdetails": "Professional basketball court",

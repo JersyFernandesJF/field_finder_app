@@ -38,10 +38,10 @@ export const EventCard: React.FC<EventCardProps> = ({
   } as ViewStyle;
   const container = {
     display: "flex",
-    height: 120,
-    borderRadius: 12,
+    height: 135,
+    borderRadius: 10,
     backgroundColor: colors.white,
-    flexDirection: "column",
+    flexDirection: "row",
     paddingTop: 15,
     shadowColor: "#000",
     shadowOffset: {
@@ -58,66 +58,53 @@ export const EventCard: React.FC<EventCardProps> = ({
   });
 
   return (
-    <Block style={container} my={15} px={18}>
-      <Block
-        flex={2}
-        row
-        justifyContent="space-between"
-        alignItems="flex-start"
-      >
-        <Block row alignItems="center" flex={1}>
-          <Image
-            source={{
-              uri: `${data.images[0]}`,
-            }}
-            style={{ width: 80, height: 60, borderRadius: 6 }}
-          />
-          <Block ml={10} height={65} justifyContent="space-between">
-            <Block>
-              <Text fontSize={12}>11:00 AM - Rio Tinto, Areosa</Text>
-            </Block>
-            <Block>
-              <Text fontSize={10} color={colors.dark[1]}>
-                by @{data.name}
-              </Text>
-            </Block>
-            <Block row>
-              <Block row mr={5}>
-                <FootbalIcon />
-                <Text fontSize={11} color={colors.green[1]}>
-                  Footbal
-                </Text>
-              </Block>
-              <Text fontSize={11} color={colors.green[1]}>
-                {data.date}
-              </Text>
-            </Block>
-            <Block>
-              <Text fontSize={9} color={colors.dark[1]}>
-                {data.minguest} Min guest
-              </Text>
-            </Block>
+    <Block
+      style={container}
+      my={15}
+      px={20}
+      justifyContent="space-between"
+      alignItems="flex-start"
+    >
+      <Image
+        source={{
+          uri: `${data.images[0]}`,
+        }}
+        style={{ width: 110, height: 100, borderRadius: 6 }}
+      />
+      <Block row flex={1}>
+        <Block ml={10} height={65} justifyContent="space-between">
+          <Block>
+            <Text fontSize={12}>11:00 AM - Rio Tinto, Areosa</Text>
           </Block>
-        </Block>
-        <Block alignItems="flex-end">
-          {event && (
-            <Pressable onPress={() => setSave(!save)}>
-              <SaveSVGIcon save={save} />
-            </Pressable>
-          )}
-          <Block style={boxStyle} my={8}>
-            <Text color={colors.green[1]} fontSize={10}>
-              {data.guest} / {data.maxguest}
+          <Block>
+            <Text fontSize={10} color={colors.dark[1]}>
+              by @{data.name}
+            </Text>
+          </Block>
+          <Block row>
+            <Block row mr={5}>
+              <FootbalIcon />
+              <Text fontSize={11} color={colors.green[1]}>
+                Footbal
+              </Text>
+            </Block>
+            <Text fontSize={11} color={colors.green[1]}>
+              {data.date}
+            </Text>
+          </Block>
+          <Block>
+            <Text fontSize={9} color={colors.dark[1]}>
+              {data.minguest} Min guest
             </Text>
           </Block>
         </Block>
       </Block>
-      <Block style={{ borderColor: colors.dark[2], borderBottomWidth: 1 }} />
-      <Block
-        flex={1}
-        style={{ justifyContent: "center", alignItems: "flex-end" }}
-      >
-        <Text>$3,5</Text>
+
+      <Block center justifyContent="space-between" mt={10}>
+        <SaveSVGIcon save={!save} />
+        <Block>
+          <Text>$3,5</Text>
+        </Block>
       </Block>
     </Block>
   );

@@ -2,6 +2,7 @@ import { useTheme } from "~/hooks/theme";
 import { StyleSheet, Image, ImageURISource } from "react-native";
 import { Block } from "./block";
 import { Text } from "./text";
+import { StarSVGIcon } from "~/assets/icons";
 
 type CardInformationProps = {
   data: {
@@ -37,7 +38,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
     marginLeft: 10,
   });
   const longCardStyles = StyleSheet.flatten({
-    height: 150,
+    height: 140,
     minWidth: 350,
     flex: 1,
     backgroundColor: "#ffff",
@@ -47,7 +48,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
   });
   if (longCard) {
     return (
-      <Block row style={[longCardStyles, shadow]}>
+      <Block row style={[longCardStyles, shadow]} center>
         <Image
           source={{
             uri: `${data.images[0]}`,
@@ -60,29 +61,34 @@ export const CardIformation: React.FC<CardInformationProps> = ({
           height={110}
           style={{ minWidth: 140 }}
           flex={1}
+          py={10}
         >
           <Block>
-            <Text fontSize={16} font={fonts.inter[400]}>
+            <Text fontSize={15} font={fonts.inter[400]}>
               {data.name_field}
             </Text>
           </Block>
           <Block justifyContent="space-between" row>
-            <Block row>
-              <Text fontSize={12} color={colors.green[1]}>
-                4.9
-              </Text>
+            <Block row center>
+              <StarSVGIcon />
+              <Block ml={5}>
+                <Text fontSize={12} color={colors.green[1]}>
+                  4.9
+                </Text>
+              </Block>
+
               <Text fontSize={12} color={colors.dark[1]}>
                 {" "}
                 (277)
               </Text>
             </Block>
 
-            <Text fontSize={16} font={fonts.inter[600]} color={colors.green[1]}>
+            <Text fontSize={15} font={fonts.inter[500]} color={colors.green[1]}>
               {data.price}€
             </Text>
           </Block>
           <Block alignItems="flex-end">
-            <Text fontSize={12} color={colors.green[2]}>
+            <Text fontSize={14} color={colors.green[2]}>
               33% de desconto
             </Text>
           </Block>
@@ -102,7 +108,7 @@ export const CardIformation: React.FC<CardInformationProps> = ({
         <Text fontSize={14} font={fonts.inter[600]}>
           {data.name_field}
         </Text>
-        <Text fontSize={14} color={colors.green[1]} font={fonts.inter[600]}>
+        <Text fontSize={14} color={colors.green[1]} font={fonts.inter[500]}>
           {data.price}€
         </Text>
       </Block>

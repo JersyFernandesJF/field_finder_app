@@ -44,7 +44,9 @@ $ npx expo start # To Start the project
   
 <h>
   Figma Flow:
-<img width="941" alt="Captura de ecrã 2024-02-28, às 12 19 01" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/f1f37bb4-de60-4204-84ff-f1766afda9de">
+<center>
+<img width="500" alt="Captura de ecrã 2024-02-28, às 12 19 01" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/f1f37bb4-de60-4204-84ff-f1766afda9de">
+</center>
 </h>
 <hr>
 <center>

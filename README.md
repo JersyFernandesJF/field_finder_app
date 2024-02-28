@@ -42,14 +42,12 @@ $ npx expo start # To Start the project
 > We are used a static data right now, but you can see the API progress in this link:
 - [API](https://github.com/JersyFernandesJF/field_finder_API)
   
-<h>
-  Figma Flow:
-<center>
-<img width="500" alt="Captura de ecrã 2024-02-28, às 12 19 01" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/f1f37bb4-de60-4204-84ff-f1766afda9de">
-</center>
-</h>
+<div>
+  <img width="500" alt="Captura de ecrã 2024-02-28, às 12 19 01" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/f1f37bb4-de60-4204-84ff-f1766afda9de">
+</div>
 <hr>
 <center>
+
 <img width="600" alt="Captura de ecrã 2024-02-23, às 01 56 38" src="https://github.com/JersyFernandesJF/NewsAPP/assets/102835855/da658e89-a989-4bd8-94a3-357d374008bc">
 </center>
 <hr>

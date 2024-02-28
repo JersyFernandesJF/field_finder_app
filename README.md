@@ -47,10 +47,10 @@ $ npx expo start # To Start the project
 </div>
 <hr>
 <center>
+<img width="200" alt="Captura de ecrã 2024-02-28, às 12 33 54" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/c50954b5-9586-4de9-a08b-76baba0deac8">
 <img width="200" alt="Captura de ecrã 2024-02-28, às 12 34 20" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/bdc4003c-4015-48bd-95c6-1ca86ad77cac">
 <img width="200" alt="Captura de ecrã 2024-02-28, às 12 35 02" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/3a4ba9bb-ec0e-48fb-85e9-6dba53e90a05">
 <img width="200" alt="Captura de ecrã 2024-02-28, às 12 34 15" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/afa2a637-bbc9-4a76-84c9-3f426604b8b0">
-<img width="200" alt="Captura de ecrã 2024-02-28, às 12 33 54" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/c50954b5-9586-4de9-a08b-76baba0deac8">
 <img width="200" alt="Captura de ecrã 2024-02-28, às 12 33 46" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/7f519f9e-7481-42c5-a94c-984a82baa0ed">
 <img width="200" alt="Captura de ecrã 2024-02-28, às 12 33 36" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/5bd2217d-de5b-4b43-b5f1-ecfffbadc6cc">
 <img width="200" alt="Captura de ecrã 2024-02-28, às 12 35 12" src="https://github.com/JersyFernandesJF/field_finder_API/assets/102835855/81e0e3f3-dc93-44f2-91d9-21a339b0013d">

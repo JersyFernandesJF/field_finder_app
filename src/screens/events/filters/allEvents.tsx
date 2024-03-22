@@ -2,7 +2,6 @@ import React from "react";
 import { PencilSvgIcon, SearchSvgIcon } from "~/assets/icons";
 import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
 import {
-  Block,
   Text,
   Input,
   HorizontalDatePicker,

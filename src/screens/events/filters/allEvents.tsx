@@ -1,6 +1,6 @@
 import React from "react";
 import { PencilSvgIcon, SearchSvgIcon } from "~/assets/icons";
-import { ScrollView, StatusBar, SafeAreaView } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView, View } from "react-native";
 import {
   Block,
   Text,
@@ -37,20 +37,20 @@ export const AllEvents = () => {
         placeholder="Search for events"
         standard
       />
-      <Block>
-        <Block>
+      <View>
+        <View>
           <HorizontalDatePicker days={14} />
-        </Block>
+        </View>
 
         <Text color={colors.green[1]} fontWeight="600">
           Monday, August 3RD, 2023
         </Text>
-        <Block>
+        <View>
           {eventsDB.map((event, index) => {
             return <EventCard key={index} data={elemntsFiltered(event.id)} />;
           })}
-        </Block>
-      </Block>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

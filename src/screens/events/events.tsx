@@ -1,8 +1,8 @@
 import { AllEvents, MyEvents, SaveEvents } from "./filters";
-import { Block, Button, Text, Comment, Include, Input } from "~/components";
+import {  Button, Text, Comment, Include, Input } from "~/components";
 import { useTheme } from "~/hooks/theme";
 import { useState } from "react";
-import { SafeAreaView, ScrollView } from "react-native";
+import { SafeAreaView, ScrollView, View } from "react-native";
 
 export const EventsScreen = () => {
   const [all, setAll] = useState(true);
@@ -34,13 +34,13 @@ export const EventsScreen = () => {
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Block px={30}>
-          <Block mb={30}>
-            <Block marginVertical={20}>
+        <View style={{ paddingHorizontal: 30}}>
+          <View style={{ marginBottom: 30}}>
+            <View style={{marginVertical:20}}>
               <Text fontSize={17}>Events</Text>
-            </Block>
-            <Block row>
-              <Block marginRight={5}>
+            </View>
+            <View style={{ flexDirection: "row"}}>
+              <View style={{marginRight:5}}>
                 <Button
                   toggleButton
                   active={all}
@@ -48,8 +48,8 @@ export const EventsScreen = () => {
                 >
                   <Text color={all ? colors.white : colors.green[1]}>All</Text>
                 </Button>
-              </Block>
-              <Block marginRight={5}>
+              </View>
+              <View style={{marginRight:5}}>
                 <Button
                   toggleButton
                   active={myEvents}
@@ -59,8 +59,8 @@ export const EventsScreen = () => {
                     My Events
                   </Text>
                 </Button>
-              </Block>
-              <Block marginRight={5}>
+              </View>
+              <View style={{marginRight:5}}>
                 <Button
                   toggleButton
                   active={save}
@@ -70,13 +70,13 @@ export const EventsScreen = () => {
                     Save
                   </Text>
                 </Button>
-              </Block>
-            </Block>
-          </Block>
+              </View>
+            </View>
+          </View>
           {all && !myEvents && !save && <AllEvents />}
           {myEvents && !all && !save && <MyEvents />}
           {save && !all && !myEvents && <SaveEvents />}
-        </Block>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,9 +1,11 @@
+import { View } from "react-native";
+
 import { Block, Button, Text, Comment, Include } from "~/components";
 
 export const ProfileScreen = () => {
   return (
-    <Block flex={1} style={{ backgroundColor: "#ffff" }} center>
+    <View style={{ flex:1, backgroundColor:"#ffff"}}>
       <Text>Profile</Text>
-    </Block>
+    </View>
   );
 };

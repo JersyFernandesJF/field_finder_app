@@ -12,7 +12,7 @@ import {
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
 import { useAuth } from "~/config/firebase/Providers/AuthProvider";
-import { Alert } from "react-native";
+import { Alert, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "SignIn">;
@@ -44,8 +44,8 @@ export const SignInScreen = ({ navigation }: Props) => {
   }
 
   return (
-    <Block safe flex={1} justifyContent="space-between" px={30}>
-      <Block>
+    <View style={{ justifyContent:"space-between", flex:1, paddingHorizontal: 30}}>
+      <View>
         <InputFormField
           standard
           security={false}
@@ -55,33 +55,33 @@ export const SignInScreen = ({ navigation }: Props) => {
           onChangeText={setEmail}
           autoCapitalize="none"
         />
-        <Block mt={10}>
+        <View style={{marginTop:10}}>
           <InputFormFieldPassword
             standard
             placeholder="Password"
             label="Password"
             onChangeText={setPassword}
           />
-        </Block>
-        <Block my={10}>
+        </View>
+        <View style={{ marginHorizontal: 10}}>
           <CheckBox active={remember} onPress={() => setRemember(!remember)} />
-        </Block>
-      </Block>
-      <Block>
+        </View>
+      </View>
+      <View>
         <Button defaultStyle onPress={Sigin}>
           Login
         </Button>
-      </Block>
+      </View>
 
-      <Block center my={30}>
-        <Block center mt={20} my={12}>
+      <View style={{ alignItems:"center", justifyContent:"center", marginVertical:30}}>
+        <View style={{justifyContent:"center", alignItems:"center", marginTop:10, marginVertical:10}}>
           <Button onPress={() => navigation.navigate("ForgotPassword")}>
             <Text color={colors.blue[1]} font={fonts.inter[400]} fontSize={15}>
               Forgot password?
             </Text>
           </Button>
-        </Block>
-        <Block row center>
+        </View>
+        <View style={{ justifyContent: "center", flexDirection:"row"}}>
           <Text
             textAlign="center"
             color={colors.blue[10]}
@@ -96,8 +96,8 @@ export const SignInScreen = ({ navigation }: Props) => {
               Create Account
             </Text>
           </Button>
-        </Block>
-      </Block>
-    </Block>
+        </View>
+      </View>
+    </View>
   );
 };

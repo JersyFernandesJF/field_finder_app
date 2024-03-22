@@ -1,16 +1,17 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text } from "~/components";
+import { Button, Text } from "~/components";
 import { MainStackParamsList } from "~/router";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import { useTheme } from "~/hooks/theme";
+
 
 type Props = NativeStackScreenProps<MainStackParamsList, "ChangedPassword">;
 
 export const ChangedPasswordScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
   return (
-    <Block flex={1} justifyContent="space-around" px={30}>
-      <Block>
+    <View>
+      <View>
         <Image
           style={{
             width: 213,
@@ -32,13 +33,13 @@ export const ChangedPasswordScreen = ({ navigation }: Props) => {
         <Text textAlign="center" color={colors.dark[1]}>
           You have successfully changed {"\n"} password.
         </Text>
-      </Block>
+      </View>
 
-      <Block my={50}>
+      <View>
         <Button defaultStyle onPress={() => navigation.navigate("SignIn")}>
           Continue with Login
         </Button>
-      </Block>
-    </Block>
+      </View>
+    </View>
   );
 };

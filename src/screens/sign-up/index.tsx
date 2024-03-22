@@ -1,10 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useRef, useState } from "react";
-import { Alert, StyleSheet, Pressable } from "react-native";
+import { Alert, StyleSheet, Pressable, View } from "react-native";
 import PhoneInput from "react-native-phone-number-input";
 import { useTheme } from "~/hooks/theme";
 import {
-  Block,
   Button,
   InputFormField,
   Text,
@@ -48,8 +47,8 @@ export const SignUpScreen = ({ navigation }: Props) => {
   }
 
   return (
-    <Block flex={1} justifyContent="space-between" px={30}>
-      <Block>
+    <View style={{ flex:1, justifyContent:"space-between", paddingHorizontal:30}}>
+      <View>
         <InputFormField
           standard
           placeholder="Joao Amadeu"
@@ -57,7 +56,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
           onChangeText={setName}
           value={name}
         />
-        <Block my={10} />
+         <View style={{ marginVertical: 10}} />
         <InputFormField
           standard
           placeholder="example@gmail.com"
@@ -65,9 +64,9 @@ export const SignUpScreen = ({ navigation }: Props) => {
           onChangeText={setEmail}
           value={email}
         />
-        <Block my={10} />
+        <View style={{ marginVertical: 10}} />
         <InputFormFieldNumber label="Number Phone" />
-        <Block my={10} />
+        <View style={{ marginVertical: 10}} />
 
         <InputFormFieldPassword
           standard
@@ -75,7 +74,7 @@ export const SignUpScreen = ({ navigation }: Props) => {
           onChangeText={setPassword}
           label="Password"
         />
-        <Block my={10} />
+        <View style={{ marginVertical: 10}} />
 
         <InputFormFieldPassword
           standard
@@ -83,15 +82,15 @@ export const SignUpScreen = ({ navigation }: Props) => {
           placeholder="Password"
           label="Confirm Password"
         />
-      </Block>
+      </View>
 
-      <Block my={50}>
-        <Block my={12}>
+      <View style={{ marginVertical: 50}}>
+        <View style={{ marginVertical:32}}>
           <Button defaultStyle onPress={SignUp}>
             Create Account
           </Button>
-        </Block>
-        <Block row center>
+        </View>
+        <View style={{ flexDirection:"row", justifyContent:"center"}}>
           <Text
             textAlign="center"
             color={colors.blue[10]}
@@ -106,8 +105,8 @@ export const SignUpScreen = ({ navigation }: Props) => {
               Sign In
             </Text>
           </Button>
-        </Block>
-      </Block>
-    </Block>
+        </View>
+      </View>
+    </View>
   );
 };

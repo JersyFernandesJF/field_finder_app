@@ -5,36 +5,22 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { EmailSVGIcon } from "~/assets/icons";
 import { MainStackParamsList } from "~/router";
 import { useAuth } from "~/config/firebase/Providers/AuthProvider";
+import { View } from "react-native";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "ForgotPassword">;
 
 export const ForgotPasswordScreen = ({ navigation }: Props) => {
   const { colors, fonts } = useTheme();
   const [email, setEmail] = useState("");
-  const { resetPassword } = useAuth();
 
-  async function sendCode() {
-    try {
-      await resetPassword(email)
-        .then((_) => {
-          navigation.navigate("VerificationCode");
-        })
-        .catch((err: any) => {
-          console.log(err.code);
-          console.log(err.message);
-        });
-    } catch (error: unknown) {
-      console.log(error);
-    }
-  }
   return (
-    <Block safe flex={1} px={30}>
-      <Block my={30}>
+    <View style={{ flex: 1, paddingHorizontal: 30}}>
+      <View style={{ marginVertical: 30}}>
         <Text textAlign="center" color={colors.dark[1]}>
           We will send a verification code to your registered email ID
         </Text>
-      </Block>
-      <Block>
+      </View>
+      <View>
         <InputFormField
           standard
           left={<EmailSVGIcon style={{ marginRight: 10 }} />}
@@ -42,12 +28,12 @@ export const ForgotPasswordScreen = ({ navigation }: Props) => {
           onChangeText={setEmail}
           label="Email"
         />
-      </Block>
-      <Block my={50}>
-        <Button defaultStyle onPress={sendCode}>
+      </View>
+      <View style={{ marginVertical: 50}}>
+        <Button defaultStyle>
           Send instruction
         </Button>
-      </Block>
-    </Block>
+      </View>
+    </View>
   );
 };

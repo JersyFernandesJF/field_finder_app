@@ -1,8 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { useState } from "react";
 import { EyeSVGIcon } from "~/assets/icons";
-import { Block, Button, InputFormField } from "~/components";
+import { Button, InputFormField } from "~/components";
 import { MainStackParamsList } from "~/router";
+import { View } from "react-native";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "ChangePassword">;
 
@@ -10,9 +11,9 @@ export const ChangePasswordScreen = ({ navigation }: Props) => {
   const [showPassword, setShowPassword] = useState(true);
 
   return (
-    <Block flex={1} px={30}>
-      <Block>
-        <Block my={10} />
+    <View style={{flex: 1, paddingHorizontal: 30}} >
+      <View>
+        <View />
 
         <InputFormField
           right={<EyeSVGIcon onPress={() => setShowPassword(!showPassword)} />}
@@ -20,7 +21,7 @@ export const ChangePasswordScreen = ({ navigation }: Props) => {
           placeholder="Password"
           label="Password"
         />
-        <Block my={10} />
+        <View/>
 
         <InputFormField
           standard
@@ -28,16 +29,16 @@ export const ChangePasswordScreen = ({ navigation }: Props) => {
           placeholder="Password"
           label="Confirm Password"
         />
-      </Block>
+      </View>
 
-      <Block my={50}>
+      <View>
         <Button
           defaultStyle
           onPress={() => navigation.navigate("ChangedPassword")}
         >
           Change Password
         </Button>
-      </Block>
-    </Block>
+      </View>
+    </View>
   );
 };

@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Platform, StatusBar, Alert } from "react-native";
+import { Platform, StatusBar, Alert, View } from "react-native";
 import {
   AppleSVGIcon,
   EmailWhiteSVGIcon,
@@ -33,12 +33,8 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
       });
   }
   return (
-    <Block
-      safe
-      flex={1}
-      justifyContent="space-between"
-      px={30}
-      py={Platform.OS === "android" ? 30 : 0}
+    <View
+    style={{ flex: 1,justifyContent: "space-between", paddingVertical: 30, paddingHorizontal:Platform.OS === "android" ? 30 : 30}}
     >
       <StatusBar barStyle={"dark-content"} />
 
@@ -51,7 +47,7 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
         Choose a way to create an account and browse all of resources
       </Text>
 
-      <Block center>
+      <View style={{alignItems: "center", justifyContent:"center"}}>
         {[
           { icon: GoogleSVGIcon, label: "Continue with Google" },
           { icon: AppleSVGIcon, label: "Continue with Apple", separate: true },
@@ -64,34 +60,34 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
             onPress={() => SigInWithGoogle()}
             my={separate ? 15 : undefined}
             left={
-              <Block marginLeft={32}>
+              <View style={{ marginRight:30}}>
                 <Icon />
-              </Block>
+              </View>
             }
           >
-            <Block flex={1} center marginRight={30}>
+            <View style={{ flex:1, marginRight:30, alignItems:"center",justifyContent:"center"}}>
               <Text>{label}</Text>
-            </Block>
+            </View>
           </Button>
         ))}
-      </Block>
+      </View>
 
       <Line>or</Line>
 
-      <Block>
+      <View>
         <Button
           row
           left={
-            <Block marginRight={12}>
+            <View style={{ marginRight: 12, flexDirection:"row"}}>
               <EmailWhiteSVGIcon />
-            </Block>
+            </View>
           }
           defaultStyle
           onPress={() => navigation.navigate("SignUp")}
         >
           Sign up with Email
         </Button>
-        <Block center row mt={20}>
+        <View style={{ alignItems:"center", justifyContent:"center", flexDirection: "row", marginTop: 20}}>
           <Text color={colors.blue[10]} font={fonts.inter[400]} size={15}>
             Already have an Account?{" "}
           </Text>
@@ -101,10 +97,10 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
               Log In
             </Text>
           </Button>
-        </Block>
-      </Block>
+        </View>
+      </View>
 
-      <Block center>
+      <View style={{ alignItems: 'center', justifyContent:"center"}}>
         <Text
           textAlign="center"
           color={colors.blue[10]}
@@ -120,7 +116,7 @@ export const SignUpOptionsScreen = ({ navigation }: Props) => {
             Privacy Policy
           </Text>
         </Text>
-      </Block>
-    </Block>
+      </View>
+    </View>
   );
 };

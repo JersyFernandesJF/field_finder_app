@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Block, Button, Text, Slide } from "~/components";
+import { Button, Text, Slide } from "~/components";
 import { useRef, useState, useEffect } from "react";
 import {
   Animated,
@@ -7,6 +7,7 @@ import {
   FlatList,
   StyleSheet,
   Platform,
+  View
 } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
@@ -70,9 +71,9 @@ export const OnboardingScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <Block flex={1} justifyContent="space-between">
+    <View style={{ flex:1, justifyContent:"space-between"}}>
       <StatusBar barStyle={"light-content"} />
-      <Block flex={2}>
+      <View style={{ flex: 2}}>
         <FlatList
           data={CARDS}
           renderItem={({ item }) => <Slide imageSource={item.imageSource} />}
@@ -95,20 +96,20 @@ export const OnboardingScreen = ({ navigation }: Props) => {
           viewabilityConfig={viewConfig}
           ref={slidesRef}
         />
-      </Block>
+      </View>
 
-      <Block style={styles.content}>
-        <Block
-          style={[styles.divider, { backgroundColor: colors.green[1] }]}
-          center
+      <View style={styles.content}>
+        <View
+          style={[styles.divider, { backgroundColor: colors.green[1], justifyContent:"center", alignItems:'center'}]}
+         
         >
           <Text color={"white"} font={fonts.inter[600]} fontSize={11}>
             Field Finder
           </Text>
-        </Block>
+        </View>
 
-        <Block flex={2} alignItems="center" justifyContent="space-between">
-          <Block marginTop={60} center>
+        <View style={{ flex: 2, alignItems:"center", justifyContent:"space-between"}}>
+          <View style={{ marginTop: 60, alignItems: "center"}} >
             <Text
               textAlign="center"
               fontSize={22}
@@ -118,7 +119,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
             >
               {CARDS[currentIndex].title}
             </Text>
-            <Block height={150} alignItems="center" justifyContent="center">
+            <View style={{ height:150, alignItems:"center", justifyContent:"center"}}>
               <Text
                 textAlign="center"
                 fontSize={15}
@@ -128,8 +129,8 @@ export const OnboardingScreen = ({ navigation }: Props) => {
               >
                 {CARDS[currentIndex].description}
               </Text>
-            </Block>
-            <Block row>
+            </View>
+            <View style={{ flexDirection: 'row'}}>
               {Array(3)
                 .fill(1)
                 .map((_, index) => {
@@ -165,16 +166,13 @@ export const OnboardingScreen = ({ navigation }: Props) => {
                     />
                   );
                 })}
-            </Block>
-          </Block>
+            </View>
+          </View>
 
-          <Block
-            alignItems="center"
-            justifyContent="space-around"
-            row
-            marginBottom={Platform.OS === "ios" ? 50 : 30}
+          <View
+          style={{ justifyContent:"center",display:'flex', marginBottom:Platform.OS === "ios" ? 50 : 30}}
           >
-            <Block>
+            <View>
               <Button onPress={skipSlide}>
                 <Text
                   fontSize={15}
@@ -184,18 +182,18 @@ export const OnboardingScreen = ({ navigation }: Props) => {
                   Skip
                 </Text>
               </Button>
-            </Block>
-            <Block marginLeft={"50%"}>
+            </View>
+            <View style={{ marginLeft: '50%'}}>
               <Button roundButton onPress={handleGoToNextSlide}>
                 <RightSvgIcon />
               </Button>
-            </Block>
+            </View>
 
-            <Block />
-          </Block>
-        </Block>
-      </Block>
-    </Block>
+            <View />
+          </View>
+        </View>
+      </View>
+    </View>
   );
 };
 

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Platform, ScrollView, StatusBar, StyleSheet } from "react-native";
+import { Platform, ScrollView, StatusBar, StyleSheet, View } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import {
-  Block,
   Button,
   Input,
   Text,
@@ -106,7 +105,7 @@ export const HomeScreen = () => {
     text = JSON.stringify(location);
   }
   return (
-    <Block flex={1} center>
+    <View style={{flex: 1, alignItems:"center", justifyContent:"center"}}>
       <StatusBar barStyle="dark-content" />
       <MapView
         showsUserLocation
@@ -138,7 +137,7 @@ export const HomeScreen = () => {
           );
         })}
       </MapView>
-      <Block center position="absolute" top={Platform.OS === "ios" ? 90 : 60}>
+      <View style={{ position: "absolute", top:Platform.OS === "ios" ? 90 : 60, justifyContent:"center"}}>
         <Input
           left={<PinSVGIcon style={{ marginLeft: 10, marginRight: 10 }} />}
           placeholder="Enter an address, event name, Field or Sport"
@@ -149,27 +148,24 @@ export const HomeScreen = () => {
           }}
           standard
         />
-        <Block mt={10}>
+        <View style={{marginTop:10}}>
           <ScrollView showsHorizontalScrollIndicator={false} horizontal>
             {sports.map((element, index) => {
               return (
                 <Button chips>
-                  <Block
-                    center
-                    justifyContent="space-around"
-                    paddingHorizontal={10}
-                    style={{ flexDirection: "row" }}
+                  <View
+                    style={{ alignItems:"center", justifyContent:"space-around", paddingHorizontal:10, flexDirection:"row"}}
                   >
                     {setIcon(element.name)}
                     <Text chips>{element.name}</Text>
-                  </Block>
+                  </View>
                 </Button>
               );
             })}
           </ScrollView>
-        </Block>
-      </Block>
-    </Block>
+        </View>
+      </View>
+    </View>
   );
 };
 

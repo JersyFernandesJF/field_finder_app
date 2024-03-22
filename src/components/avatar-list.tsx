@@ -4,6 +4,7 @@ import { Block } from "./block";
 import { Text } from "./text";
 import { StarSVGIcon } from "~/assets/icons";
 
+
 type CardInformationProps = {
   data: {
     images: string[];

@@ -3,6 +3,7 @@ import { Block, Button, InputVerifyGmail, Text } from "~/components";
 import { MainStackParamsList } from "~/router";
 import { useTheme } from "~/hooks/theme";
 import { useEffect, useState } from "react";
+import { View } from "react-native";
 
 type Props = NativeStackScreenProps<MainStackParamsList, "VerificationCode">;
 
@@ -11,22 +12,22 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
   const [count, setCount] = useState(45);
 
   return (
-    <Block flex={1} px={30}>
-      <Block my={30}>
+    <View style={{ flex: 1, paddingHorizontal: 30}}>
+      <View style={{ marginVertical: 30}}>
         <Text textAlign="center" color={colors.dark[1]}>
           We’ve sent a OTP verification code
         </Text>
         <Text textAlign="center" color={colors.dark[1]}>
           to your email
         </Text>
-      </Block>
-      <Block row justifyContent="space-around">
+      </View>
+      <View style={{ flexDirection: "row", justifyContent:"space-around"}}>
         <InputVerifyGmail placeholder="1" />
         <InputVerifyGmail placeholder="2" />
         <InputVerifyGmail placeholder="3" />
         <InputVerifyGmail placeholder="4" />
-      </Block>
-      <Block row my={18}>
+      </View>
+      <View style={{ flexDirection: "row", marginVertical: 18}}>
         <Text
           textAlign="center"
           color={colors.blue[10]}
@@ -44,16 +45,16 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
           {" "}
           00:{count}
         </Text>
-      </Block>
+      </View>
 
-      <Block my={50}>
+      <View style={{ marginTop: 50}}>
         <Button
           defaultStyle
           onPress={() => navigation.navigate("ChangePassword")}
         >
           Verify
         </Button>
-        <Block my={20} row center>
+        <View style={{ marginVertical: 20, alignContent:"center", justifyContent:"center", flexDirection:"row"}}>
           <Text
             textAlign="center"
             color={colors.blue[10]}
@@ -68,8 +69,8 @@ export const VerificationCodeScreen = ({ navigation }: Props) => {
               Resend Code.
             </Text>
           </Button>
-        </Block>
-      </Block>
-    </Block>
+        </View>
+      </View>
+    </View>
   );
 };

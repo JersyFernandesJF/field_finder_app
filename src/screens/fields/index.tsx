@@ -1,6 +1,6 @@
 import { Block, Text, CardIformation, Button, Input } from "~/components";
 import { useEffect, useState } from "react";
-import { ScrollView, StatusBar, SafeAreaView } from "react-native";
+import { ScrollView, StatusBar, SafeAreaView, View, ViewBase } from "react-native";
 import { useTheme } from "~/hooks/theme";
 import { MainStackParamsList } from "~/router";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -30,12 +30,12 @@ export const FieldsScreen = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Block marginBottom={10}>
-          <Block mb={10} marginLeft={20}>
+        <View style={{ marginBottom: 10}} >
+          <View style={{ marginBottom: 10, marginLeft: 20}}>
             <Text fontSize={16} font={fonts.inter[600]}>
               Popular Fields
             </Text>
-          </Block>
+          </View>
 
           <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
             {fieldsDB.map((field) => {
@@ -51,15 +51,15 @@ export const FieldsScreen = () => {
               );
             })}
           </ScrollView>
-        </Block>
+        </View>
 
-        <Block px={20} mt={20}>
-          <Block marginVertical={10}>
+        <View style={{ paddingHorizontal: 20, marginTop:20}}>
+          <View style={{ marginVertical: 10}}>
             <Text fontSize={16} font={fonts.inter[600]}>
               All fields
             </Text>
-          </Block>
-          <Block>
+          </View>
+          <View>
             {fieldsDB.map((field) => {
               return (
                 <Button
@@ -71,8 +71,8 @@ export const FieldsScreen = () => {
                 </Button>
               );
             })}
-          </Block>
-        </Block>
+          </View>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

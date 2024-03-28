@@ -1,9 +1,10 @@
-import { Block, Button, Text, Comment, Include, Post } from "~/components";
+import { Button, Text, Comment, Include, Post } from "~/components";
+import { View } from "react-native";
 
 export const DiscoverScreen = () => {
   return (
-    <Block flex={1} style={{ backgroundColor: "#ffff" }} center>
+    <View style={{ backgroundColor: "#ffff", flex:1, justifyContent:"center", alignContent: "center" }}>
       <Text>Discover</Text>
-    </Block>
+    </View>
   );
 };

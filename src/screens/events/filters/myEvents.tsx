@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PencilSvgIcon } from "~/assets/icons";
 import { View } from "react-native";
-import { View, Button, Text, CreateEventForm, EventCard } from "~/components";
+import { Button, Text, CreateEventForm, EventCard } from "~/components";
 import { useTheme } from "~/hooks/theme";
 
 export const MyEvents = () => {

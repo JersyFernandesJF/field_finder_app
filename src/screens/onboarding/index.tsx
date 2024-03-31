@@ -14,6 +14,8 @@ import { MainStackParamsList } from "~/router";
 import { RightSvgIcon } from "~/assets/icons";
 import { StatusBar } from "react-native";
 
+
+
 const CARDS = [
   {
     imageSource: require("../../assets/image/onboarding/onboarding2.jpg"),
@@ -71,9 +73,8 @@ export const OnboardingScreen = ({ navigation }: Props) => {
   };
 
   return (
-    <View style={{ flex:1, justifyContent:"space-between"}}>
-      <StatusBar barStyle={"light-content"} />
-      <View style={{ flex: 2}}>
+    <View style={styles.container}>
+      <View style={styles.imageContent}>
         <FlatList
           data={CARDS}
           renderItem={({ item }) => <Slide imageSource={item.imageSource} />}
@@ -97,19 +98,17 @@ export const OnboardingScreen = ({ navigation }: Props) => {
           ref={slidesRef}
         />
       </View>
-
       <View style={styles.content}>
         <View
-          style={[styles.divider, { backgroundColor: colors.green[1], justifyContent:"center", alignItems:'center'}]}
-         
+          style={[styles.divider, { backgroundColor: colors.green[1] }]}
         >
           <Text color={"white"} font={fonts.inter[600]} fontSize={11}>
             Field Finder
           </Text>
         </View>
 
-        <View style={{ flex: 2, alignItems:"center", justifyContent:"space-between"}}>
-          <View style={{ marginTop: 60, alignItems: "center"}} >
+        <View style={styles.textContent}>
+          <View>
             <Text
               textAlign="center"
               fontSize={22}
@@ -130,7 +129,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
                 {CARDS[currentIndex].description}
               </Text>
             </View>
-            <View style={{ flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row', justifyContent:"center"}}>
               {Array(3)
                 .fill(1)
                 .map((_, index) => {
@@ -170,7 +169,7 @@ export const OnboardingScreen = ({ navigation }: Props) => {
           </View>
 
           <View
-          style={{ justifyContent:"center",display:'flex', marginBottom:Platform.OS === "ios" ? 50 : 30}}
+          style={{ justifyContent:"center", marginBottom:Platform.OS === "ios" ? 50 : 30,flexDirection:"row"}}
           >
             <View>
               <Button onPress={skipSlide}>
@@ -198,30 +197,45 @@ export const OnboardingScreen = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  content: {
+  container:{
+    flex:1, 
+    justifyContent:"space-between"
+  },
+  content:{
     flex: 2,
     backgroundColor: "white",
     alignItems: "center",
   },
-  dotsContainer: {
+  imageContent:{
+    flex: 2
+  },
+  dotsContainer:{
     flexDirection: "row",
     justifyContent: "center",
   },
-  description: {
+  description:{
     textAlign: "center",
     width: 300,
   },
-  dot: {
+  dot:{
     height: 5,
     width: 5,
     borderRadius: 10,
     marginRight: 6,
   },
-  divider: {
+  divider:{
     position: "absolute",
     height: 100,
     width: 100,
     borderRadius: 50,
     top: -50,
+    justifyContent:"center", 
+    alignItems:'center'
   },
+  textContent:{
+    flex: 2, 
+    alignItems:"center", 
+    justifyContent:"space-between", 
+    paddingVertical: 60,
+  }
 });
